@@ -43,7 +43,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
-            this.lOPTableAdapter = new CSDLPT.DS_SERVER1TableAdapters.LOPTableAdapter();
+            this.taLop = new CSDLPT.DS_SERVER1TableAdapters.LOPTableAdapter();
             this.tableAdapterManager = new CSDLPT.DS_SERVER1TableAdapters.TableAdapterManager();
             this.bdsKhoa = new System.Windows.Forms.BindingSource(this.components);
             this.taKhoa = new CSDLPT.DS_SERVER1TableAdapters.KHOATableAdapter();
@@ -52,9 +52,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gcLop = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.giangvienTableAdapter1 = new CSDLPT.DS_SERVER1TableAdapters.GIANGVIENTableAdapter();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tENLOPTextBox = new System.Windows.Forms.TextBox();
+            this.txbTenLop = new System.Windows.Forms.TextBox();
             this.txbMaLop = new System.Windows.Forms.TextBox();
             this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
             this.taSV = new CSDLPT.DS_SERVER1TableAdapters.SINHVIENTableAdapter();
@@ -183,6 +182,7 @@
             this.bbtnWrite.Caption = "GHI";
             this.bbtnWrite.Id = 7;
             this.bbtnWrite.Name = "bbtnWrite";
+            this.bbtnWrite.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnWrite_ItemClick);
             // 
             // bbtnRecovery
             // 
@@ -215,7 +215,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 719);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 721);
             this.barDockControlBottom.Manager = this.barManager;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.barDockControlBottom.Size = new System.Drawing.Size(1930, 23);
@@ -227,7 +227,7 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
             this.barDockControlLeft.Manager = this.barManager;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 697);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 699);
             // 
             // barDockControlRight
             // 
@@ -236,7 +236,7 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1930, 22);
             this.barDockControlRight.Manager = this.barManager;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 697);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 699);
             // 
             // barButtonItem1
             // 
@@ -250,9 +250,9 @@
             this.barCheckItem1.Id = 1;
             this.barCheckItem1.Name = "barCheckItem1";
             // 
-            // lOPTableAdapter
+            // taLop
             // 
-            this.lOPTableAdapter.ClearBeforeFill = true;
+            this.taLop.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
@@ -261,7 +261,7 @@
             this.tableAdapterManager.GIANGVIENTableAdapter = null;
             this.tableAdapterManager.HOCPHITableAdapter = null;
             this.tableAdapterManager.KHOATableAdapter = null;
-            this.tableAdapterManager.LOPTableAdapter = this.lOPTableAdapter;
+            this.tableAdapterManager.LOPTableAdapter = this.taLop;
             this.tableAdapterManager.MONHOCTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = CSDLPT.DS_SERVER1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -327,15 +327,11 @@
             this.gridView1.GridControl = this.gcLop;
             this.gridView1.Name = "gridView1";
             // 
-            // giangvienTableAdapter1
-            // 
-            this.giangvienTableAdapter1.ClearBeforeFill = true;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txbMaKhoa);
             this.groupBox1.Controls.Add(tENLOPLabel);
-            this.groupBox1.Controls.Add(this.tENLOPTextBox);
+            this.groupBox1.Controls.Add(this.txbTenLop);
             this.groupBox1.Controls.Add(mAKHLabel);
             this.groupBox1.Controls.Add(mALOPLabel);
             this.groupBox1.Controls.Add(this.txbMaLop);
@@ -343,18 +339,18 @@
             this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(0, 363);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(917, 356);
+            this.groupBox1.Size = new System.Drawing.Size(917, 358);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             // 
-            // tENLOPTextBox
+            // txbTenLop
             // 
-            this.tENLOPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsLop, "TENLOP", true));
-            this.tENLOPTextBox.Location = new System.Drawing.Point(349, 166);
-            this.tENLOPTextBox.Name = "tENLOPTextBox";
-            this.tENLOPTextBox.Size = new System.Drawing.Size(467, 32);
-            this.tENLOPTextBox.TabIndex = 6;
-            this.tENLOPTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txbTenLop.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsLop, "TENLOP", true));
+            this.txbTenLop.Location = new System.Drawing.Point(349, 166);
+            this.txbTenLop.Name = "txbTenLop";
+            this.txbTenLop.Size = new System.Drawing.Size(467, 32);
+            this.txbTenLop.TabIndex = 6;
+            this.txbTenLop.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txbMaLop
             // 
@@ -396,7 +392,7 @@
             this.dgvSV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSV.Location = new System.Drawing.Point(917, 363);
             this.dgvSV.Name = "dgvSV";
-            this.dgvSV.Size = new System.Drawing.Size(1013, 356);
+            this.dgvSV.Size = new System.Drawing.Size(1013, 358);
             this.dgvSV.TabIndex = 32;
             // 
             // dataGridViewTextBoxColumn1
@@ -459,11 +455,12 @@
             // txbMaKhoa
             // 
             this.txbMaKhoa.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.txbMaKhoa.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bdsLop, "MAKH", true));
             this.txbMaKhoa.Location = new System.Drawing.Point(349, 306);
             this.txbMaKhoa.Name = "txbMaKhoa";
             this.txbMaKhoa.ReadOnly = true;
             this.txbMaKhoa.Size = new System.Drawing.Size(467, 32);
-            this.txbMaKhoa.TabIndex = 7;
+            this.txbMaKhoa.TabIndex = 8;
             this.txbMaKhoa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ClassForm
@@ -471,7 +468,7 @@
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1930, 742);
+            this.ClientSize = new System.Drawing.Size(1930, 744);
             this.Controls.Add(this.dgvSV);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gcLop);
@@ -521,14 +518,13 @@
         private DevExpress.XtraBars.BarButtonItem bbtnRecovery;
         private System.Windows.Forms.BindingSource bdsLop;
         private DS_SERVER1 dS_SERVER1;
-        private DS_SERVER1TableAdapters.LOPTableAdapter lOPTableAdapter;
+        private DS_SERVER1TableAdapters.LOPTableAdapter taLop;
         private DS_SERVER1TableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingSource bdsKhoa;
         private DS_SERVER1TableAdapters.KHOATableAdapter taKhoa;
         private DevExpress.XtraGrid.GridControl gcLop;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.Panel panel1;
-        private DS_SERVER1TableAdapters.GIANGVIENTableAdapter giangvienTableAdapter1;
         private System.Windows.Forms.ComboBox cmbKhoaInUse;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -536,7 +532,7 @@
         private DS_SERVER1TableAdapters.SINHVIENTableAdapter taSV;
         private System.Windows.Forms.DataGridView dgvSV;
         private System.Windows.Forms.TextBox txbMaLop;
-        private System.Windows.Forms.TextBox tENLOPTextBox;
+        private System.Windows.Forms.TextBox txbTenLop;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
