@@ -39,8 +39,7 @@ namespace CSDLPT {
                 Program.conn.ConnectionString = Program.connstr;
                 Program.conn.Open();
                 return 1;
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 MessageBox.Show($"Lỗi kết nối CSDL. \nXem lại username và password.\n" +
                     $"{e.Message}", string.Empty, MessageBoxButtons.OK);
                 return 0;
@@ -60,8 +59,7 @@ namespace CSDLPT {
             try {
                 myReader = sqlcmd.ExecuteReader();
                 return myReader;
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 Program.conn.Close();
                 MessageBox.Show(e.Message);
             }
@@ -87,6 +85,8 @@ namespace CSDLPT {
 
             BonusSkins.Register();
             Application.Run(new LoginForm());
+            //Application.Run(new MainView());
+            //Application.Run(new ClassForm());
         }
     }
 }

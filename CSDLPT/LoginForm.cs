@@ -22,7 +22,11 @@ namespace CSDLPT {
             cmbPM.DisplayMember = "TENPM";
             cmbPM.ValueMember = "TENSERVER";
             cmbPM.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbPM.SelectedIndex = -1;
+
+            //Auto click combobox
+            cmbPM.SelectedIndex = 0;
+            cmbPM.SelectedIndex = 1;
+            cmbPM.SelectedIndex = 0;
         }
 
         private void btnLogin_Click(object sender, EventArgs e) {
@@ -63,8 +67,7 @@ namespace CSDLPT {
         private void cmbPM_SelectedIndexChanged(object sender, EventArgs e) {
             try {
                 Program.servername = cmbPM.SelectedValue.ToString();
-            }
-            catch (Exception) {
+            } catch (Exception) {
             }
         }
     }

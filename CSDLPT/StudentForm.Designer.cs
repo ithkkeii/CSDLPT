@@ -34,28 +34,18 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.bar1 = new DevExpress.XtraBars.Bar();
             this.dS_SERVER1 = new CSDLPT.DS_SERVER1();
             this.sINHVIENBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sINHVIENTableAdapter = new CSDLPT.DS_SERVER1TableAdapters.SINHVIENTableAdapter();
             this.tableAdapterManager = new CSDLPT.DS_SERVER1TableAdapters.TableAdapterManager();
             this.sINHVIENGridControl = new DevExpress.XtraGrid.GridControl();
-            this.gridViewSV = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colHO = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTEN = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMALOP = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPHAI = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNGAYSINH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNOISINH = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDIACHI = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colGHICHU = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNGHIHOC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_SERVER1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sINHVIENGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewSV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager
@@ -151,6 +141,14 @@
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 561);
             // 
+            // bar1
+            // 
+            this.bar1.BarName = "Tools";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 1;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.Text = "Tools";
+            // 
             // dS_SERVER1
             // 
             this.dS_SERVER1.DataSetName = "DS_SERVER1";
@@ -182,155 +180,19 @@
             // 
             this.sINHVIENGridControl.DataSource = this.sINHVIENBindingSource;
             this.sINHVIENGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.sINHVIENGridControl.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.sINHVIENGridControl.Location = new System.Drawing.Point(0, 26);
-            this.sINHVIENGridControl.MainView = this.gridViewSV;
-            this.sINHVIENGridControl.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.sINHVIENGridControl.MainView = this.gridView1;
             this.sINHVIENGridControl.MenuManager = this.barManager;
             this.sINHVIENGridControl.Name = "sINHVIENGridControl";
-            this.sINHVIENGridControl.Size = new System.Drawing.Size(1136, 196);
-            this.sINHVIENGridControl.TabIndex = 5;
+            this.sINHVIENGridControl.Size = new System.Drawing.Size(1136, 220);
+            this.sINHVIENGridControl.TabIndex = 10;
             this.sINHVIENGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewSV});
-            this.sINHVIENGridControl.Click += new System.EventHandler(this.sINHVIENGridControl_Click);
+            this.gridView1});
             // 
-            // gridViewSV
+            // gridView1
             // 
-            this.gridViewSV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colMASV,
-            this.colHO,
-            this.colTEN,
-            this.colMALOP,
-            this.colPHAI,
-            this.colNGAYSINH,
-            this.colNOISINH,
-            this.colDIACHI,
-            this.colGHICHU,
-            this.colNGHIHOC});
-            this.gridViewSV.DetailHeight = 727;
-            this.gridViewSV.FixedLineWidth = 4;
-            this.gridViewSV.GridControl = this.sINHVIENGridControl;
-            this.gridViewSV.Name = "gridViewSV";
-            this.gridViewSV.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colHO, DevExpress.Data.ColumnSortOrder.Descending)});
-            // 
-            // colMASV
-            // 
-            this.colMASV.FieldName = "MASV";
-            this.colMASV.MinWidth = 50;
-            this.colMASV.Name = "colMASV";
-            this.colMASV.OptionsColumn.AllowEdit = false;
-            this.colMASV.OptionsColumn.ReadOnly = true;
-            this.colMASV.Visible = true;
-            this.colMASV.VisibleIndex = 0;
-            this.colMASV.Width = 154;
-            // 
-            // colHO
-            // 
-            this.colHO.FieldName = "HO";
-            this.colHO.MinWidth = 50;
-            this.colHO.Name = "colHO";
-            this.colHO.OptionsColumn.AllowEdit = false;
-            this.colHO.OptionsColumn.ReadOnly = true;
-            this.colHO.Visible = true;
-            this.colHO.VisibleIndex = 1;
-            this.colHO.Width = 145;
-            // 
-            // colTEN
-            // 
-            this.colTEN.FieldName = "TEN";
-            this.colTEN.MinWidth = 50;
-            this.colTEN.Name = "colTEN";
-            this.colTEN.OptionsColumn.AllowEdit = false;
-            this.colTEN.OptionsColumn.ReadOnly = true;
-            this.colTEN.Visible = true;
-            this.colTEN.VisibleIndex = 2;
-            this.colTEN.Width = 145;
-            // 
-            // colMALOP
-            // 
-            this.colMALOP.FieldName = "MALOP";
-            this.colMALOP.MinWidth = 50;
-            this.colMALOP.Name = "colMALOP";
-            this.colMALOP.OptionsColumn.AllowEdit = false;
-            this.colMALOP.OptionsColumn.ReadOnly = true;
-            this.colMALOP.Visible = true;
-            this.colMALOP.VisibleIndex = 3;
-            this.colMALOP.Width = 145;
-            // 
-            // colPHAI
-            // 
-            this.colPHAI.FieldName = "PHAI";
-            this.colPHAI.MinWidth = 50;
-            this.colPHAI.Name = "colPHAI";
-            this.colPHAI.OptionsColumn.AllowEdit = false;
-            this.colPHAI.OptionsColumn.ReadOnly = true;
-            this.colPHAI.Visible = true;
-            this.colPHAI.VisibleIndex = 4;
-            this.colPHAI.Width = 145;
-            // 
-            // colNGAYSINH
-            // 
-            this.colNGAYSINH.FieldName = "NGAYSINH";
-            this.colNGAYSINH.MinWidth = 50;
-            this.colNGAYSINH.Name = "colNGAYSINH";
-            this.colNGAYSINH.OptionsColumn.AllowEdit = false;
-            this.colNGAYSINH.OptionsColumn.ReadOnly = true;
-            this.colNGAYSINH.Visible = true;
-            this.colNGAYSINH.VisibleIndex = 5;
-            this.colNGAYSINH.Width = 145;
-            // 
-            // colNOISINH
-            // 
-            this.colNOISINH.FieldName = "NOISINH";
-            this.colNOISINH.MinWidth = 50;
-            this.colNOISINH.Name = "colNOISINH";
-            this.colNOISINH.OptionsColumn.AllowEdit = false;
-            this.colNOISINH.OptionsColumn.ReadOnly = true;
-            this.colNOISINH.Visible = true;
-            this.colNOISINH.VisibleIndex = 6;
-            this.colNOISINH.Width = 145;
-            // 
-            // colDIACHI
-            // 
-            this.colDIACHI.FieldName = "DIACHI";
-            this.colDIACHI.MinWidth = 50;
-            this.colDIACHI.Name = "colDIACHI";
-            this.colDIACHI.OptionsColumn.AllowEdit = false;
-            this.colDIACHI.OptionsColumn.ReadOnly = true;
-            this.colDIACHI.Visible = true;
-            this.colDIACHI.VisibleIndex = 7;
-            this.colDIACHI.Width = 145;
-            // 
-            // colGHICHU
-            // 
-            this.colGHICHU.FieldName = "GHICHU";
-            this.colGHICHU.MinWidth = 50;
-            this.colGHICHU.Name = "colGHICHU";
-            this.colGHICHU.OptionsColumn.AllowEdit = false;
-            this.colGHICHU.OptionsColumn.ReadOnly = true;
-            this.colGHICHU.Visible = true;
-            this.colGHICHU.VisibleIndex = 8;
-            this.colGHICHU.Width = 145;
-            // 
-            // colNGHIHOC
-            // 
-            this.colNGHIHOC.FieldName = "NGHIHOC";
-            this.colNGHIHOC.MinWidth = 50;
-            this.colNGHIHOC.Name = "colNGHIHOC";
-            this.colNGHIHOC.OptionsColumn.AllowEdit = false;
-            this.colNGHIHOC.OptionsColumn.ReadOnly = true;
-            this.colNGHIHOC.Visible = true;
-            this.colNGHIHOC.VisibleIndex = 9;
-            this.colNGHIHOC.Width = 180;
-            // 
-            // bar1
-            // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 1;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.Text = "Tools";
+            this.gridView1.GridControl = this.sINHVIENGridControl;
+            this.gridView1.Name = "gridView1";
             // 
             // StudentForm
             // 
@@ -346,14 +208,14 @@
             this.Font = new System.Drawing.Font("Times New Roman", 15.70909F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "StudentForm";
-            this.Text = "r";
+            this.Text = "StudentForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.StudentForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_SERVER1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sINHVIENGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewSV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,22 +232,12 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem bbtnAddStudent;
         private DevExpress.XtraBars.BarButtonItem bbtnDeleteStudent;
+        private DevExpress.XtraBars.Bar bar1;
         private System.Windows.Forms.BindingSource sINHVIENBindingSource;
         private DS_SERVER1 dS_SERVER1;
         private DS_SERVER1TableAdapters.SINHVIENTableAdapter sINHVIENTableAdapter;
         private DS_SERVER1TableAdapters.TableAdapterManager tableAdapterManager;
         private DevExpress.XtraGrid.GridControl sINHVIENGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewSV;
-        private DevExpress.XtraGrid.Columns.GridColumn colMASV;
-        private DevExpress.XtraGrid.Columns.GridColumn colHO;
-        private DevExpress.XtraGrid.Columns.GridColumn colTEN;
-        private DevExpress.XtraGrid.Columns.GridColumn colMALOP;
-        private DevExpress.XtraGrid.Columns.GridColumn colPHAI;
-        private DevExpress.XtraGrid.Columns.GridColumn colNGAYSINH;
-        private DevExpress.XtraGrid.Columns.GridColumn colNOISINH;
-        private DevExpress.XtraGrid.Columns.GridColumn colDIACHI;
-        private DevExpress.XtraGrid.Columns.GridColumn colGHICHU;
-        private DevExpress.XtraGrid.Columns.GridColumn colNGHIHOC;
-        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
 }

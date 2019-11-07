@@ -72,9 +72,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSPM.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DS_SERVER1.cs">
-      <DependentUpon>DS_SERVER1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DS_SERVER1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

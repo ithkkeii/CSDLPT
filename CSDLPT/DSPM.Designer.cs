@@ -24,7 +24,7 @@ namespace CSDLPT {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class DSPM : global::System.Data.DataSet {
         
-        private V_DSPMDataTable tableV_DSPM;
+        private DSPMDataTable tableDSPM;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace CSDLPT {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["V_DSPM"] != null)) {
-                    base.Tables.Add(new V_DSPMDataTable(ds.Tables["V_DSPM"]));
+                if ((ds.Tables["DSPM"] != null)) {
+                    base.Tables.Add(new DSPMDataTable(ds.Tables["DSPM"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace CSDLPT {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public V_DSPMDataTable V_DSPM {
+        public DSPMDataTable _DSPM {
             get {
-                return this.tableV_DSPM;
+                return this.tableDSPM;
             }
         }
         
@@ -152,8 +152,8 @@ namespace CSDLPT {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["V_DSPM"] != null)) {
-                    base.Tables.Add(new V_DSPMDataTable(ds.Tables["V_DSPM"]));
+                if ((ds.Tables["DSPM"] != null)) {
+                    base.Tables.Add(new DSPMDataTable(ds.Tables["DSPM"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace CSDLPT {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableV_DSPM = ((V_DSPMDataTable)(base.Tables["V_DSPM"]));
+            this.tableDSPM = ((DSPMDataTable)(base.Tables["DSPM"]));
             if ((initTable == true)) {
-                if ((this.tableV_DSPM != null)) {
-                    this.tableV_DSPM.InitVars();
+                if ((this.tableDSPM != null)) {
+                    this.tableDSPM.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace CSDLPT {
             this.Namespace = "http://tempuri.org/DSPM.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableV_DSPM = new V_DSPMDataTable();
-            base.Tables.Add(this.tableV_DSPM);
+            this.tableDSPM = new DSPMDataTable();
+            base.Tables.Add(this.tableDSPM);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private bool ShouldSerializeV_DSPM() {
+        private bool ShouldSerialize_DSPM() {
             return false;
         }
         
@@ -270,14 +270,14 @@ namespace CSDLPT {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public delegate void V_DSPMRowChangeEventHandler(object sender, V_DSPMRowChangeEvent e);
+        public delegate void DSPMRowChangeEventHandler(object sender, DSPMRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class V_DSPMDataTable : global::System.Data.TypedTableBase<V_DSPMRow> {
+        public partial class DSPMDataTable : global::System.Data.TypedTableBase<DSPMRow> {
             
             private global::System.Data.DataColumn columnTENPM;
             
@@ -285,8 +285,8 @@ namespace CSDLPT {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_DSPMDataTable() {
-                this.TableName = "V_DSPM";
+            public DSPMDataTable() {
+                this.TableName = "DSPM";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -294,7 +294,7 @@ namespace CSDLPT {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal V_DSPMDataTable(global::System.Data.DataTable table) {
+            internal DSPMDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -311,7 +311,7 @@ namespace CSDLPT {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            protected V_DSPMDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DSPMDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -343,46 +343,46 @@ namespace CSDLPT {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_DSPMRow this[int index] {
+            public DSPMRow this[int index] {
                 get {
-                    return ((V_DSPMRow)(this.Rows[index]));
+                    return ((DSPMRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event V_DSPMRowChangeEventHandler V_DSPMRowChanging;
+            public event DSPMRowChangeEventHandler DSPMRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event V_DSPMRowChangeEventHandler V_DSPMRowChanged;
+            public event DSPMRowChangeEventHandler DSPMRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event V_DSPMRowChangeEventHandler V_DSPMRowDeleting;
+            public event DSPMRowChangeEventHandler DSPMRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public event V_DSPMRowChangeEventHandler V_DSPMRowDeleted;
+            public event DSPMRowChangeEventHandler DSPMRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void AddV_DSPMRow(V_DSPMRow row) {
+            public void AddDSPMRow(DSPMRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_DSPMRow AddV_DSPMRow(string TENPM, string TENSERVER) {
-                V_DSPMRow rowV_DSPMRow = ((V_DSPMRow)(this.NewRow()));
+            public DSPMRow AddDSPMRow(string TENPM, string TENSERVER) {
+                DSPMRow rowDSPMRow = ((DSPMRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TENPM,
                         TENSERVER};
-                rowV_DSPMRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowV_DSPMRow);
-                return rowV_DSPMRow;
+                rowDSPMRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDSPMRow);
+                return rowDSPMRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                V_DSPMDataTable cln = ((V_DSPMDataTable)(base.Clone()));
+                DSPMDataTable cln = ((DSPMDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -390,7 +390,7 @@ namespace CSDLPT {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new V_DSPMDataTable();
+                return new DSPMDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -409,32 +409,34 @@ namespace CSDLPT {
                 base.Columns.Add(this.columnTENSERVER);
                 this.columnTENPM.MaxLength = 255;
                 this.columnTENSERVER.MaxLength = 128;
+                this.ExtendedProperties.Add("Generator_TablePropName", "_DSPM");
+                this.ExtendedProperties.Add("Generator_UserTableName", "DSPM");
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_DSPMRow NewV_DSPMRow() {
-                return ((V_DSPMRow)(this.NewRow()));
+            public DSPMRow NewDSPMRow() {
+                return ((DSPMRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new V_DSPMRow(builder);
+                return new DSPMRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(V_DSPMRow);
+                return typeof(DSPMRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.V_DSPMRowChanged != null)) {
-                    this.V_DSPMRowChanged(this, new V_DSPMRowChangeEvent(((V_DSPMRow)(e.Row)), e.Action));
+                if ((this.DSPMRowChanged != null)) {
+                    this.DSPMRowChanged(this, new DSPMRowChangeEvent(((DSPMRow)(e.Row)), e.Action));
                 }
             }
             
@@ -442,8 +444,8 @@ namespace CSDLPT {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.V_DSPMRowChanging != null)) {
-                    this.V_DSPMRowChanging(this, new V_DSPMRowChangeEvent(((V_DSPMRow)(e.Row)), e.Action));
+                if ((this.DSPMRowChanging != null)) {
+                    this.DSPMRowChanging(this, new DSPMRowChangeEvent(((DSPMRow)(e.Row)), e.Action));
                 }
             }
             
@@ -451,8 +453,8 @@ namespace CSDLPT {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.V_DSPMRowDeleted != null)) {
-                    this.V_DSPMRowDeleted(this, new V_DSPMRowChangeEvent(((V_DSPMRow)(e.Row)), e.Action));
+                if ((this.DSPMRowDeleted != null)) {
+                    this.DSPMRowDeleted(this, new DSPMRowChangeEvent(((DSPMRow)(e.Row)), e.Action));
                 }
             }
             
@@ -460,14 +462,14 @@ namespace CSDLPT {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.V_DSPMRowDeleting != null)) {
-                    this.V_DSPMRowDeleting(this, new V_DSPMRowChangeEvent(((V_DSPMRow)(e.Row)), e.Action));
+                if ((this.DSPMRowDeleting != null)) {
+                    this.DSPMRowDeleting(this, new DSPMRowChangeEvent(((DSPMRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void RemoveV_DSPMRow(V_DSPMRow row) {
+            public void RemoveDSPMRow(DSPMRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -494,7 +496,7 @@ namespace CSDLPT {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "V_DSPMDataTable";
+                attribute2.FixedValue = "DSPMDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -538,15 +540,15 @@ namespace CSDLPT {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class V_DSPMRow : global::System.Data.DataRow {
+        public partial class DSPMRow : global::System.Data.DataRow {
             
-            private V_DSPMDataTable tableV_DSPM;
+            private DSPMDataTable tableDSPM;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            internal V_DSPMRow(global::System.Data.DataRowBuilder rb) : 
+            internal DSPMRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableV_DSPM = ((V_DSPMDataTable)(this.Table));
+                this.tableDSPM = ((DSPMDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -554,14 +556,14 @@ namespace CSDLPT {
             public string TENPM {
                 get {
                     try {
-                        return ((string)(this[this.tableV_DSPM.TENPMColumn]));
+                        return ((string)(this[this.tableDSPM.TENPMColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TENPM\' in table \'V_DSPM\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TENPM\' in table \'DSPM\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableV_DSPM.TENPMColumn] = value;
+                    this[this.tableDSPM.TENPMColumn] = value;
                 }
             }
             
@@ -570,39 +572,39 @@ namespace CSDLPT {
             public string TENSERVER {
                 get {
                     try {
-                        return ((string)(this[this.tableV_DSPM.TENSERVERColumn]));
+                        return ((string)(this[this.tableDSPM.TENSERVERColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TENSERVER\' in table \'V_DSPM\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TENSERVER\' in table \'DSPM\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableV_DSPM.TENSERVERColumn] = value;
+                    this[this.tableDSPM.TENSERVERColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsTENPMNull() {
-                return this.IsNull(this.tableV_DSPM.TENPMColumn);
+                return this.IsNull(this.tableDSPM.TENPMColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetTENPMNull() {
-                this[this.tableV_DSPM.TENPMColumn] = global::System.Convert.DBNull;
+                this[this.tableDSPM.TENPMColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsTENSERVERNull() {
-                return this.IsNull(this.tableV_DSPM.TENSERVERColumn);
+                return this.IsNull(this.tableDSPM.TENSERVERColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetTENSERVERNull() {
-                this[this.tableV_DSPM.TENSERVERColumn] = global::System.Convert.DBNull;
+                this[this.tableDSPM.TENSERVERColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -610,22 +612,22 @@ namespace CSDLPT {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public class V_DSPMRowChangeEvent : global::System.EventArgs {
+        public class DSPMRowChangeEvent : global::System.EventArgs {
             
-            private V_DSPMRow eventRow;
+            private DSPMRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_DSPMRowChangeEvent(V_DSPMRow row, global::System.Data.DataRowAction action) {
+            public DSPMRowChangeEvent(DSPMRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public V_DSPMRow Row {
+            public DSPMRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -653,7 +655,7 @@ namespace CSDLPT.DSPMTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class V_DSPMTableAdapter : global::System.ComponentModel.Component {
+    public partial class DSPMTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -667,7 +669,7 @@ namespace CSDLPT.DSPMTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public V_DSPMTableAdapter() {
+        public DSPMTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -764,7 +766,7 @@ namespace CSDLPT.DSPMTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "V_DSPM";
+            tableMapping.DataSetTable = "DSPM";
             tableMapping.ColumnMappings.Add("TENPM", "TENPM");
             tableMapping.ColumnMappings.Add("TENSERVER", "TENSERVER");
             this._adapter.TableMappings.Add(tableMapping);
@@ -774,7 +776,7 @@ namespace CSDLPT.DSPMTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::CSDLPT.Properties.Settings.Default.QLDSVConnectionString;
+            this._connection.ConnectionString = global::CSDLPT.Properties.Settings.Default.QLDSVConnectionStringSERVER1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -783,7 +785,7 @@ namespace CSDLPT.DSPMTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT TENPM, TENSERVER FROM dbo.V_DSPM";
+            this._commandCollection[0].CommandText = "SELECT TENPM, TENSERVER FROM dbo.DSPM";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -791,7 +793,7 @@ namespace CSDLPT.DSPMTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSPM.V_DSPMDataTable dataTable) {
+        public virtual int Fill(DSPM.DSPMDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -804,9 +806,9 @@ namespace CSDLPT.DSPMTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSPM.V_DSPMDataTable GetData() {
+        public virtual DSPM.DSPMDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DSPM.V_DSPMDataTable dataTable = new DSPM.V_DSPMDataTable();
+            DSPM.DSPMDataTable dataTable = new DSPM.DSPMDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

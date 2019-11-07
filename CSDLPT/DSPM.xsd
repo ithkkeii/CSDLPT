@@ -4,15 +4,15 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QLDSVConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QLDSVConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CSDLPT.Properties.Settings.GlobalReference.Default.QLDSVConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QLDSVConnectionStringSERVER1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QLDSVConnectionStringSERVER1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CSDLPT.Properties.Settings.GlobalReference.Default.QLDSVConnectionStringSERVER1" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="V_DSPMTableAdapter" GeneratorDataComponentClassName="V_DSPMTableAdapter" Name="V_DSPM" UserDataComponentName="V_DSPMTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DSPMTableAdapter" GeneratorDataComponentClassName="DSPMTableAdapter" Name="DSPM" UserDataComponentName="DSPMTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="QLDSVConnectionString (Settings)" DbObjectName="QLDSV.dbo.V_DSPM" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="QLDSVConnectionStringSERVER1 (Settings)" DbObjectName="QLDSV.dbo.DSPM" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT TENPM, TENSERVER FROM dbo.V_DSPM</CommandText>
+                    <CommandText>SELECT TENPM, TENSERVER FROM dbo.DSPM</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -32,7 +32,7 @@
   <xs:element name="DSPM" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DSPM" msprop:Generator_UserDSName="DSPM">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="V_DSPM" msprop:Generator_TableClassName="V_DSPMDataTable" msprop:Generator_TableVarName="tableV_DSPM" msprop:Generator_TablePropName="V_DSPM" msprop:Generator_RowDeletingName="V_DSPMRowDeleting" msprop:Generator_RowChangingName="V_DSPMRowChanging" msprop:Generator_RowEvHandlerName="V_DSPMRowChangeEventHandler" msprop:Generator_RowDeletedName="V_DSPMRowDeleted" msprop:Generator_UserTableName="V_DSPM" msprop:Generator_RowChangedName="V_DSPMRowChanged" msprop:Generator_RowEvArgName="V_DSPMRowChangeEvent" msprop:Generator_RowClassName="V_DSPMRow">
+        <xs:element name="DSPM" msprop:Generator_TableClassName="DSPMDataTable" msprop:Generator_TableVarName="tableDSPM" msprop:Generator_TablePropName="_DSPM" msprop:Generator_RowDeletingName="DSPMRowDeleting" msprop:Generator_RowChangingName="DSPMRowChanging" msprop:Generator_RowEvHandlerName="DSPMRowChangeEventHandler" msprop:Generator_RowDeletedName="DSPMRowDeleted" msprop:Generator_UserTableName="DSPM" msprop:Generator_RowChangedName="DSPMRowChanged" msprop:Generator_RowEvArgName="DSPMRowChangeEvent" msprop:Generator_RowClassName="DSPMRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="TENPM" msprop:Generator_ColumnVarNameInTable="columnTENPM" msprop:Generator_ColumnPropNameInRow="TENPM" msprop:Generator_ColumnPropNameInTable="TENPMColumn" msprop:Generator_UserColumnName="TENPM" minOccurs="0">
