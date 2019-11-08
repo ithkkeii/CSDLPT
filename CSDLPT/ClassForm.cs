@@ -192,14 +192,20 @@ namespace CSDLPT {
 
             bdsSV.AddNew();
 
-
             //Button control
             bbtnAdd.Enabled = false;
             bbtnEdit.Enabled = false;
             bbtnRemove.Enabled = false;
             bbtnWrite.Enabled = false;
             bbtnRecovery.Enabled = false;
+
             tsAdd.Enabled = false;
+            tsEdit.Enabled = false;
+            tsRemove.Enabled = false;
+            tsWrite.Enabled = true;
+            tsRecovery.Enabled = true;
+            tsChangeClass.Enabled = false;
+
 
             //View control
             gcLop.Enabled = false;
@@ -207,6 +213,40 @@ namespace CSDLPT {
             dgvSV.Enabled = true;
             dgvSV.ReadOnly = false;
             dgvtxbMaLop.ReadOnly = true;
+
+            //foreach (DataGridViewRow row in dgvSV.Rows) {
+            //    row.ReadOnly = true;
+            //}
+
+            for (int i = 0; i < dgvSV.Rows.Count - 1; i++) {
+                dgvSV.Rows[i].ReadOnly = true;
+            }
+
+            return;
+        }
+
+        private void tsEdit_Click(object sender, EventArgs e) {
+            //Button control
+            bbtnAdd.Enabled = false;
+            bbtnEdit.Enabled = false;
+            bbtnRemove.Enabled = false;
+            bbtnWrite.Enabled = false;
+            bbtnRecovery.Enabled = false;
+
+            tsAdd.Enabled = false;
+            tsEdit.Enabled = false;
+            tsRemove.Enabled = false;
+            tsWrite.Enabled = true;
+            tsRecovery.Enabled = true;
+            tsChangeClass.Enabled = false;
+
+            //View control
+            gcLop.Enabled = false;
+            groupBox1.Enabled = false;
+            dgvSV.Enabled = true;
+            dgvSV.ReadOnly = false;
+            dgvtxbMaLop.ReadOnly = true;
+            return;
         }
 
         private void tsWrite_Click(object sender, EventArgs e) {
@@ -228,18 +268,30 @@ namespace CSDLPT {
                     MessageBox.Show("Lỗi tạo sinh viên, vui lòng xem lại!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                throw;
             }
 
 
-            ////Button control
-            //bbtnAdd.Enabled = true;
-            //bbtnEdit.Enabled = true;
-            //bbtnRecovery.Enabled = true;
-            //bbtnRemove.Enabled = true;
-            //bbtnWrite.Enabled = false;
-            //gcLop.Enabled = true;
-            //groupBox1.Enabled = false;
+            //----> Write to db success
+            //Button control
+            bbtnAdd.Enabled = true;
+            bbtnEdit.Enabled = true;
+            bbtnRemove.Enabled = true;
+            bbtnWrite.Enabled = false;
+            bbtnRecovery.Enabled = false;
+
+            tsAdd.Enabled = true;
+            tsEdit.Enabled = true;
+            tsRemove.Enabled = true;
+            tsWrite.Enabled = false;
+            tsRecovery.Enabled = false;
+            tsChangeClass.Enabled = true;
+
+            //View control
+            gcLop.Enabled = true;
+            groupBox1.Enabled = false;
+            dgvSV.Enabled = true;
+            dgvSV.ReadOnly = true;
+            dgvtxbMaLop.ReadOnly = true;
         }
 
         private void dgvSV_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
@@ -248,7 +300,7 @@ namespace CSDLPT {
 
             //Validation if cell is in the MASV column
             if (headerText.Equals("MASV")) {
-                validateStringField("MASV", 10, e);
+                validateStringField("MASV", 10, e, false);
             }
 
             if (headerText.Equals("HO")) {
@@ -292,9 +344,9 @@ namespace CSDLPT {
             }
         }
 
-        private void validateStringField(String field, int condition, DataGridViewCellValidatingEventArgs e) {
+        private void validateStringField(String field, int condition, DataGridViewCellValidatingEventArgs e, bool isNullable = true) {
             //Cell is not empty
-            if (string.IsNullOrEmpty(e.FormattedValue.ToString())) {
+            if (!isNullable && string.IsNullOrEmpty(e.FormattedValue.ToString())) {
                 dgvSV.Rows[e.RowIndex].ErrorText = $"{field} không được rỗng!";
                 MessageBox.Show($"{field} không được rỗng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 e.Cancel = true;
@@ -310,7 +362,7 @@ namespace CSDLPT {
         private void dgvSV_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
             string value = "";
 
-            //dgvSV.Rows[e.RowIndex].ErrorText = string.Empty;
+            dgvSV.Rows[e.RowIndex].ErrorText = string.Empty;
             //value = dgvSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Trim();
             //dgvSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = value;
 

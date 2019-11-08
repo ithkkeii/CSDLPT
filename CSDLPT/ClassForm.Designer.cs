@@ -74,9 +74,11 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.controlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.tsEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsWrite = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsRecovery = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsChangeClass = new System.Windows.Forms.ToolStripMenuItem();
             mALOPLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
@@ -558,46 +560,61 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.controlToolStripMenuItem});
+            this.controlToolStripMenuItem,
+            this.tsChangeClass});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(115, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
             // 
             // controlToolStripMenuItem
             // 
             this.controlToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsAdd,
-            this.tsDelete,
+            this.tsRemove,
             this.tsEdit,
-            this.tsWrite});
+            this.tsWrite,
+            this.tsRecovery});
             this.controlToolStripMenuItem.Name = "controlToolStripMenuItem";
-            this.controlToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.controlToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.controlToolStripMenuItem.Text = "Control";
             // 
             // tsAdd
             // 
             this.tsAdd.Name = "tsAdd";
-            this.tsAdd.Size = new System.Drawing.Size(141, 22);
+            this.tsAdd.Size = new System.Drawing.Size(180, 22);
             this.tsAdd.Text = "THÊM";
             this.tsAdd.Click += new System.EventHandler(this.tsAdd_Click);
             // 
-            // tsDelete
+            // tsRemove
             // 
-            this.tsDelete.Name = "tsDelete";
-            this.tsDelete.Size = new System.Drawing.Size(141, 22);
-            this.tsDelete.Text = "XÓA";
+            this.tsRemove.Name = "tsRemove";
+            this.tsRemove.Size = new System.Drawing.Size(180, 22);
+            this.tsRemove.Text = "XÓA";
             // 
             // tsEdit
             // 
             this.tsEdit.Name = "tsEdit";
-            this.tsEdit.Size = new System.Drawing.Size(141, 22);
+            this.tsEdit.Size = new System.Drawing.Size(180, 22);
             this.tsEdit.Text = "HIỆU CHỈNH";
+            this.tsEdit.Click += new System.EventHandler(this.tsEdit_Click);
             // 
             // tsWrite
             // 
             this.tsWrite.Name = "tsWrite";
-            this.tsWrite.Size = new System.Drawing.Size(141, 22);
+            this.tsWrite.Size = new System.Drawing.Size(180, 22);
             this.tsWrite.Text = "GHI";
             this.tsWrite.Click += new System.EventHandler(this.tsWrite_Click);
+            // 
+            // tsRecovery
+            // 
+            this.tsRecovery.Name = "tsRecovery";
+            this.tsRecovery.Size = new System.Drawing.Size(180, 22);
+            this.tsRecovery.Text = "PHỤC HỒI";
+            // 
+            // tsChangeClass
+            // 
+            this.tsChangeClass.Name = "tsChangeClass";
+            this.tsChangeClass.Size = new System.Drawing.Size(180, 22);
+            this.tsChangeClass.Text = "CHUYỂN LỚP";
             // 
             // ClassForm
             // 
@@ -674,7 +691,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem controlToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsAdd;
-        private System.Windows.Forms.ToolStripMenuItem tsDelete;
+        private System.Windows.Forms.ToolStripMenuItem tsRemove;
         private System.Windows.Forms.ToolStripMenuItem tsEdit;
         private DevExpress.XtraGrid.Columns.GridColumn colMAKH;
         private DevExpress.XtraGrid.Columns.GridColumn colMALOP;
@@ -689,5 +706,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbNoiSinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbDiaChi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgvchbNghiHoc;
+        private System.Windows.Forms.ToolStripMenuItem tsRecovery;
+        private System.Windows.Forms.ToolStripMenuItem tsChangeClass;
     }
 }
