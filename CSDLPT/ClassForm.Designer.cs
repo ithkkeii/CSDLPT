@@ -62,12 +62,6 @@
             this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
             this.taSV = new CSDLPT.DS_SERVER1TableAdapters.SINHVIENTableAdapter();
             this.dgvSV = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.controlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsWrite = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvtxbMaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxbHo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxbTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,6 +71,12 @@
             this.dgvtxbNoiSinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxbDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvchbNghiHoc = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.controlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsWrite = new System.Windows.Forms.ToolStripMenuItem();
             mALOPLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
@@ -479,50 +479,8 @@
             this.dgvSV.RowTemplate.Height = 30;
             this.dgvSV.Size = new System.Drawing.Size(1013, 325);
             this.dgvSV.TabIndex = 32;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.controlToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(115, 26);
-            // 
-            // controlToolStripMenuItem
-            // 
-            this.controlToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsAdd,
-            this.tsDelete,
-            this.tsEdit,
-            this.tsWrite});
-            this.controlToolStripMenuItem.Name = "controlToolStripMenuItem";
-            this.controlToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.controlToolStripMenuItem.Text = "Control";
-            // 
-            // tsAdd
-            // 
-            this.tsAdd.Name = "tsAdd";
-            this.tsAdd.Size = new System.Drawing.Size(180, 22);
-            this.tsAdd.Text = "THÊM";
-            this.tsAdd.Click += new System.EventHandler(this.tsAdd_Click);
-            // 
-            // tsDelete
-            // 
-            this.tsDelete.Name = "tsDelete";
-            this.tsDelete.Size = new System.Drawing.Size(180, 22);
-            this.tsDelete.Text = "XÓA";
-            // 
-            // tsEdit
-            // 
-            this.tsEdit.Name = "tsEdit";
-            this.tsEdit.Size = new System.Drawing.Size(180, 22);
-            this.tsEdit.Text = "HIỆU CHỈNH";
-            // 
-            // tsWrite
-            // 
-            this.tsWrite.Name = "tsWrite";
-            this.tsWrite.Size = new System.Drawing.Size(180, 22);
-            this.tsWrite.Text = "GHI";
-            this.tsWrite.Click += new System.EventHandler(this.tsWrite_Click);
+            this.dgvSV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSV_CellEndEdit);
+            this.dgvSV.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSV_CellValidating);
             // 
             // dgvtxbMaSV
             // 
@@ -596,6 +554,50 @@
             this.dgvchbNghiHoc.Name = "dgvchbNghiHoc";
             this.dgvchbNghiHoc.ReadOnly = true;
             this.dgvchbNghiHoc.Width = 111;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.controlToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(115, 26);
+            // 
+            // controlToolStripMenuItem
+            // 
+            this.controlToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsAdd,
+            this.tsDelete,
+            this.tsEdit,
+            this.tsWrite});
+            this.controlToolStripMenuItem.Name = "controlToolStripMenuItem";
+            this.controlToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.controlToolStripMenuItem.Text = "Control";
+            // 
+            // tsAdd
+            // 
+            this.tsAdd.Name = "tsAdd";
+            this.tsAdd.Size = new System.Drawing.Size(141, 22);
+            this.tsAdd.Text = "THÊM";
+            this.tsAdd.Click += new System.EventHandler(this.tsAdd_Click);
+            // 
+            // tsDelete
+            // 
+            this.tsDelete.Name = "tsDelete";
+            this.tsDelete.Size = new System.Drawing.Size(141, 22);
+            this.tsDelete.Text = "XÓA";
+            // 
+            // tsEdit
+            // 
+            this.tsEdit.Name = "tsEdit";
+            this.tsEdit.Size = new System.Drawing.Size(141, 22);
+            this.tsEdit.Text = "HIỆU CHỈNH";
+            // 
+            // tsWrite
+            // 
+            this.tsWrite.Name = "tsWrite";
+            this.tsWrite.Size = new System.Drawing.Size(141, 22);
+            this.tsWrite.Text = "GHI";
+            this.tsWrite.Click += new System.EventHandler(this.tsWrite_Click);
             // 
             // ClassForm
             // 

@@ -11,6 +11,8 @@ using DevExpress.XtraEditors;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
 using DevExpress.XtraSpellChecker.Parser;
+using DevExpress.Utils.StructuredStorage.Internal.Reader;
+using DevExpress.XtraExport.Xls;
 
 namespace CSDLPT {
     public partial class ClassForm : DevExpress.XtraEditors.XtraForm {
@@ -211,50 +213,24 @@ namespace CSDLPT {
 
             //Validate
             Console.WriteLine(dgvtxbMaSV.ToString());
-            //txbTenLop.Text = Regex.Replace(txbTenLop.Text.Trim(), @"\s+", " ");
-            //if (txbMaLop.Text == "") {
-            //    MessageBox.Show("Mã lớp không được để trống!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    txbMaLop.Focus();
-            //    return;
-            //}
-            //if (txbMaLop.Text.Length > 8) {
-            //    MessageBox.Show("Mã lớp phải nhỏ hơn hoặc bằng 8 ký tự!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    txbMaLop.Focus();
-            //    return;
-            //}
-            //if (txbTenLop.Text == "") {
-            //    MessageBox.Show("Tên lớp không được để trống!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    txbTenLop.Focus();
-            //    return;
-            //}
-            //if (txbTenLop.Text.Length > 40) {
-            //    MessageBox.Show("Tên lớp phải nhỏ hơn hoặc bằng 40 ký tự!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    txbTenLop.Focus();
-            //    return;
-            //}
 
-            ////Update database
-            //try {
-            //    bdsLop.EndEdit();
-            //    bdsLop.ResetCurrentItem();
-            //    if (dS_SERVER1.HasChanges())
-            //        taLop.Update(dS_SERVER1.LOP);
+            try {
+                bdsSV.EndEdit();
+                bdsSV.ResetCurrentItem();
+                if (dS_SERVER1.HasChanges())
+                    taSV.Update(dS_SERVER1.SINHVIEN);
+            } catch (Exception err) {
+                Console.WriteLine(err.Message);
+                if (err.Message.Contains("PRIMARY")) {
+                    MessageBox.Show("Mã sinh viên bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                } else {
+                    MessageBox.Show("Lỗi tạo sinh viên, vui lòng xem lại!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                throw;
+            }
 
-            //} catch (SqlException err) {
-            //    Console.WriteLine(err.Message);
-            //    if (err.Message.Contains("PRIMARY")) {
-            //        MessageBox.Show("Mã lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        txbMaLop.Focus();
-            //        return;
-            //    } else if (err.Message.Contains("UNIQUE")) {
-            //        MessageBox.Show("Tên lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        txbTenLop.Focus();
-            //        return;
-            //    } else {
-            //        MessageBox.Show("Lỗi tạo lớp, vui lòng xem lại!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        return;
-            //    }
-            //}
 
             ////Button control
             //bbtnAdd.Enabled = true;
@@ -265,5 +241,117 @@ namespace CSDLPT {
             //gcLop.Enabled = true;
             //groupBox1.Enabled = false;
         }
+
+        private void dgvSV_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
+            string headerText = dgvSV.Columns[e.ColumnIndex].HeaderText;
+
+
+            //Validation if cell is in the MASV column
+            if (headerText.Equals("MASV")) {
+                validateStringField("MASV", 10, e);
+            }
+
+            if (headerText.Equals("HO")) {
+                validateStringField("HO", 40, e);
+            }
+
+            if (headerText.Equals("TEN")) {
+                validateStringField("TEN", 10, e);
+            }
+
+            if (headerText.Equals("NGAYSINH")) {
+                DateTime dateTime;
+                try {
+                    dateTime = Convert.ToDateTime(e.FormattedValue.ToString());
+                } catch (Exception ex) {
+                    MessageBox.Show("Ngày sinh không hợp lệ!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Console.WriteLine(ex.Message);
+                    e.Cancel = true;
+                    return;
+                }
+
+                //Cell is not empty
+                if (string.IsNullOrEmpty(e.FormattedValue.ToString())) {
+                    dgvSV.Rows[e.RowIndex].ErrorText = "NGAYSINH không được rỗng!";
+                    e.Cancel = true;
+                }
+
+                //Năm sinh <= 1900
+                if (dateTime.Year < 1900) {
+                    dgvSV.Rows[e.RowIndex].ErrorText = "Năm sinh phải lớn hơn 1900!";
+                    e.Cancel = true;
+                }
+            }
+
+            if (headerText.Equals("NOISINH")) {
+                validateStringField("NOISINH", 40, e);
+            }
+
+            if (headerText.Equals("DIACHI")) {
+                validateStringField("DIACHI", 80, e);
+            }
+        }
+
+        private void validateStringField(String field, int condition, DataGridViewCellValidatingEventArgs e) {
+            //Cell is not empty
+            if (string.IsNullOrEmpty(e.FormattedValue.ToString())) {
+                dgvSV.Rows[e.RowIndex].ErrorText = $"{field} không được rỗng!";
+                MessageBox.Show($"{field} không được rỗng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                e.Cancel = true;
+            }
+
+            if (e.FormattedValue.ToString().Length > condition) {
+                dgvSV.Rows[e.RowIndex].ErrorText = $"{field} không được nhiều hơn {condition} ký tự!";
+                MessageBox.Show($"{field} không được nhiều hơn {condition} ký tự!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                e.Cancel = true;
+            }
+        }
+
+        private void dgvSV_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
+            string value = "";
+
+            //dgvSV.Rows[e.RowIndex].ErrorText = string.Empty;
+            //value = dgvSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Trim();
+            //dgvSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = value;
+
+            if (dgvSV.Columns[e.ColumnIndex].HeaderText.Equals("MASV")) {
+                value = dgvSV.Rows[e.RowIndex]
+                    .Cells[e.ColumnIndex]
+                    .Value
+                    .ToString()
+                    .Trim();
+                value = Regex.Replace(value, @"\s+", "");
+                value = Regex.Replace(value, "[^0-9a-zA-Z]+", "");
+                dgvSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = value;
+            }
+
+            if (dgvSV.Columns[e.ColumnIndex].HeaderText.Equals("HO") ||
+                dgvSV.Columns[e.ColumnIndex].HeaderText.Equals("TEN")) {
+                value = dgvSV.Rows[e.RowIndex]
+                    .Cells[e.ColumnIndex]
+                    .Value
+                    .ToString()
+                    .Trim();
+                value = Regex.Replace(value, @"\s+", " ");
+                value = Regex.Replace(value, "[/\\,;:.`?{}[\\]=+<>@#$%^&*]+", "");
+                dgvSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = value;
+            }
+
+            if (dgvSV.Columns[e.ColumnIndex].HeaderText.Equals("NOISINH") ||
+                dgvSV.Columns[e.ColumnIndex].HeaderText.Equals("DIACHI")) {
+                value = dgvSV.Rows[e.RowIndex]
+                    .Cells[e.ColumnIndex]
+                    .Value
+                    .ToString()
+                    .Trim();
+                value = Regex.Replace(value, @"\s+", " ");
+                value = Regex.Replace(value, "[\\;:`?{}[\\]=+<>@#$%^&*]+", "");
+                dgvSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = value;
+            }
+        }
+
+        //private void dgvSV_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+        //    MessageBox.Show("Error happened " + e.Context.ToString());
+        //}
     }
 }
