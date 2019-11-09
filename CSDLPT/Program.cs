@@ -17,8 +17,9 @@ namespace CSDLPT {
         public static String password = string.Empty;
 
         public static String database = "QLDSV";
-        public static String remotelogin = "SUPPORT_CONECT";
-        public static String remotepassword = "123456";
+        //"SUPPORT_CONECT"
+        public static String remotelogin = "sa";
+        public static String remotepassword = "123";
         public static String mloginDN = string.Empty;
         public static String passwordDN = string.Empty;
         public static String mGroup = string.Empty;

@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using DevExpress.SpreadsheetSource.Implementation;
+using DevExpress.Utils;
 using DevExpress.XtraEditors;
-using System.Text.RegularExpressions;
+using System;
+using System.Data;
 using System.Data.SqlClient;
-using DevExpress.XtraSpellChecker.Parser;
-using DevExpress.Utils.StructuredStorage.Internal.Reader;
-using DevExpress.XtraExport.Xls;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace CSDLPT {
     public partial class ClassForm : DevExpress.XtraEditors.XtraForm {
 
-        private String chiNhanh = "";
+        private String chiNhanh = string.Empty;
         private String maKhoa = "CNTT";
         private int vitri;
+        private int vitriSV;
+        private DataGridViewCell currentCell;
+        private int dataGridViewMode = 0;
 
         public ClassForm() {
             InitializeComponent();
@@ -34,6 +31,8 @@ namespace CSDLPT {
                 this.taSV.Connection.ConnectionString = Program.connstr;
                 this.taLop.Connection.ConnectionString = Program.connstr;
                 this.taKhoa.Connection.ConnectionString = Program.connstr;
+                this.taDiem.Connection.ConnectionString = Program.connstr;
+                this.taHocPhi.Connection.ConnectionString = Program.connstr;
 
                 // TODO: This line of code loads data into the 'dS_SERVER1.KHOA' table. You can move, or remove it, as needed.
                 this.taKhoa.Fill(this.dS_SERVER1.KHOA);
@@ -41,15 +40,24 @@ namespace CSDLPT {
                 this.taLop.Fill(this.dS_SERVER1.LOP);
                 // TODO: This line of code loads data into the 'dS_SERVER1.SINHVIEN' table. You can move, or remove it, as needed.
                 this.taSV.Fill(this.dS_SERVER1.SINHVIEN);
+                // TODO: This line of code loads data into the 'dS_SERVER1.DIEM' table. You can move, or remove it, as needed.
+                this.taDiem.Fill(this.dS_SERVER1.DIEM);
+                // TODO: This line of code loads data into the 'dS_SERVER1.HOCPHI' table. You can move, or remove it, as needed.
+                this.taHocPhi.Fill(this.dS_SERVER1.HOCPHI);
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
 
-            this.cmbKhoaInUse.DataSource = Program.bds_dspm.DataSource;
+            //Xóa mảnh 3
+            BindingSource bds_dspm_currentForm = new BindingSource();
+            bds_dspm_currentForm.DataSource = Program.bds_dspm.DataSource;
+            bds_dspm_currentForm.RemoveAt(bds_dspm_currentForm.Count - 1);
+
+            this.cmbKhoaInUse.DataSource = bds_dspm_currentForm.DataSource;
             this.cmbKhoaInUse.DisplayMember = "TENPM";
             this.cmbKhoaInUse.ValueMember = "TENSERVER";
-            this.cmbKhoaInUse.SelectedIndex = 1;
-            this.cmbKhoaInUse.Enabled = false;
+            this.cmbKhoaInUse.SelectedIndex = Program.mChinhanh;
+            this.cmbKhoaInUse.Enabled = true;
 
             //Button control
             bbtnAdd.Enabled = true;
@@ -85,9 +93,9 @@ namespace CSDLPT {
         private void bbtnWrite_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
 
             //Validate
-            txbMaLop.Text = Regex.Replace(txbMaLop.Text.Trim(), @"\s+", "");
+            txbMaLop.Text = Regex.Replace(txbMaLop.Text.Trim(), @"\s+", string.Empty);
             txbTenLop.Text = Regex.Replace(txbTenLop.Text.Trim(), @"\s+", " ");
-            if (txbMaLop.Text == "") {
+            if (txbMaLop.Text == string.Empty) {
                 MessageBox.Show("Mã lớp không được để trống!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txbMaLop.Focus();
                 return;
@@ -97,7 +105,7 @@ namespace CSDLPT {
                 txbMaLop.Focus();
                 return;
             }
-            if (txbTenLop.Text == "") {
+            if (txbTenLop.Text == string.Empty) {
                 MessageBox.Show("Tên lớp không được để trống!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txbTenLop.Focus();
                 return;
@@ -176,7 +184,7 @@ namespace CSDLPT {
 
         private void bbtnRecovery_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
             bdsLop.CancelEdit();
-            bdsLop.Position = vitri;
+            bdsLop.Position = vitriSV;
             gcLop.Enabled = true;
             groupBox1.Enabled = false;
 
@@ -189,8 +197,9 @@ namespace CSDLPT {
         }
 
         private void tsAdd_Click(object sender, EventArgs e) {
-
+            vitriSV = bdsSV.Position;
             bdsSV.AddNew();
+            currentCell = dgvSV.CurrentCell;
 
             //Button control
             bbtnAdd.Enabled = false;
@@ -226,6 +235,10 @@ namespace CSDLPT {
         }
 
         private void tsEdit_Click(object sender, EventArgs e) {
+
+            dataGridViewMode = 2;
+            vitriSV = bdsSV.Position;
+
             //Button control
             bbtnAdd.Enabled = false;
             bbtnEdit.Enabled = false;
@@ -246,17 +259,26 @@ namespace CSDLPT {
             dgvSV.Enabled = true;
             dgvSV.ReadOnly = false;
             dgvtxbMaLop.ReadOnly = true;
+
+            //foreach (DataGridViewRow row in dgvSV.Rows) {
+            //    row.Cells["dgvtxbMaSV"].ReadOnly = true;
+            //}
+            //dgvSV.Columns["dgvtxbMaSV"].DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            //dgvSV.Columns["dgvtxbMaSV"].DefaultCellStyle.BackColor = System.Drawing.Color.Orange;
+            dgvSV.Columns["dgvtxbMaSV"].ReadOnly = true;
+
             return;
         }
 
         private void tsWrite_Click(object sender, EventArgs e) {
+            dataGridViewMode = 0;
 
             //Validate
             Console.WriteLine(dgvtxbMaSV.ToString());
 
             try {
                 bdsSV.EndEdit();
-                bdsSV.ResetCurrentItem();
+                //bdsSV.ResetCurrentItem();
                 if (dS_SERVER1.HasChanges())
                     taSV.Update(dS_SERVER1.SINHVIEN);
             } catch (Exception err) {
@@ -292,8 +314,84 @@ namespace CSDLPT {
             dgvSV.Enabled = true;
             dgvSV.ReadOnly = true;
             dgvtxbMaLop.ReadOnly = true;
+
+            bdsSV.Position = vitriSV;
         }
 
+        private void tsRemove_Click(object sender, EventArgs e) {
+            if (bdsDiem.Count > 0) {
+                MessageBox.Show("Sinh viên có điểm thi không được xóa!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (bdsHocPhi.Count > 0) {
+                MessageBox.Show("Sinh viên đã đóng học phí không được xóa!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DialogResult dialogResult = MessageBox.Show("Bạn muốn xóa sinh viên này?", string.Empty, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes) {
+                try {
+                    bdsSV.RemoveCurrent();
+                    taSV.Update(dS_SERVER1.SINHVIEN);
+                    return;
+                } catch (Exception err) {
+                    Console.WriteLine(err.Message);
+                    MessageBox.Show("Lỗi xóa sinh viên!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            return;
+        }
+
+        private void tsRecovery_Click(object sender, EventArgs e) {
+
+            bdsSV.CancelEdit();
+            if (dataGridViewMode != 2) //Không phải edit
+                dgvSV.Rows.Remove(dgvSV.Rows[currentCell.RowIndex]);
+            else
+                this.taSV.Fill(this.dS_SERVER1.SINHVIEN);
+
+            //dgvSV.Rows[4].Cells[0].Value
+            //dgvSV.Refresh();
+            //foreach (DataGridViewRow row in dgvSV.Rows) {
+            //    if (row.Selected == true)
+            //        dgvSV.Rows.Remove(row);
+            //}
+
+            foreach (DataGridViewRow row in dgvSV.Rows) {
+                foreach (DataGridViewCell cell in row.Cells) {
+                    //do operations with cell
+                    dgvSV.CurrentCell = dgvSV.Rows[cell.RowIndex].Cells[cell.ColumnIndex];
+                    dgvSV.CancelEdit();
+                }
+            }
+
+            //Button control
+            bbtnAdd.Enabled = true;
+            bbtnEdit.Enabled = true;
+            bbtnRemove.Enabled = true;
+            bbtnWrite.Enabled = false;
+            bbtnRecovery.Enabled = false;
+
+            tsAdd.Enabled = true;
+            tsEdit.Enabled = true;
+            tsRemove.Enabled = true;
+            tsWrite.Enabled = false;
+            tsRecovery.Enabled = false;
+            tsChangeClass.Enabled = true;
+
+            //View control
+            gcLop.Enabled = true;
+            groupBox1.Enabled = false;
+            dgvSV.Enabled = true;
+            dgvSV.ReadOnly = true;
+            dgvtxbMaLop.ReadOnly = true;
+
+            bdsSV.Position = vitriSV;
+        }
+
+        private void tsChangeClass_Click(object sender, EventArgs e) {
+            flyoutPanel1.ShowPopup();
+        }
         private void dgvSV_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
             string headerText = dgvSV.Columns[e.ColumnIndex].HeaderText;
 
@@ -360,7 +458,7 @@ namespace CSDLPT {
         }
 
         private void dgvSV_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
-            string value = "";
+            string value = string.Empty;
 
             dgvSV.Rows[e.RowIndex].ErrorText = string.Empty;
             //value = dgvSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Trim();
@@ -372,8 +470,8 @@ namespace CSDLPT {
                     .Value
                     .ToString()
                     .Trim();
-                value = Regex.Replace(value, @"\s+", "");
-                value = Regex.Replace(value, "[^0-9a-zA-Z]+", "");
+                value = Regex.Replace(value, @"\s+", string.Empty);
+                value = Regex.Replace(value, "[^0-9a-zA-Z-]+", string.Empty);
                 dgvSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = value;
             }
 
@@ -385,7 +483,7 @@ namespace CSDLPT {
                     .ToString()
                     .Trim();
                 value = Regex.Replace(value, @"\s+", " ");
-                value = Regex.Replace(value, "[/\\,;:.`?{}[\\]=+<>@#$%^&*]+", "");
+                value = Regex.Replace(value, "[/\\,;:.`?{}[\\]=+<>@#$%^&*]+", string.Empty);
                 dgvSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = value;
             }
 
@@ -397,13 +495,53 @@ namespace CSDLPT {
                     .ToString()
                     .Trim();
                 value = Regex.Replace(value, @"\s+", " ");
-                value = Regex.Replace(value, "[\\;:`?{}[\\]=+<>@#$%^&*]+", "");
+                value = Regex.Replace(value, "[\\;:`?{}[\\]=+<>@#$%^&*]+", string.Empty);
                 dgvSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = value;
             }
         }
 
-        //private void dgvSV_DataError(object sender, DataGridViewDataErrorEventArgs e) {
-        //    MessageBox.Show("Error happened " + e.Context.ToString());
-        //}
+        private void dgvSV_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+            MessageBox.Show("Error happened " + e.Context.ToString());
+        }
+
+        private void cmbKhoaInUse_SelectedIndexChanged(object sender, EventArgs e) {
+
+            if (cmbKhoaInUse.SelectedValue.ToString() != "System.Data.DataRowView") {
+                Program.servername = cmbKhoaInUse.SelectedValue.ToString();
+            }
+
+            if (cmbKhoaInUse.SelectedIndex != Program.mChinhanh) {
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+            } else {
+                Program.mlogin = Program.mloginDN;
+                Program.password = Program.passwordDN;
+            }
+
+            if (Program.Connect() == 0) {
+                MessageBox.Show("Lỗi kết nối khoa mới", "", MessageBoxButtons.OK);
+            } else {
+                try {
+                    this.taSV.Connection.ConnectionString = Program.connstr;
+                    this.taLop.Connection.ConnectionString = Program.connstr;
+                    this.taKhoa.Connection.ConnectionString = Program.connstr;
+                    this.taDiem.Connection.ConnectionString = Program.connstr;
+                    this.taHocPhi.Connection.ConnectionString = Program.connstr;
+
+                    // TODO: This line of code loads data into the 'dS_SERVER1.KHOA' table. You can move, or remove it, as needed.
+                    this.taKhoa.Fill(this.dS_SERVER1.KHOA);
+                    // TODO: This line of code loads data into the 'dS_SERVER1.LOP' table. You can move, or remove it, as needed.
+                    this.taLop.Fill(this.dS_SERVER1.LOP);
+                    // TODO: This line of code loads data into the 'dS_SERVER1.SINHVIEN' table. You can move, or remove it, as needed.
+                    this.taSV.Fill(this.dS_SERVER1.SINHVIEN);
+                    // TODO: This line of code loads data into the 'dS_SERVER1.DIEM' table. You can move, or remove it, as needed.
+                    this.taDiem.Fill(this.dS_SERVER1.DIEM);
+                    // TODO: This line of code loads data into the 'dS_SERVER1.HOCPHI' table. You can move, or remove it, as needed.
+                    this.taHocPhi.Fill(this.dS_SERVER1.HOCPHI);
+                } catch (Exception ex) {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
     }
 }

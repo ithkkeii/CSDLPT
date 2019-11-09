@@ -27,6 +27,11 @@
             System.Windows.Forms.Label mALOPLabel;
             System.Windows.Forms.Label mAKHLabel;
             System.Windows.Forms.Label tENLOPLabel;
+            System.Windows.Forms.Label mASVLabel;
+            System.Windows.Forms.Label hOLabel;
+            System.Windows.Forms.Label tENLabel;
+            System.Windows.Forms.Label mALOPLabel1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClassForm));
             this.bdsLop = new System.Windows.Forms.BindingSource(this.components);
             this.dS_SERVER1 = new CSDLPT.DS_SERVER1();
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
@@ -59,7 +64,14 @@
             this.txbMaKhoa = new System.Windows.Forms.TextBox();
             this.txbTenLop = new System.Windows.Forms.TextBox();
             this.txbMaLop = new System.Windows.Forms.TextBox();
+            this.flyoutPanel1 = new DevExpress.Utils.FlyoutPanel();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.mALOPTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
+            this.tENTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.hOTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.mASVTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.taSV = new CSDLPT.DS_SERVER1TableAdapters.SINHVIENTableAdapter();
             this.dgvSV = new System.Windows.Forms.DataGridView();
             this.dgvtxbMaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,9 +91,17 @@
             this.tsWrite = new System.Windows.Forms.ToolStripMenuItem();
             this.tsRecovery = new System.Windows.Forms.ToolStripMenuItem();
             this.tsChangeClass = new System.Windows.Forms.ToolStripMenuItem();
+            this.bdsHocPhi = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsDiem = new System.Windows.Forms.BindingSource(this.components);
+            this.taHocPhi = new CSDLPT.DS_SERVER1TableAdapters.HOCPHITableAdapter();
+            this.taDiem = new CSDLPT.DS_SERVER1TableAdapters.DIEMTableAdapter();
             mALOPLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
+            mASVLabel = new System.Windows.Forms.Label();
+            hOLabel = new System.Windows.Forms.Label();
+            tENLabel = new System.Windows.Forms.Label();
+            mALOPLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_SERVER1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
@@ -90,9 +110,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.gcLop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).BeginInit();
+            this.flyoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mALOPTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tENTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hOTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mASVTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsHocPhi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDiem)).BeginInit();
             this.SuspendLayout();
             // 
             // mALOPLabel
@@ -121,6 +150,46 @@
             tENLOPLabel.Size = new System.Drawing.Size(95, 23);
             tENLOPLabel.TabIndex = 5;
             tENLOPLabel.Text = "TENLOP:";
+            // 
+            // mASVLabel
+            // 
+            mASVLabel.AutoSize = true;
+            mASVLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            mASVLabel.Location = new System.Drawing.Point(25, 18);
+            mASVLabel.Name = "mASVLabel";
+            mASVLabel.Size = new System.Drawing.Size(56, 19);
+            mASVLabel.TabIndex = 1;
+            mASVLabel.Text = "MASV:";
+            // 
+            // hOLabel
+            // 
+            hOLabel.AutoSize = true;
+            hOLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            hOLabel.Location = new System.Drawing.Point(246, 18);
+            hOLabel.Name = "hOLabel";
+            hOLabel.Size = new System.Drawing.Size(35, 19);
+            hOLabel.TabIndex = 3;
+            hOLabel.Text = "HO:";
+            // 
+            // tENLabel
+            // 
+            tENLabel.AutoSize = true;
+            tENLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tENLabel.Location = new System.Drawing.Point(239, 76);
+            tENLabel.Name = "tENLabel";
+            tENLabel.Size = new System.Drawing.Size(42, 19);
+            tENLabel.TabIndex = 5;
+            tENLabel.Text = "TEN:";
+            // 
+            // mALOPLabel1
+            // 
+            mALOPLabel1.AutoSize = true;
+            mALOPLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            mALOPLabel1.Location = new System.Drawing.Point(14, 76);
+            mALOPLabel1.Name = "mALOPLabel1";
+            mALOPLabel1.Size = new System.Drawing.Size(67, 19);
+            mALOPLabel1.TabIndex = 7;
+            mALOPLabel1.Text = "MALOP:";
             // 
             // bdsLop
             // 
@@ -306,8 +375,9 @@
             this.cmbKhoaInUse.FormattingEnabled = true;
             this.cmbKhoaInUse.Location = new System.Drawing.Point(559, 14);
             this.cmbKhoaInUse.Name = "cmbKhoaInUse";
-            this.cmbKhoaInUse.Size = new System.Drawing.Size(474, 31);
+            this.cmbKhoaInUse.Size = new System.Drawing.Size(539, 31);
             this.cmbKhoaInUse.TabIndex = 29;
+            this.cmbKhoaInUse.SelectedIndexChanged += new System.EventHandler(this.cmbKhoaInUse_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -348,7 +418,7 @@
             this.gridView1.FixedLineWidth = 4;
             this.gridView1.GridControl = this.gcLop;
             this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.RowHeight = 35;
             // 
             // colMALOP
@@ -443,10 +513,133 @@
             this.txbMaLop.TabIndex = 1;
             this.txbMaLop.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // flyoutPanel1
+            // 
+            this.flyoutPanel1.Appearance.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flyoutPanel1.Appearance.Options.UseFont = true;
+            this.flyoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flyoutPanel1.Controls.Add(this.labelControl1);
+            this.flyoutPanel1.Controls.Add(mALOPLabel1);
+            this.flyoutPanel1.Controls.Add(this.mALOPTextEdit);
+            this.flyoutPanel1.Controls.Add(tENLabel);
+            this.flyoutPanel1.Controls.Add(this.tENTextEdit);
+            this.flyoutPanel1.Controls.Add(hOLabel);
+            this.flyoutPanel1.Controls.Add(this.hOTextEdit);
+            this.flyoutPanel1.Controls.Add(mASVLabel);
+            this.flyoutPanel1.Controls.Add(this.mASVTextEdit);
+            this.flyoutPanel1.Controls.Add(this.comboBoxEdit1);
+            this.flyoutPanel1.Location = new System.Drawing.Point(424, 396);
+            this.flyoutPanel1.Name = "flyoutPanel1";
+            this.flyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.TopRight;
+            this.flyoutPanel1.Options.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade;
+            this.flyoutPanel1.Options.HorzIndent = 20;
+            this.flyoutPanel1.OwnerControl = this.groupBox1;
+            this.flyoutPanel1.Size = new System.Drawing.Size(493, 241);
+            this.flyoutPanel1.TabIndex = 37;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl1.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.labelControl1.ImageOptions.Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelControl1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("labelControl1.ImageOptions.SvgImage")));
+            this.labelControl1.LineLocation = DevExpress.XtraEditors.LineLocation.Bottom;
+            this.labelControl1.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
+            this.labelControl1.LineStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.labelControl1.LineVisible = true;
+            this.labelControl1.Location = new System.Drawing.Point(34, 143);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(147, 42);
+            this.labelControl1.TabIndex = 9;
+            this.labelControl1.Text = "Chuyển đến";
+            // 
+            // mALOPTextEdit
+            // 
+            this.mALOPTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSV, "MALOP", true));
+            this.mALOPTextEdit.Location = new System.Drawing.Point(93, 73);
+            this.mALOPTextEdit.MenuManager = this.barManager;
+            this.mALOPTextEdit.Name = "mALOPTextEdit";
+            this.mALOPTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mALOPTextEdit.Properties.Appearance.Options.UseFont = true;
+            this.mALOPTextEdit.Properties.ReadOnly = true;
+            this.mALOPTextEdit.Size = new System.Drawing.Size(124, 26);
+            this.mALOPTextEdit.TabIndex = 8;
+            // 
             // bdsSV
             // 
             this.bdsSV.DataMember = "FK_SINHVIEN_LOP";
             this.bdsSV.DataSource = this.bdsLop;
+            // 
+            // tENTextEdit
+            // 
+            this.tENTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSV, "TEN", true));
+            this.tENTextEdit.Location = new System.Drawing.Point(287, 73);
+            this.tENTextEdit.MenuManager = this.barManager;
+            this.tENTextEdit.Name = "tENTextEdit";
+            this.tENTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tENTextEdit.Properties.Appearance.Options.UseFont = true;
+            this.tENTextEdit.Properties.ReadOnly = true;
+            this.tENTextEdit.Size = new System.Drawing.Size(178, 26);
+            this.tENTextEdit.TabIndex = 6;
+            // 
+            // hOTextEdit
+            // 
+            this.hOTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSV, "HO", true));
+            this.hOTextEdit.Location = new System.Drawing.Point(287, 15);
+            this.hOTextEdit.MenuManager = this.barManager;
+            this.hOTextEdit.Name = "hOTextEdit";
+            this.hOTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hOTextEdit.Properties.Appearance.Options.UseFont = true;
+            this.hOTextEdit.Properties.ReadOnly = true;
+            this.hOTextEdit.Size = new System.Drawing.Size(178, 26);
+            this.hOTextEdit.TabIndex = 4;
+            // 
+            // mASVTextEdit
+            // 
+            this.mASVTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSV, "MASV", true));
+            this.mASVTextEdit.Location = new System.Drawing.Point(93, 15);
+            this.mASVTextEdit.MenuManager = this.barManager;
+            this.mASVTextEdit.Name = "mASVTextEdit";
+            this.mASVTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mASVTextEdit.Properties.Appearance.Options.UseFont = true;
+            this.mASVTextEdit.Properties.ReadOnly = true;
+            this.mASVTextEdit.Size = new System.Drawing.Size(124, 26);
+            this.mASVTextEdit.TabIndex = 2;
+            // 
+            // comboBoxEdit1
+            // 
+            this.comboBoxEdit1.Location = new System.Drawing.Point(187, 150);
+            this.comboBoxEdit1.MenuManager = this.barManager;
+            this.comboBoxEdit1.Name = "comboBoxEdit1";
+            this.comboBoxEdit1.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxEdit1.Properties.Appearance.Options.UseFont = true;
+            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
+            "sss",
+            "ssss",
+            "ssfw",
+            "gwg",
+            "sdsb",
+            "sy",
+            "ert",
+            "yert",
+            "yej",
+            "ert",
+            "uty",
+            "wewr",
+            "tjy",
+            "mymu",
+            "ter",
+            "jej",
+            "ty",
+            "rtjrt",
+            "jrmr",
+            "rtrt"});
+            this.comboBoxEdit1.Size = new System.Drawing.Size(141, 30);
+            this.comboBoxEdit1.TabIndex = 0;
             // 
             // taSV
             // 
@@ -483,6 +676,7 @@
             this.dgvSV.TabIndex = 32;
             this.dgvSV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSV_CellEndEdit);
             this.dgvSV.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSV_CellValidating);
+            this.dgvSV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvSV_DataError);
             // 
             // dgvtxbMaSV
             // 
@@ -563,7 +757,7 @@
             this.controlToolStripMenuItem,
             this.tsChangeClass});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(147, 48);
             // 
             // controlToolStripMenuItem
             // 
@@ -574,47 +768,68 @@
             this.tsWrite,
             this.tsRecovery});
             this.controlToolStripMenuItem.Name = "controlToolStripMenuItem";
-            this.controlToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.controlToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.controlToolStripMenuItem.Text = "Control";
             // 
             // tsAdd
             // 
             this.tsAdd.Name = "tsAdd";
-            this.tsAdd.Size = new System.Drawing.Size(180, 22);
+            this.tsAdd.Size = new System.Drawing.Size(141, 22);
             this.tsAdd.Text = "THÊM";
             this.tsAdd.Click += new System.EventHandler(this.tsAdd_Click);
             // 
             // tsRemove
             // 
             this.tsRemove.Name = "tsRemove";
-            this.tsRemove.Size = new System.Drawing.Size(180, 22);
+            this.tsRemove.Size = new System.Drawing.Size(141, 22);
             this.tsRemove.Text = "XÓA";
+            this.tsRemove.Click += new System.EventHandler(this.tsRemove_Click);
             // 
             // tsEdit
             // 
             this.tsEdit.Name = "tsEdit";
-            this.tsEdit.Size = new System.Drawing.Size(180, 22);
+            this.tsEdit.Size = new System.Drawing.Size(141, 22);
             this.tsEdit.Text = "HIỆU CHỈNH";
             this.tsEdit.Click += new System.EventHandler(this.tsEdit_Click);
             // 
             // tsWrite
             // 
             this.tsWrite.Name = "tsWrite";
-            this.tsWrite.Size = new System.Drawing.Size(180, 22);
+            this.tsWrite.Size = new System.Drawing.Size(141, 22);
             this.tsWrite.Text = "GHI";
             this.tsWrite.Click += new System.EventHandler(this.tsWrite_Click);
             // 
             // tsRecovery
             // 
             this.tsRecovery.Name = "tsRecovery";
-            this.tsRecovery.Size = new System.Drawing.Size(180, 22);
+            this.tsRecovery.Size = new System.Drawing.Size(141, 22);
             this.tsRecovery.Text = "PHỤC HỒI";
+            this.tsRecovery.Click += new System.EventHandler(this.tsRecovery_Click);
             // 
             // tsChangeClass
             // 
             this.tsChangeClass.Name = "tsChangeClass";
-            this.tsChangeClass.Size = new System.Drawing.Size(180, 22);
+            this.tsChangeClass.Size = new System.Drawing.Size(146, 22);
             this.tsChangeClass.Text = "CHUYỂN LỚP";
+            this.tsChangeClass.Click += new System.EventHandler(this.tsChangeClass_Click);
+            // 
+            // bdsHocPhi
+            // 
+            this.bdsHocPhi.DataMember = "FK_HOCPHI_SINHVIEN";
+            this.bdsHocPhi.DataSource = this.bdsSV;
+            // 
+            // bdsDiem
+            // 
+            this.bdsDiem.DataMember = "FK_DIEM_SINHVIEN";
+            this.bdsDiem.DataSource = this.bdsSV;
+            // 
+            // taHocPhi
+            // 
+            this.taHocPhi.ClearBeforeFill = true;
+            // 
+            // taDiem
+            // 
+            this.taDiem.ClearBeforeFill = true;
             // 
             // ClassForm
             // 
@@ -622,6 +837,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1930, 744);
+            this.Controls.Add(this.flyoutPanel1);
             this.Controls.Add(this.dgvSV);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gcLop);
@@ -646,9 +862,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).EndInit();
+            this.flyoutPanel1.ResumeLayout(false);
+            this.flyoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mALOPTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tENTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hOTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mASVTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bdsHocPhi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDiem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -708,5 +934,16 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgvchbNghiHoc;
         private System.Windows.Forms.ToolStripMenuItem tsRecovery;
         private System.Windows.Forms.ToolStripMenuItem tsChangeClass;
+        private System.Windows.Forms.BindingSource bdsHocPhi;
+        private System.Windows.Forms.BindingSource bdsDiem;
+        private DS_SERVER1TableAdapters.HOCPHITableAdapter taHocPhi;
+        private DS_SERVER1TableAdapters.DIEMTableAdapter taDiem;
+        private DevExpress.Utils.FlyoutPanel flyoutPanel1;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.TextEdit mALOPTextEdit;
+        private DevExpress.XtraEditors.TextEdit tENTextEdit;
+        private DevExpress.XtraEditors.TextEdit hOTextEdit;
+        private DevExpress.XtraEditors.TextEdit mASVTextEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }
