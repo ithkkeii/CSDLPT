@@ -65,13 +65,16 @@
             this.txbTenLop = new System.Windows.Forms.TextBox();
             this.txbMaLop = new System.Windows.Forms.TextBox();
             this.flyoutPanel1 = new DevExpress.Utils.FlyoutPanel();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOk = new DevExpress.XtraEditors.SimpleButton();
+            this.cmbChangeClass = new System.Windows.Forms.ComboBox();
+            this.bdsAllClass = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.mALOPTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
             this.tENTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.hOTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.mASVTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.txteMaSV = new DevExpress.XtraEditors.TextEdit();
             this.taSV = new CSDLPT.DS_SERVER1TableAdapters.SINHVIENTableAdapter();
             this.dgvSV = new System.Windows.Forms.DataGridView();
             this.dgvtxbMaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,6 +98,7 @@
             this.bdsDiem = new System.Windows.Forms.BindingSource(this.components);
             this.taHocPhi = new CSDLPT.DS_SERVER1TableAdapters.HOCPHITableAdapter();
             this.taDiem = new CSDLPT.DS_SERVER1TableAdapters.DIEMTableAdapter();
+            this.taAllClass = new CSDLPT.DS_SERVER1TableAdapters.AllClassTableAdapter();
             mALOPLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
@@ -112,12 +116,12 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).BeginInit();
             this.flyoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsAllClass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mALOPTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tENTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hOTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mASVTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txteMaSV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsHocPhi)).BeginInit();
@@ -299,7 +303,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 721);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 754);
             this.barDockControlBottom.Manager = this.barManager;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.barDockControlBottom.Size = new System.Drawing.Size(1930, 23);
@@ -311,7 +315,7 @@
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
             this.barDockControlLeft.Manager = this.barManager;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 699);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 732);
             // 
             // barDockControlRight
             // 
@@ -320,7 +324,7 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1930, 22);
             this.barDockControlRight.Manager = this.barManager;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 699);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 732);
             // 
             // barButtonItem1
             // 
@@ -372,6 +376,7 @@
             // 
             // cmbKhoaInUse
             // 
+            this.cmbKhoaInUse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbKhoaInUse.FormattingEnabled = true;
             this.cmbKhoaInUse.Location = new System.Drawing.Point(559, 14);
             this.cmbKhoaInUse.Name = "cmbKhoaInUse";
@@ -478,7 +483,7 @@
             this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(0, 396);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(917, 325);
+            this.groupBox1.Size = new System.Drawing.Size(917, 358);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             // 
@@ -518,6 +523,9 @@
             this.flyoutPanel1.Appearance.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flyoutPanel1.Appearance.Options.UseFont = true;
             this.flyoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flyoutPanel1.Controls.Add(this.btnCancel);
+            this.flyoutPanel1.Controls.Add(this.btnOk);
+            this.flyoutPanel1.Controls.Add(this.cmbChangeClass);
             this.flyoutPanel1.Controls.Add(this.labelControl1);
             this.flyoutPanel1.Controls.Add(mALOPLabel1);
             this.flyoutPanel1.Controls.Add(this.mALOPTextEdit);
@@ -526,20 +534,63 @@
             this.flyoutPanel1.Controls.Add(hOLabel);
             this.flyoutPanel1.Controls.Add(this.hOTextEdit);
             this.flyoutPanel1.Controls.Add(mASVLabel);
-            this.flyoutPanel1.Controls.Add(this.mASVTextEdit);
-            this.flyoutPanel1.Controls.Add(this.comboBoxEdit1);
+            this.flyoutPanel1.Controls.Add(this.txteMaSV);
             this.flyoutPanel1.Location = new System.Drawing.Point(424, 396);
             this.flyoutPanel1.Name = "flyoutPanel1";
             this.flyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.TopRight;
             this.flyoutPanel1.Options.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade;
             this.flyoutPanel1.Options.HorzIndent = 20;
             this.flyoutPanel1.OwnerControl = this.groupBox1;
-            this.flyoutPanel1.Size = new System.Drawing.Size(493, 241);
+            this.flyoutPanel1.Size = new System.Drawing.Size(493, 260);
             this.flyoutPanel1.TabIndex = 37;
+            this.flyoutPanel1.Load += new System.EventHandler(this.flyoutPanel1_Load);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Appearance.Options.UseFont = true;
+            this.btnCancel.Location = new System.Drawing.Point(287, 204);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(94, 34);
+            this.btnCancel.TabIndex = 12;
+            this.btnCancel.Text = "Thoát";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnOk
+            // 
+            this.btnOk.Appearance.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.Appearance.Options.UseFont = true;
+            this.btnOk.Location = new System.Drawing.Point(113, 204);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(94, 34);
+            this.btnOk.TabIndex = 11;
+            this.btnOk.Text = "Đồng Ý";
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // cmbChangeClass
+            // 
+            this.cmbChangeClass.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbChangeClass.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbChangeClass.DataSource = this.bdsAllClass;
+            this.cmbChangeClass.DisplayMember = "TENLOP";
+            this.cmbChangeClass.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbChangeClass.FormattingEnabled = true;
+            this.cmbChangeClass.Location = new System.Drawing.Point(187, 152);
+            this.cmbChangeClass.Name = "cmbChangeClass";
+            this.cmbChangeClass.Size = new System.Drawing.Size(278, 27);
+            this.cmbChangeClass.TabIndex = 10;
+            this.cmbChangeClass.ValueMember = "MALOP";
+            this.cmbChangeClass.SelectedIndexChanged += new System.EventHandler(this.cmbChangeClass_SelectedIndexChanged);
+            this.cmbChangeClass.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cmbChangeClass_KeyUp);
+            // 
+            // bdsAllClass
+            // 
+            this.bdsAllClass.DataMember = "AllClass";
+            this.bdsAllClass.DataSource = this.dS_SERVER1;
             // 
             // labelControl1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControl1.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
@@ -596,50 +647,17 @@
             this.hOTextEdit.Size = new System.Drawing.Size(178, 26);
             this.hOTextEdit.TabIndex = 4;
             // 
-            // mASVTextEdit
+            // txteMaSV
             // 
-            this.mASVTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSV, "MASV", true));
-            this.mASVTextEdit.Location = new System.Drawing.Point(93, 15);
-            this.mASVTextEdit.MenuManager = this.barManager;
-            this.mASVTextEdit.Name = "mASVTextEdit";
-            this.mASVTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mASVTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.mASVTextEdit.Properties.ReadOnly = true;
-            this.mASVTextEdit.Size = new System.Drawing.Size(124, 26);
-            this.mASVTextEdit.TabIndex = 2;
-            // 
-            // comboBoxEdit1
-            // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(187, 150);
-            this.comboBoxEdit1.MenuManager = this.barManager;
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxEdit1.Properties.Appearance.Options.UseFont = true;
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Properties.Items.AddRange(new object[] {
-            "sss",
-            "ssss",
-            "ssfw",
-            "gwg",
-            "sdsb",
-            "sy",
-            "ert",
-            "yert",
-            "yej",
-            "ert",
-            "uty",
-            "wewr",
-            "tjy",
-            "mymu",
-            "ter",
-            "jej",
-            "ty",
-            "rtjrt",
-            "jrmr",
-            "rtrt"});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(141, 30);
-            this.comboBoxEdit1.TabIndex = 0;
+            this.txteMaSV.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSV, "MASV", true));
+            this.txteMaSV.Location = new System.Drawing.Point(93, 15);
+            this.txteMaSV.MenuManager = this.barManager;
+            this.txteMaSV.Name = "txteMaSV";
+            this.txteMaSV.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txteMaSV.Properties.Appearance.Options.UseFont = true;
+            this.txteMaSV.Properties.ReadOnly = true;
+            this.txteMaSV.Size = new System.Drawing.Size(124, 26);
+            this.txteMaSV.TabIndex = 2;
             // 
             // taSV
             // 
@@ -672,7 +690,7 @@
             this.dgvSV.Name = "dgvSV";
             this.dgvSV.ReadOnly = true;
             this.dgvSV.RowTemplate.Height = 30;
-            this.dgvSV.Size = new System.Drawing.Size(1013, 325);
+            this.dgvSV.Size = new System.Drawing.Size(1013, 358);
             this.dgvSV.TabIndex = 32;
             this.dgvSV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSV_CellEndEdit);
             this.dgvSV.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSV_CellValidating);
@@ -831,12 +849,16 @@
             // 
             this.taDiem.ClearBeforeFill = true;
             // 
+            // taAllClass
+            // 
+            this.taAllClass.ClearBeforeFill = true;
+            // 
             // ClassForm
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1930, 744);
+            this.ClientSize = new System.Drawing.Size(1930, 777);
             this.Controls.Add(this.flyoutPanel1);
             this.Controls.Add(this.dgvSV);
             this.Controls.Add(this.groupBox1);
@@ -851,6 +873,8 @@
             this.Name = "ClassForm";
             this.Text = "ClassForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClassForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ClassForm_FormClosed);
             this.Load += new System.EventHandler(this.ClassForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_SERVER1)).EndInit();
@@ -865,12 +889,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).EndInit();
             this.flyoutPanel1.ResumeLayout(false);
             this.flyoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsAllClass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mALOPTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tENTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hOTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mASVTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txteMaSV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bdsHocPhi)).EndInit();
@@ -939,11 +963,15 @@
         private DS_SERVER1TableAdapters.HOCPHITableAdapter taHocPhi;
         private DS_SERVER1TableAdapters.DIEMTableAdapter taDiem;
         private DevExpress.Utils.FlyoutPanel flyoutPanel1;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
         private DevExpress.XtraEditors.TextEdit mALOPTextEdit;
         private DevExpress.XtraEditors.TextEdit tENTextEdit;
         private DevExpress.XtraEditors.TextEdit hOTextEdit;
-        private DevExpress.XtraEditors.TextEdit mASVTextEdit;
+        private DevExpress.XtraEditors.TextEdit txteMaSV;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private System.Windows.Forms.BindingSource bdsAllClass;
+        private DS_SERVER1TableAdapters.AllClassTableAdapter taAllClass;
+        private System.Windows.Forms.ComboBox cmbChangeClass;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
+        private DevExpress.XtraEditors.SimpleButton btnOk;
     }
 }

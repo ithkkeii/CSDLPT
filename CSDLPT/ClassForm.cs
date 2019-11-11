@@ -1,7 +1,13 @@
 ﻿using DevExpress.SpreadsheetSource.Implementation;
 using DevExpress.Utils;
+using DevExpress.XtraDashboardLayout;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,7 +17,8 @@ using System.Windows.Forms;
 namespace CSDLPT {
     public partial class ClassForm : DevExpress.XtraEditors.XtraForm {
 
-        private String chiNhanh = string.Empty;
+        private String tenPhanManh = string.Empty;
+        private string tenServer = string.Empty;
         private String maKhoa = "CNTT";
         private int vitri;
         private int vitriSV;
@@ -25,7 +32,8 @@ namespace CSDLPT {
         }
 
         private void ClassForm_Load(object sender, EventArgs e) {
-            chiNhanh = ((DataRowView)Program.bds_dspm.Current)["TENPM"].ToString();
+            tenPhanManh = ((DataRowView)Program.bds_dspm.Current)["TENPM"].ToString();
+            tenServer = ((DataRowView)Program.bds_dspm.Current)["TENSERVER"].ToString();
             dS_SERVER1.EnforceConstraints = false;
             try {
                 this.taSV.Connection.ConnectionString = Program.connstr;
@@ -33,6 +41,7 @@ namespace CSDLPT {
                 this.taKhoa.Connection.ConnectionString = Program.connstr;
                 this.taDiem.Connection.ConnectionString = Program.connstr;
                 this.taHocPhi.Connection.ConnectionString = Program.connstr;
+                this.taAllClass.Connection.ConnectionString = Program.connstr;
 
                 // TODO: This line of code loads data into the 'dS_SERVER1.KHOA' table. You can move, or remove it, as needed.
                 this.taKhoa.Fill(this.dS_SERVER1.KHOA);
@@ -44,6 +53,8 @@ namespace CSDLPT {
                 this.taDiem.Fill(this.dS_SERVER1.DIEM);
                 // TODO: This line of code loads data into the 'dS_SERVER1.HOCPHI' table. You can move, or remove it, as needed.
                 this.taHocPhi.Fill(this.dS_SERVER1.HOCPHI);
+                // TODO: This line of code loads data into the 'dS_SERVER1.AllClass' table. You can move, or remove it, as needed.
+                this.taAllClass.AllClass(this.dS_SERVER1.AllClass);
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);
             }
@@ -51,12 +62,13 @@ namespace CSDLPT {
             //Xóa mảnh 3
             BindingSource bds_dspm_currentForm = new BindingSource();
             bds_dspm_currentForm.DataSource = Program.bds_dspm.DataSource;
-            bds_dspm_currentForm.RemoveAt(bds_dspm_currentForm.Count - 1);
+            if (bds_dspm_currentForm.Count.Equals(3))
+                bds_dspm_currentForm.RemoveAt(bds_dspm_currentForm.Count - 1);
 
             this.cmbKhoaInUse.DataSource = bds_dspm_currentForm.DataSource;
+            this.cmbKhoaInUse.SelectedIndex = Program.mChinhanh;
             this.cmbKhoaInUse.DisplayMember = "TENPM";
             this.cmbKhoaInUse.ValueMember = "TENSERVER";
-            this.cmbKhoaInUse.SelectedIndex = Program.mChinhanh;
             this.cmbKhoaInUse.Enabled = true;
 
             //Button control
@@ -88,6 +100,8 @@ namespace CSDLPT {
             bbtnRemove.Enabled = false;
             bbtnRecovery.Enabled = true;
             bbtnWrite.Enabled = true;
+
+            cmbKhoaInUse.Enabled = false;
         }
 
         private void bbtnWrite_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
@@ -147,6 +161,8 @@ namespace CSDLPT {
             bbtnWrite.Enabled = false;
             gcLop.Enabled = true;
             groupBox1.Enabled = false;
+
+            cmbKhoaInUse.Enabled = true;
         }
 
         private void bbtnEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
@@ -159,6 +175,8 @@ namespace CSDLPT {
             groupBox1.Enabled = true;
             gcLop.Enabled = false;
             vitri = bdsLop.Position;
+
+            cmbKhoaInUse.Enabled = false;
             return;
         }
 
@@ -194,6 +212,8 @@ namespace CSDLPT {
             bbtnRemove.Enabled = true;
             bbtnWrite.Enabled = false;
             bbtnRecovery.Enabled = false;
+
+            cmbKhoaInUse.Enabled = true;
         }
 
         private void tsAdd_Click(object sender, EventArgs e) {
@@ -215,7 +235,6 @@ namespace CSDLPT {
             tsRecovery.Enabled = true;
             tsChangeClass.Enabled = false;
 
-
             //View control
             gcLop.Enabled = false;
             groupBox1.Enabled = false;
@@ -223,6 +242,7 @@ namespace CSDLPT {
             dgvSV.ReadOnly = false;
             dgvtxbMaLop.ReadOnly = true;
 
+            cmbKhoaInUse.Enabled = false;
             //foreach (DataGridViewRow row in dgvSV.Rows) {
             //    row.ReadOnly = true;
             //}
@@ -259,6 +279,8 @@ namespace CSDLPT {
             dgvSV.Enabled = true;
             dgvSV.ReadOnly = false;
             dgvtxbMaLop.ReadOnly = true;
+
+            cmbKhoaInUse.Enabled = false;
 
             //foreach (DataGridViewRow row in dgvSV.Rows) {
             //    row.Cells["dgvtxbMaSV"].ReadOnly = true;
@@ -315,6 +337,7 @@ namespace CSDLPT {
             dgvSV.ReadOnly = true;
             dgvtxbMaLop.ReadOnly = true;
 
+            cmbKhoaInUse.Enabled = true;
             bdsSV.Position = vitriSV;
         }
 
@@ -386,12 +409,134 @@ namespace CSDLPT {
             dgvSV.ReadOnly = true;
             dgvtxbMaLop.ReadOnly = true;
 
+            cmbKhoaInUse.Enabled = true;
             bdsSV.Position = vitriSV;
         }
 
         private void tsChangeClass_Click(object sender, EventArgs e) {
             flyoutPanel1.ShowPopup();
+
+            //Button control
+            bbtnAdd.Enabled = false;
+            bbtnEdit.Enabled = false;
+            bbtnRemove.Enabled = false;
+            bbtnWrite.Enabled = false;
+            bbtnRecovery.Enabled = false;
+
+            tsAdd.Enabled = false;
+            tsEdit.Enabled = false;
+            tsRemove.Enabled = false;
+            tsWrite.Enabled = false;
+            tsRecovery.Enabled = false;
+            tsChangeClass.Enabled = false;
+
+            //View control
+            gcLop.Enabled = false;
+            groupBox1.Enabled = false;
+            dgvSV.Enabled = false;
+            dgvSV.ReadOnly = true;
+            dgvtxbMaLop.ReadOnly = true;
+            cmbKhoaInUse.Enabled = false;
         }
+
+        private void flyoutPanel1_Load(object sender, EventArgs e) {
+            btnOk.Enabled = false;
+            cmbChangeClass.SelectedIndex = 0;
+            cmbChangeClass.SelectedIndex = 1;
+            cmbChangeClass.SelectedIndex = 0;
+        }
+
+        private void btnOk_Click(object sender, EventArgs e) {
+
+            List<string> listLop = new List<string>();
+            string maSinhVienChuyenLop = txteMaSV.Text.ToString();
+            string maLopMoi = cmbChangeClass.SelectedValue.ToString();
+
+            Console.WriteLine("LOP MOI: " + maLopMoi);
+
+            for (int i = 0; i < gridView1.DataRowCount; i++) {
+                listLop.Add(gridView1.GetRowCellValue(i, "MALOP").ToString());
+            }
+
+            for (int i = 0; i < dgvSV.Rows.Count; i++) {
+                DataGridViewCell cell = dgvSV.Rows[i].Cells["dgvtxbMASV"];
+                if (cell.Value.ToString().Equals(maSinhVienChuyenLop)) {
+                    if (listLop.Contains(maLopMoi)) {
+                        dgvSV.Rows[i].Cells["dgvtxbMALOP"].Value = maLopMoi;
+                    } else {
+                        string sql = $"UPDATE LINK0.QLDSV.dbo.SINHVIEN " +
+                            $"SET MALOP='{maLopMoi}' " +
+                            $"WHERE MASV='{maSinhVienChuyenLop}'";
+                        SqlCommand cmd = new SqlCommand(sql, Program.conn);
+                        cmd.ExecuteNonQuery();
+                    }
+                    try {
+                        bdsSV.EndEdit();
+                        if (dS_SERVER1.HasChanges())
+                            taSV.Update(dS_SERVER1.SINHVIEN);
+                        this.taSV.Fill(this.dS_SERVER1.SINHVIEN);
+                    } catch (Exception ex) {
+                        Console.WriteLine(ex.Message);
+                    }
+                    break;
+                }
+            }
+
+
+
+            //Button control
+            bbtnAdd.Enabled = true;
+            bbtnEdit.Enabled = true;
+            bbtnRemove.Enabled = true;
+            bbtnWrite.Enabled = false;
+            bbtnRecovery.Enabled = false;
+
+            tsAdd.Enabled = true;
+            tsEdit.Enabled = true;
+            tsRemove.Enabled = true;
+            tsWrite.Enabled = false;
+            tsRecovery.Enabled = false;
+            tsChangeClass.Enabled = true;
+
+            //View control
+            gcLop.Enabled = true;
+            groupBox1.Enabled = false;
+            dgvSV.Enabled = true;
+            dgvSV.ReadOnly = true;
+            dgvtxbMaLop.ReadOnly = true;
+
+            cmbKhoaInUse.Enabled = true;
+            bdsSV.Position = vitriSV;
+            flyoutPanel1.HidePopup();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e) {
+            // Button control
+            bbtnAdd.Enabled = true;
+            bbtnEdit.Enabled = true;
+            bbtnRemove.Enabled = true;
+            bbtnWrite.Enabled = false;
+            bbtnRecovery.Enabled = false;
+
+            tsAdd.Enabled = true;
+            tsEdit.Enabled = true;
+            tsRemove.Enabled = true;
+            tsWrite.Enabled = false;
+            tsRecovery.Enabled = false;
+            tsChangeClass.Enabled = true;
+
+            //View control
+            gcLop.Enabled = true;
+            groupBox1.Enabled = false;
+            dgvSV.Enabled = true;
+            dgvSV.ReadOnly = true;
+            dgvtxbMaLop.ReadOnly = true;
+
+            cmbKhoaInUse.Enabled = true;
+            bdsSV.Position = vitriSV;
+            flyoutPanel1.HidePopup();
+        }
+
         private void dgvSV_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
             string headerText = dgvSV.Columns[e.ColumnIndex].HeaderText;
 
@@ -542,6 +687,32 @@ namespace CSDLPT {
                     Console.WriteLine(ex.Message);
                 }
             }
+        }
+
+        private void ClassForm_FormClosing(object sender, FormClosingEventArgs e) {
+            Program.servername = tenServer;
+        }
+
+        private void ClassForm_FormClosed(object sender, FormClosedEventArgs e) {
+            flyoutPanel1.HidePopup();
+        }
+
+        private void cmbChangeClass_SelectedIndexChanged(object sender, EventArgs e) {
+            int? seleted = cmbChangeClass.SelectedIndex;
+            Console.WriteLine(seleted);
+            if (seleted != null && seleted != -1)
+                btnOk.Enabled = true;
+            else
+                btnOk.Enabled = false;
+        }
+
+        private void cmbChangeClass_KeyUp(object sender, KeyEventArgs e) {
+            int? seleted = cmbChangeClass.SelectedIndex;
+            Console.WriteLine(seleted);
+            if (seleted != null && seleted != -1)
+                btnOk.Enabled = true;
+            else
+                btnOk.Enabled = false;
         }
     }
 }
