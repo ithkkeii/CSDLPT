@@ -416,6 +416,24 @@ namespace CSDLPT {
         private void tsChangeClass_Click(object sender, EventArgs e) {
             flyoutPanel1.ShowPopup();
 
+            //Không bind dữ liệu, không chuyển sv ra khỏi khoa
+            Dictionary<string, string> list = new Dictionary<string, string>();
+            for (int i = 0; i < gridView1.DataRowCount; i++) {
+                if (!gridView1
+                    .GetRowCellValue(i, "MALOP")
+                    .ToString()
+                    .Equals(txteMaLop.Text.ToString()))
+                    list.Add(gridView1.GetRowCellValue(i, "TENLOP").ToString(),
+                        gridView1.GetRowCellValue(i, "MALOP").ToString());
+            }
+            cmbChangeClass.DataSource = list.ToList();
+            cmbChangeClass.DisplayMember = "Key";
+            cmbChangeClass.ValueMember = "Value";
+
+            //Auto choose first item
+            //Không cần trick chọn 1 xong 0 vẫn ok ? 
+            cmbChangeClass.SelectedIndex = 0;
+
             //Button control
             bbtnAdd.Enabled = false;
             bbtnEdit.Enabled = false;
@@ -441,35 +459,17 @@ namespace CSDLPT {
 
         private void flyoutPanel1_Load(object sender, EventArgs e) {
             btnOk.Enabled = false;
-            cmbChangeClass.SelectedIndex = 0;
-            cmbChangeClass.SelectedIndex = 1;
-            cmbChangeClass.SelectedIndex = 0;
         }
 
         private void btnOk_Click(object sender, EventArgs e) {
 
-            List<string> listLop = new List<string>();
             string maSinhVienChuyenLop = txteMaSV.Text.ToString();
             string maLopMoi = cmbChangeClass.SelectedValue.ToString();
-
-            Console.WriteLine("LOP MOI: " + maLopMoi);
-
-            for (int i = 0; i < gridView1.DataRowCount; i++) {
-                listLop.Add(gridView1.GetRowCellValue(i, "MALOP").ToString());
-            }
 
             for (int i = 0; i < dgvSV.Rows.Count; i++) {
                 DataGridViewCell cell = dgvSV.Rows[i].Cells["dgvtxbMASV"];
                 if (cell.Value.ToString().Equals(maSinhVienChuyenLop)) {
-                    if (listLop.Contains(maLopMoi)) {
-                        dgvSV.Rows[i].Cells["dgvtxbMALOP"].Value = maLopMoi;
-                    } else {
-                        string sql = $"UPDATE LINK0.QLDSV.dbo.SINHVIEN " +
-                            $"SET MALOP='{maLopMoi}' " +
-                            $"WHERE MASV='{maSinhVienChuyenLop}'";
-                        SqlCommand cmd = new SqlCommand(sql, Program.conn);
-                        cmd.ExecuteNonQuery();
-                    }
+                    dgvSV.Rows[i].Cells["dgvtxbMALOP"].Value = maLopMoi;
                     try {
                         bdsSV.EndEdit();
                         if (dS_SERVER1.HasChanges())
@@ -481,6 +481,35 @@ namespace CSDLPT {
                     break;
                 }
             }
+
+
+            //List<string> listLop = new List<string>();
+            //for (int i = 0; i < gridView1.DataRowCount; i++) {
+            //    listLop.Add(gridView1.GetRowCellValue(i, "MALOP").ToString());
+            //}
+            //for (int i = 0; i < dgvSV.Rows.Count; i++) {
+            //    DataGridViewCell cell = dgvSV.Rows[i].Cells["dgvtxbMASV"];
+            //    if (cell.Value.ToString().Equals(maSinhVienChuyenLop)) {
+            //        if (listLop.Contains(maLopMoi)) {
+            //            dgvSV.Rows[i].Cells["dgvtxbMALOP"].Value = maLopMoi;
+            //        } else {
+            //            string sql = $"UPDATE LINK0.QLDSV.dbo.SINHVIEN " +
+            //                $"SET MALOP='{maLopMoi}' " +
+            //                $"WHERE MASV='{maSinhVienChuyenLop}'";
+            //            SqlCommand cmd = new SqlCommand(sql, Program.conn);
+            //            cmd.ExecuteNonQuery();
+            //        }
+            //        try {
+            //            bdsSV.EndEdit();
+            //            if (dS_SERVER1.HasChanges())
+            //                taSV.Update(dS_SERVER1.SINHVIEN);
+            //            this.taSV.Fill(this.dS_SERVER1.SINHVIEN);
+            //        } catch (Exception ex) {
+            //            Console.WriteLine(ex.Message);
+            //        }
+            //        break;
+            //    }
+            //}
 
 
 

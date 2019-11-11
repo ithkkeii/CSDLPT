@@ -70,7 +70,7 @@
             this.cmbChangeClass = new System.Windows.Forms.ComboBox();
             this.bdsAllClass = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.mALOPTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.txteMaLop = new DevExpress.XtraEditors.TextEdit();
             this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
             this.tENTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.hOTextEdit = new DevExpress.XtraEditors.TextEdit();
@@ -117,7 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).BeginInit();
             this.flyoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsAllClass)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mALOPTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txteMaLop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tENTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hOTextEdit.Properties)).BeginInit();
@@ -528,7 +528,7 @@
             this.flyoutPanel1.Controls.Add(this.cmbChangeClass);
             this.flyoutPanel1.Controls.Add(this.labelControl1);
             this.flyoutPanel1.Controls.Add(mALOPLabel1);
-            this.flyoutPanel1.Controls.Add(this.mALOPTextEdit);
+            this.flyoutPanel1.Controls.Add(this.txteMaLop);
             this.flyoutPanel1.Controls.Add(tENLabel);
             this.flyoutPanel1.Controls.Add(this.tENTextEdit);
             this.flyoutPanel1.Controls.Add(hOLabel);
@@ -606,17 +606,17 @@
             this.labelControl1.TabIndex = 9;
             this.labelControl1.Text = "Chuyển đến";
             // 
-            // mALOPTextEdit
+            // txteMaLop
             // 
-            this.mALOPTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSV, "MALOP", true));
-            this.mALOPTextEdit.Location = new System.Drawing.Point(93, 73);
-            this.mALOPTextEdit.MenuManager = this.barManager;
-            this.mALOPTextEdit.Name = "mALOPTextEdit";
-            this.mALOPTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mALOPTextEdit.Properties.Appearance.Options.UseFont = true;
-            this.mALOPTextEdit.Properties.ReadOnly = true;
-            this.mALOPTextEdit.Size = new System.Drawing.Size(124, 26);
-            this.mALOPTextEdit.TabIndex = 8;
+            this.txteMaLop.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSV, "MALOP", true));
+            this.txteMaLop.Location = new System.Drawing.Point(93, 73);
+            this.txteMaLop.MenuManager = this.barManager;
+            this.txteMaLop.Name = "txteMaLop";
+            this.txteMaLop.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txteMaLop.Properties.Appearance.Options.UseFont = true;
+            this.txteMaLop.Properties.ReadOnly = true;
+            this.txteMaLop.Size = new System.Drawing.Size(124, 26);
+            this.txteMaLop.TabIndex = 8;
             // 
             // bdsSV
             // 
@@ -890,7 +890,7 @@
             this.flyoutPanel1.ResumeLayout(false);
             this.flyoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsAllClass)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mALOPTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txteMaLop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tENTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hOTextEdit.Properties)).EndInit();
@@ -963,7 +963,7 @@
         private DS_SERVER1TableAdapters.HOCPHITableAdapter taHocPhi;
         private DS_SERVER1TableAdapters.DIEMTableAdapter taDiem;
         private DevExpress.Utils.FlyoutPanel flyoutPanel1;
-        private DevExpress.XtraEditors.TextEdit mALOPTextEdit;
+        private DevExpress.XtraEditors.TextEdit txteMaLop;
         private DevExpress.XtraEditors.TextEdit tENTextEdit;
         private DevExpress.XtraEditors.TextEdit hOTextEdit;
         private DevExpress.XtraEditors.TextEdit txteMaSV;
