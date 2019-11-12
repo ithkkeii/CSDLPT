@@ -250,7 +250,8 @@ namespace CSDLPT {
             for (int i = 0; i < dgvSV.Rows.Count - 1; i++) {
                 dgvSV.Rows[i].ReadOnly = true;
             }
-
+            dgvSV.Rows[dgvSV.Rows.Count - 1].Cells["dgvchbPhai"].Value = false;
+            dgvSV.Rows[dgvSV.Rows.Count - 1].Cells["dgvchbNghiHoc"].Value = false;
             return;
         }
 

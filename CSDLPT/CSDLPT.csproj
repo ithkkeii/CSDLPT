@@ -53,6 +53,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,6 +74,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DSPM.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_DONGHOCPHI.cs">
+      <DependentUpon>DS_DONGHOCPHI.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_DONGHOCPHI.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_DONGHOCPHI.xsd</DependentUpon>
     </Compile>
     <Compile Include="DS_SERVER1.cs">
       <DependentUpon>DS_SERVER1.xsd</DependentUpon>
@@ -97,6 +106,12 @@
     <Compile Include="MainViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchoolFee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SchoolFee.Designer.cs">
+      <DependentUpon>SchoolFee.cs</DependentUpon>
+    </Compile>
     <Compile Include="StudentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +137,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SchoolFee.resx">
+      <DependentUpon>SchoolFee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StudentForm.resx">
       <DependentUpon>StudentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +154,17 @@
     </None>
     <None Include="DSPM.xss">
       <DependentUpon>DSPM.xsd</DependentUpon>
+    </None>
+    <None Include="DS_DONGHOCPHI.xsc">
+      <DependentUpon>DS_DONGHOCPHI.xsd</DependentUpon>
+    </None>
+    <None Include="DS_DONGHOCPHI.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_DONGHOCPHI.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_DONGHOCPHI.xss">
+      <DependentUpon>DS_DONGHOCPHI.xsd</DependentUpon>
     </None>
     <None Include="DS_SERVER1.xsc">
       <DependentUpon>DS_SERVER1.xsd</DependentUpon>

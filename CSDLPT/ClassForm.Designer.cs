@@ -77,15 +77,6 @@
             this.txteMaSV = new DevExpress.XtraEditors.TextEdit();
             this.taSV = new CSDLPT.DS_SERVER1TableAdapters.SINHVIENTableAdapter();
             this.dgvSV = new System.Windows.Forms.DataGridView();
-            this.dgvtxbMaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxbHo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxbTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxbMaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvchbPhai = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dgvtxbNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxbNoiSinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxbDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvchbNghiHoc = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.controlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsAdd = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,6 +90,15 @@
             this.taHocPhi = new CSDLPT.DS_SERVER1TableAdapters.HOCPHITableAdapter();
             this.taDiem = new CSDLPT.DS_SERVER1TableAdapters.DIEMTableAdapter();
             this.taAllClass = new CSDLPT.DS_SERVER1TableAdapters.AllClassTableAdapter();
+            this.dgvtxbMaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxbHo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxbTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxbMaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvchbPhai = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgvtxbNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxbNoiSinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxbDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvchbNghiHoc = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             mALOPLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
@@ -696,79 +696,6 @@
             this.dgvSV.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSV_CellValidating);
             this.dgvSV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvSV_DataError);
             // 
-            // dgvtxbMaSV
-            // 
-            this.dgvtxbMaSV.DataPropertyName = "MASV";
-            this.dgvtxbMaSV.HeaderText = "MASV";
-            this.dgvtxbMaSV.Name = "dgvtxbMaSV";
-            this.dgvtxbMaSV.ReadOnly = true;
-            this.dgvtxbMaSV.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvtxbMaSV.Width = 93;
-            // 
-            // dgvtxbHo
-            // 
-            this.dgvtxbHo.DataPropertyName = "HO";
-            this.dgvtxbHo.HeaderText = "HO";
-            this.dgvtxbHo.Name = "dgvtxbHo";
-            this.dgvtxbHo.ReadOnly = true;
-            this.dgvtxbHo.Width = 65;
-            // 
-            // dgvtxbTen
-            // 
-            this.dgvtxbTen.DataPropertyName = "TEN";
-            this.dgvtxbTen.HeaderText = "TEN";
-            this.dgvtxbTen.Name = "dgvtxbTen";
-            this.dgvtxbTen.ReadOnly = true;
-            this.dgvtxbTen.Width = 75;
-            // 
-            // dgvtxbMaLop
-            // 
-            this.dgvtxbMaLop.DataPropertyName = "MALOP";
-            this.dgvtxbMaLop.HeaderText = "MALOP";
-            this.dgvtxbMaLop.Name = "dgvtxbMaLop";
-            this.dgvtxbMaLop.ReadOnly = true;
-            this.dgvtxbMaLop.Width = 106;
-            // 
-            // dgvchbPhai
-            // 
-            this.dgvchbPhai.DataPropertyName = "PHAI";
-            this.dgvchbPhai.HeaderText = "PHAI";
-            this.dgvchbPhai.Name = "dgvchbPhai";
-            this.dgvchbPhai.ReadOnly = true;
-            this.dgvchbPhai.Width = 63;
-            // 
-            // dgvtxbNgaySinh
-            // 
-            this.dgvtxbNgaySinh.DataPropertyName = "NGAYSINH";
-            this.dgvtxbNgaySinh.HeaderText = "NGAYSINH";
-            this.dgvtxbNgaySinh.Name = "dgvtxbNgaySinh";
-            this.dgvtxbNgaySinh.ReadOnly = true;
-            this.dgvtxbNgaySinh.Width = 139;
-            // 
-            // dgvtxbNoiSinh
-            // 
-            this.dgvtxbNoiSinh.DataPropertyName = "NOISINH";
-            this.dgvtxbNoiSinh.HeaderText = "NOISINH";
-            this.dgvtxbNoiSinh.Name = "dgvtxbNoiSinh";
-            this.dgvtxbNoiSinh.ReadOnly = true;
-            this.dgvtxbNoiSinh.Width = 118;
-            // 
-            // dgvtxbDiaChi
-            // 
-            this.dgvtxbDiaChi.DataPropertyName = "DIACHI";
-            this.dgvtxbDiaChi.HeaderText = "DIACHI";
-            this.dgvtxbDiaChi.Name = "dgvtxbDiaChi";
-            this.dgvtxbDiaChi.ReadOnly = true;
-            this.dgvtxbDiaChi.Width = 105;
-            // 
-            // dgvchbNghiHoc
-            // 
-            this.dgvchbNghiHoc.DataPropertyName = "NGHIHOC";
-            this.dgvchbNghiHoc.HeaderText = "NGHIHOC";
-            this.dgvchbNghiHoc.Name = "dgvchbNghiHoc";
-            this.dgvchbNghiHoc.ReadOnly = true;
-            this.dgvchbNghiHoc.Width = 111;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -852,6 +779,85 @@
             // taAllClass
             // 
             this.taAllClass.ClearBeforeFill = true;
+            // 
+            // dgvtxbMaSV
+            // 
+            this.dgvtxbMaSV.DataPropertyName = "MASV";
+            this.dgvtxbMaSV.HeaderText = "MASV";
+            this.dgvtxbMaSV.Name = "dgvtxbMaSV";
+            this.dgvtxbMaSV.ReadOnly = true;
+            this.dgvtxbMaSV.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvtxbMaSV.Width = 93;
+            // 
+            // dgvtxbHo
+            // 
+            this.dgvtxbHo.DataPropertyName = "HO";
+            this.dgvtxbHo.HeaderText = "HO";
+            this.dgvtxbHo.Name = "dgvtxbHo";
+            this.dgvtxbHo.ReadOnly = true;
+            this.dgvtxbHo.Width = 65;
+            // 
+            // dgvtxbTen
+            // 
+            this.dgvtxbTen.DataPropertyName = "TEN";
+            this.dgvtxbTen.HeaderText = "TEN";
+            this.dgvtxbTen.Name = "dgvtxbTen";
+            this.dgvtxbTen.ReadOnly = true;
+            this.dgvtxbTen.Width = 75;
+            // 
+            // dgvtxbMaLop
+            // 
+            this.dgvtxbMaLop.DataPropertyName = "MALOP";
+            this.dgvtxbMaLop.HeaderText = "MALOP";
+            this.dgvtxbMaLop.Name = "dgvtxbMaLop";
+            this.dgvtxbMaLop.ReadOnly = true;
+            this.dgvtxbMaLop.Width = 106;
+            // 
+            // dgvchbPhai
+            // 
+            this.dgvchbPhai.DataPropertyName = "PHAI";
+            this.dgvchbPhai.FalseValue = "0";
+            this.dgvchbPhai.HeaderText = "NAM";
+            this.dgvchbPhai.IndeterminateValue = "0";
+            this.dgvchbPhai.Name = "dgvchbPhai";
+            this.dgvchbPhai.ReadOnly = true;
+            this.dgvchbPhai.TrueValue = "1";
+            this.dgvchbPhai.Width = 63;
+            // 
+            // dgvtxbNgaySinh
+            // 
+            this.dgvtxbNgaySinh.DataPropertyName = "NGAYSINH";
+            this.dgvtxbNgaySinh.HeaderText = "NGAYSINH";
+            this.dgvtxbNgaySinh.Name = "dgvtxbNgaySinh";
+            this.dgvtxbNgaySinh.ReadOnly = true;
+            this.dgvtxbNgaySinh.Width = 139;
+            // 
+            // dgvtxbNoiSinh
+            // 
+            this.dgvtxbNoiSinh.DataPropertyName = "NOISINH";
+            this.dgvtxbNoiSinh.HeaderText = "NOISINH";
+            this.dgvtxbNoiSinh.Name = "dgvtxbNoiSinh";
+            this.dgvtxbNoiSinh.ReadOnly = true;
+            this.dgvtxbNoiSinh.Width = 118;
+            // 
+            // dgvtxbDiaChi
+            // 
+            this.dgvtxbDiaChi.DataPropertyName = "DIACHI";
+            this.dgvtxbDiaChi.HeaderText = "DIACHI";
+            this.dgvtxbDiaChi.Name = "dgvtxbDiaChi";
+            this.dgvtxbDiaChi.ReadOnly = true;
+            this.dgvtxbDiaChi.Width = 105;
+            // 
+            // dgvchbNghiHoc
+            // 
+            this.dgvchbNghiHoc.DataPropertyName = "NGHIHOC";
+            this.dgvchbNghiHoc.FalseValue = "false";
+            this.dgvchbNghiHoc.HeaderText = "NGHIHOC";
+            this.dgvchbNghiHoc.IndeterminateValue = "false";
+            this.dgvchbNghiHoc.Name = "dgvchbNghiHoc";
+            this.dgvchbNghiHoc.ReadOnly = true;
+            this.dgvchbNghiHoc.TrueValue = "true";
+            this.dgvchbNghiHoc.Width = 111;
             // 
             // ClassForm
             // 
@@ -947,15 +953,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMALOP;
         private DevExpress.XtraGrid.Columns.GridColumn colTENLOP;
         private System.Windows.Forms.ToolStripMenuItem tsWrite;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbMaSV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbHo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbTen;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbMaLop;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvchbPhai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbNgaySinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbNoiSinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbDiaChi;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvchbNghiHoc;
         private System.Windows.Forms.ToolStripMenuItem tsRecovery;
         private System.Windows.Forms.ToolStripMenuItem tsChangeClass;
         private System.Windows.Forms.BindingSource bdsHocPhi;
@@ -973,5 +970,14 @@
         private System.Windows.Forms.ComboBox cmbChangeClass;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnOk;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbMaSV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbHo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbMaLop;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvchbPhai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbNgaySinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbNoiSinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbDiaChi;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvchbNghiHoc;
     }
 }

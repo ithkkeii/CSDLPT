@@ -42,5 +42,16 @@ namespace CSDLPT.Properties {
                 return ((string)(this["QLDSVConnectionStringSERVER1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-0VD6HF8\\SERVER3;Initial Catalog=QLDSV;Integrated Security=Tru" +
+            "e")]
+        public string QLDSVConnectionString1 {
+            get {
+                return ((string)(this["QLDSVConnectionString1"]));
+            }
+        }
     }
 }
