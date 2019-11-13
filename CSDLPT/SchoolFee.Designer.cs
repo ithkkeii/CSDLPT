@@ -30,7 +30,8 @@
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.flyoutPanelMain = new DevExpress.Utils.FlyoutPanel();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.hOCPHIGridControl = new DevExpress.XtraGrid.GridControl();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
+            this.gcHocPhi = new DevExpress.XtraGrid.GridControl();
             this.bdsHocPhi = new System.Windows.Forms.BindingSource(this.components);
             this.dS_DONGHOCPHI = new CSDLPT.DS_DONGHOCPHI();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -38,6 +39,7 @@
             this.colHOCKY = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHOCPHI = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSOTIENDADONG = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnWrite = new DevExpress.XtraEditors.SimpleButton();
             this.btnRecovery = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
@@ -54,18 +56,18 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.flyoutPanelSub = new DevExpress.Utils.FlyoutPanel();
+            this.btnBack = new DevExpress.XtraEditors.SimpleButton();
             this.taHocPhi = new CSDLPT.DS_DONGHOCPHITableAdapters.HOCPHITableAdapter();
             this.tableAdapterManager = new CSDLPT.DS_DONGHOCPHITableAdapters.TableAdapterManager();
             this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
             this.taSV = new CSDLPT.DS_DONGHOCPHITableAdapters.SINHVIENTableAdapter();
             this.sINHVIENGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colMASV = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelMain)).BeginInit();
             this.flyoutPanelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.hOCPHIGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcHocPhi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsHocPhi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DONGHOCPHI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -90,7 +92,7 @@
             this.lbNhapMaSinhVien.LineLocation = DevExpress.XtraEditors.LineLocation.Bottom;
             this.lbNhapMaSinhVien.LineOrientation = DevExpress.XtraEditors.LabelLineOrientation.Horizontal;
             this.lbNhapMaSinhVien.LineVisible = true;
-            this.lbNhapMaSinhVien.Location = new System.Drawing.Point(54, 25);
+            this.lbNhapMaSinhVien.Location = new System.Drawing.Point(18, 19);
             this.lbNhapMaSinhVien.Name = "lbNhapMaSinhVien";
             this.lbNhapMaSinhVien.Size = new System.Drawing.Size(210, 39);
             this.lbNhapMaSinhVien.TabIndex = 0;
@@ -99,7 +101,7 @@
             // txtbFindMaSV
             // 
             this.txtbFindMaSV.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbFindMaSV.Location = new System.Drawing.Point(297, 30);
+            this.txtbFindMaSV.Location = new System.Drawing.Point(244, 24);
             this.txtbFindMaSV.Name = "txtbFindMaSV";
             this.txtbFindMaSV.Size = new System.Drawing.Size(226, 32);
             this.txtbFindMaSV.TabIndex = 1;
@@ -108,9 +110,9 @@
             // 
             this.btnSearch.Appearance.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.Appearance.Options.UseFont = true;
-            this.btnSearch.Location = new System.Drawing.Point(336, 105);
+            this.btnSearch.Location = new System.Drawing.Point(491, 23);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(127, 38);
+            this.btnSearch.Size = new System.Drawing.Size(127, 34);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Tìm Kiếm";
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -130,7 +132,7 @@
             this.flyoutPanelMain.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.TopRight;
             this.flyoutPanelMain.Options.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade;
             this.flyoutPanelMain.Options.HorzIndent = 350;
-            this.flyoutPanelMain.Options.VertIndent = 100;
+            this.flyoutPanelMain.Options.VertIndent = 150;
             this.flyoutPanelMain.OptionsBeakPanel.BackColor = System.Drawing.Color.Transparent;
             this.flyoutPanelMain.OptionsBeakPanel.BorderColor = System.Drawing.Color.Transparent;
             this.flyoutPanelMain.OwnerControl = this;
@@ -139,7 +141,8 @@
             // 
             // groupControl3
             // 
-            this.groupControl3.Controls.Add(this.hOCPHIGridControl);
+            this.groupControl3.Controls.Add(this.btnEdit);
+            this.groupControl3.Controls.Add(this.gcHocPhi);
             this.groupControl3.Controls.Add(this.btnWrite);
             this.groupControl3.Controls.Add(this.btnRecovery);
             this.groupControl3.Controls.Add(this.btnDelete);
@@ -152,15 +155,27 @@
             this.groupControl3.TabIndex = 1;
             this.groupControl3.Text = "groupControl3";
             // 
-            // hOCPHIGridControl
+            // btnEdit
             // 
-            this.hOCPHIGridControl.DataSource = this.bdsHocPhi;
-            this.hOCPHIGridControl.Location = new System.Drawing.Point(30, 86);
-            this.hOCPHIGridControl.MainView = this.gridView1;
-            this.hOCPHIGridControl.Name = "hOCPHIGridControl";
-            this.hOCPHIGridControl.Size = new System.Drawing.Size(880, 477);
-            this.hOCPHIGridControl.TabIndex = 4;
-            this.hOCPHIGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.btnEdit.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Appearance.Options.UseFont = true;
+            this.btnEdit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnEdit.ImageOptions.SvgImage")));
+            this.btnEdit.Location = new System.Drawing.Point(289, 18);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(149, 31);
+            this.btnEdit.TabIndex = 5;
+            this.btnEdit.Text = "CHỈNH SỬA";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // gcHocPhi
+            // 
+            this.gcHocPhi.DataSource = this.bdsHocPhi;
+            this.gcHocPhi.Location = new System.Drawing.Point(30, 86);
+            this.gcHocPhi.MainView = this.gridView1;
+            this.gcHocPhi.Name = "gcHocPhi";
+            this.gcHocPhi.Size = new System.Drawing.Size(880, 477);
+            this.gcHocPhi.TabIndex = 4;
+            this.gcHocPhi.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // bdsHocPhi
@@ -175,25 +190,31 @@
             // 
             // gridView1
             // 
+            this.gridView1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gridView1.ColumnPanelRowHeight = 35;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colMASV,
             this.colNIENKHOA,
             this.colHOCKY,
             this.colHOCPHI,
-            this.colSOTIENDADONG});
-            this.gridView1.GridControl = this.hOCPHIGridControl;
+            this.colSOTIENDADONG,
+            this.colMASV});
+            this.gridView1.GridControl = this.gcHocPhi;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.RowHeight = 35;
+            this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
+            this.gridView1.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView1_RowStyle);
             this.gridView1.ShowingEditor += new System.ComponentModel.CancelEventHandler(this.gridView1_ShowingEditor);
             this.gridView1.InitNewRow += new DevExpress.XtraGrid.Views.Grid.InitNewRowEventHandler(this.gridView1_InitNewRow);
+            this.gridView1.InvalidRowException += new DevExpress.XtraGrid.Views.Base.InvalidRowExceptionEventHandler(this.gridView1_InvalidRowException);
             this.gridView1.ValidateRow += new DevExpress.XtraGrid.Views.Base.ValidateRowEventHandler(this.gridView1_ValidateRow);
             // 
             // colNIENKHOA
             // 
             this.colNIENKHOA.AppearanceCell.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colNIENKHOA.AppearanceCell.Options.UseBorderColor = true;
             this.colNIENKHOA.AppearanceCell.Options.UseFont = true;
+            this.colNIENKHOA.AppearanceHeader.BorderColor = System.Drawing.Color.Black;
             this.colNIENKHOA.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colNIENKHOA.AppearanceHeader.Options.UseFont = true;
             this.colNIENKHOA.FieldName = "NIENKHOA";
@@ -204,7 +225,9 @@
             // colHOCKY
             // 
             this.colHOCKY.AppearanceCell.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colHOCKY.AppearanceCell.Options.UseBorderColor = true;
             this.colHOCKY.AppearanceCell.Options.UseFont = true;
+            this.colHOCKY.AppearanceHeader.BorderColor = System.Drawing.Color.Black;
             this.colHOCKY.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colHOCKY.AppearanceHeader.Options.UseFont = true;
             this.colHOCKY.FieldName = "HOCKY";
@@ -215,7 +238,9 @@
             // colHOCPHI
             // 
             this.colHOCPHI.AppearanceCell.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colHOCPHI.AppearanceCell.Options.UseBorderColor = true;
             this.colHOCPHI.AppearanceCell.Options.UseFont = true;
+            this.colHOCPHI.AppearanceHeader.BorderColor = System.Drawing.Color.Black;
             this.colHOCPHI.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colHOCPHI.AppearanceHeader.Options.UseFont = true;
             this.colHOCPHI.FieldName = "HOCPHI";
@@ -226,7 +251,9 @@
             // colSOTIENDADONG
             // 
             this.colSOTIENDADONG.AppearanceCell.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colSOTIENDADONG.AppearanceCell.Options.UseBorderColor = true;
             this.colSOTIENDADONG.AppearanceCell.Options.UseFont = true;
+            this.colSOTIENDADONG.AppearanceHeader.BorderColor = System.Drawing.Color.Black;
             this.colSOTIENDADONG.AppearanceHeader.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.colSOTIENDADONG.AppearanceHeader.Options.UseFont = true;
             this.colSOTIENDADONG.FieldName = "SOTIENDADONG";
@@ -234,12 +261,19 @@
             this.colSOTIENDADONG.Visible = true;
             this.colSOTIENDADONG.VisibleIndex = 3;
             // 
+            // colMASV
+            // 
+            this.colMASV.AppearanceCell.Options.UseBorderColor = true;
+            this.colMASV.AppearanceHeader.BorderColor = System.Drawing.Color.Black;
+            this.colMASV.FieldName = "MASV";
+            this.colMASV.Name = "colMASV";
+            // 
             // btnWrite
             // 
             this.btnWrite.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnWrite.Appearance.Options.UseFont = true;
             this.btnWrite.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnWrite.ImageOptions.SvgImage")));
-            this.btnWrite.Location = new System.Drawing.Point(444, 18);
+            this.btnWrite.Location = new System.Drawing.Point(638, 18);
             this.btnWrite.Name = "btnWrite";
             this.btnWrite.Size = new System.Drawing.Size(90, 31);
             this.btnWrite.TabIndex = 3;
@@ -252,7 +286,7 @@
             this.btnRecovery.Appearance.Options.UseFont = true;
             this.btnRecovery.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
             this.btnRecovery.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnRecovery.ImageOptions.SvgImage")));
-            this.btnRecovery.Location = new System.Drawing.Point(282, 18);
+            this.btnRecovery.Location = new System.Drawing.Point(473, 18);
             this.btnRecovery.Name = "btnRecovery";
             this.btnRecovery.Size = new System.Drawing.Size(127, 31);
             this.btnRecovery.TabIndex = 2;
@@ -261,8 +295,24 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.btnDelete.Appearance.BackColor2 = System.Drawing.Color.Transparent;
+            this.btnDelete.Appearance.BorderColor = System.Drawing.Color.Transparent;
             this.btnDelete.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btnDelete.Appearance.Options.UseBackColor = true;
+            this.btnDelete.Appearance.Options.UseBorderColor = true;
             this.btnDelete.Appearance.Options.UseFont = true;
+            this.btnDelete.Appearance.Options.UseForeColor = true;
+            this.btnDelete.AppearanceDisabled.ForeColor = System.Drawing.Color.Transparent;
+            this.btnDelete.AppearanceDisabled.Options.UseForeColor = true;
+            this.btnDelete.AppearanceHovered.BackColor = System.Drawing.Color.Transparent;
+            this.btnDelete.AppearanceHovered.BackColor2 = System.Drawing.Color.Transparent;
+            this.btnDelete.AppearanceHovered.BorderColor = System.Drawing.Color.Transparent;
+            this.btnDelete.AppearanceHovered.ForeColor = System.Drawing.Color.Black;
+            this.btnDelete.AppearanceHovered.Options.UseBackColor = true;
+            this.btnDelete.AppearanceHovered.Options.UseBorderColor = true;
+            this.btnDelete.AppearanceHovered.Options.UseForeColor = true;
             this.btnDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDelete.ImageOptions.SvgImage")));
             this.btnDelete.Location = new System.Drawing.Point(166, 18);
             this.btnDelete.Name = "btnDelete";
@@ -382,10 +432,10 @@
             this.groupControl1.Controls.Add(this.lbNhapMaSinhVien);
             this.groupControl1.Controls.Add(this.txtbFindMaSV);
             this.groupControl1.Controls.Add(this.btnSearch);
-            this.groupControl1.Location = new System.Drawing.Point(12, 123);
+            this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.ShowCaption = false;
-            this.groupControl1.Size = new System.Drawing.Size(578, 172);
+            this.groupControl1.Size = new System.Drawing.Size(645, 81);
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "groupControl1";
             // 
@@ -397,8 +447,9 @@
             // flyoutPanelSub
             // 
             this.flyoutPanelSub.AnimationRate = 70;
+            this.flyoutPanelSub.Controls.Add(this.btnBack);
             this.flyoutPanelSub.Controls.Add(this.groupControl2);
-            this.flyoutPanelSub.Location = new System.Drawing.Point(282, 99);
+            this.flyoutPanelSub.Location = new System.Drawing.Point(231, 115);
             this.flyoutPanelSub.Name = "flyoutPanelSub";
             this.flyoutPanelSub.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.TopLeft;
             this.flyoutPanelSub.Options.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade;
@@ -406,8 +457,22 @@
             this.flyoutPanelSub.Options.VertIndent = 200;
             this.flyoutPanelSub.OptionsButtonPanel.ButtonPanelContentAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.flyoutPanelSub.OwnerControl = this;
-            this.flyoutPanelSub.Size = new System.Drawing.Size(426, 247);
+            this.flyoutPanelSub.Size = new System.Drawing.Size(426, 315);
             this.flyoutPanelSub.TabIndex = 6;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.btnBack.Appearance.Options.UseFont = true;
+            this.btnBack.Appearance.Options.UseForeColor = true;
+            this.btnBack.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.ImageOptions.Image")));
+            this.btnBack.Location = new System.Drawing.Point(97, 243);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(268, 42);
+            this.btnBack.TabIndex = 7;
+            this.btnBack.Text = "CHỌN LẠI MÃ SINH VIÊN";
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // taHocPhi
             // 
@@ -434,25 +499,19 @@
             // sINHVIENGridControl
             // 
             this.sINHVIENGridControl.DataSource = this.bdsSV;
-            this.sINHVIENGridControl.Location = new System.Drawing.Point(66, 394);
+            this.sINHVIENGridControl.Location = new System.Drawing.Point(30, 455);
             this.sINHVIENGridControl.MainView = this.gridView2;
             this.sINHVIENGridControl.Name = "sINHVIENGridControl";
             this.sINHVIENGridControl.Size = new System.Drawing.Size(300, 220);
             this.sINHVIENGridControl.TabIndex = 6;
             this.sINHVIENGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
+            this.sINHVIENGridControl.Visible = false;
             // 
             // gridView2
             // 
             this.gridView2.GridControl = this.sINHVIENGridControl;
             this.gridView2.Name = "gridView2";
-            // 
-            // colMASV
-            // 
-            this.colMASV.FieldName = "MASV";
-            this.colMASV.Name = "colMASV";
-            this.colMASV.Visible = true;
-            this.colMASV.VisibleIndex = 4;
             // 
             // SchoolFee
             // 
@@ -470,7 +529,7 @@
             this.flyoutPanelMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.hOCPHIGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcHocPhi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsHocPhi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_DONGHOCPHI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -516,7 +575,7 @@
         private System.Windows.Forms.BindingSource bdsHocPhi;
         private DS_DONGHOCPHITableAdapters.HOCPHITableAdapter taHocPhi;
         private DS_DONGHOCPHITableAdapters.TableAdapterManager tableAdapterManager;
-        private DevExpress.XtraGrid.GridControl hOCPHIGridControl;
+        private DevExpress.XtraGrid.GridControl gcHocPhi;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn colNIENKHOA;
         private DevExpress.XtraGrid.Columns.GridColumn colHOCKY;
@@ -527,5 +586,7 @@
         private DevExpress.XtraGrid.GridControl sINHVIENGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn colMASV;
+        private DevExpress.XtraEditors.SimpleButton btnEdit;
+        private DevExpress.XtraEditors.SimpleButton btnBack;
     }
 }

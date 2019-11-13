@@ -26,7 +26,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.barButtonSV = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnSubject = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnModifyClass = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSchoolFee = new DevExpress.XtraBars.BarButtonItem();
@@ -46,7 +46,7 @@
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
             this.ribbonControl1.SearchEditItem,
-            this.barButtonSV,
+            this.bbtnSubject,
             this.bbtnModifyClass,
             this.barButtonItem1,
             this.bbtnSchoolFee});
@@ -58,14 +58,14 @@
             this.ribbonPage1});
             this.ribbonControl1.Size = new System.Drawing.Size(1174, 143);
             // 
-            // barButtonSV
+            // bbtnSubject
             // 
-            this.barButtonSV.Caption = "SINH VIÊN";
-            this.barButtonSV.Id = 1;
-            this.barButtonSV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonSV.ImageOptions.Image")));
-            this.barButtonSV.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonSV.ImageOptions.LargeImage")));
-            this.barButtonSV.Name = "barButtonSV";
-            this.barButtonSV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonSV_ItemClick);
+            this.bbtnSubject.Caption = "SINH VIÊN";
+            this.bbtnSubject.Id = 1;
+            this.bbtnSubject.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonSV.ImageOptions.Image")));
+            this.bbtnSubject.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonSV.ImageOptions.LargeImage")));
+            this.bbtnSubject.Name = "bbtnSubject";
+            this.bbtnSubject.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonSV_ItemClick);
             // 
             // bbtnModifyClass
             // 
@@ -101,7 +101,7 @@
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonSV, true);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbtnSubject, true);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbtnModifyClass);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "ribbonPageGroup1";
@@ -148,7 +148,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.Utils.MVVM.MVVMContext mvvmContext1;
-        private DevExpress.XtraBars.BarButtonItem barButtonSV;
+        private DevExpress.XtraBars.BarButtonItem bbtnSubject;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraBars.BarButtonItem bbtnModifyClass;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;

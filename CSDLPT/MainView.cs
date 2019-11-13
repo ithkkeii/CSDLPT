@@ -8,6 +8,14 @@ namespace CSDLPT {
             InitializeComponent();
             if (!mvvmContext1.IsDesignMode)
                 InitializeBindings();
+
+            //Authorize
+            if (Program.mChinhanh == 2) {
+                bbtnModifyClass.Enabled = false;
+                bbtnSubject.Enabled = false;
+            } else {
+                bbtnSchoolFee.Enabled = false;
+            }
         }
 
         void InitializeBindings() {
