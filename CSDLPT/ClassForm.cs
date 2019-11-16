@@ -19,7 +19,7 @@ namespace CSDLPT {
 
         private String tenPhanManh = string.Empty;
         private string tenServer = string.Empty;
-        private String maKhoa = "CNTT";
+        private String maKhoa = "";
         private int vitri;
         private int vitriSV;
         private DataGridViewCell currentCell;
@@ -64,6 +64,8 @@ namespace CSDLPT {
             bds_dspm_currentForm.DataSource = Program.bds_dspm.DataSource;
             if (bds_dspm_currentForm.Count.Equals(3))
                 bds_dspm_currentForm.RemoveAt(bds_dspm_currentForm.Count - 1);
+
+
 
             this.cmbKhoaInUse.DataSource = bds_dspm_currentForm.DataSource;
             this.cmbKhoaInUse.SelectedIndex = Program.mChinhanh;
@@ -716,6 +718,16 @@ namespace CSDLPT {
                 } catch (Exception ex) {
                     Console.WriteLine(ex.Message);
                 }
+            }
+
+            //Gán Mã Khoa
+            if (bdsLop.Count > 0)
+                maKhoa = ((DataRowView)bdsLop[0])["MAKH"].ToString();
+            else {
+                if (cmbKhoaInUse.SelectedIndex == 0)
+                    maKhoa = "CNTT";
+                if (cmbKhoaInUse.SelectedIndex == 1)
+                    maKhoa = "VT";
             }
         }
 

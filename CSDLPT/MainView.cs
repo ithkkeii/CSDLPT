@@ -63,5 +63,15 @@ namespace CSDLPT {
             } else
                 frm.Activate();
         }
+
+        private void bbtnCreateAccount_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            Form frm = this.checkExist(typeof(CreateAccount));
+            if (frm == null) {
+                CreateAccount createAccountForm = new CreateAccount();
+                createAccountForm.MdiParent = this;
+                createAccountForm.Show();
+            } else
+                frm.Activate();
+        }
     }
 }

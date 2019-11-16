@@ -30,9 +30,11 @@
             this.bbtnModifyClass = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSchoolFee = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnCreateAccount = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.mvvmContext1 = new DevExpress.Utils.MVVM.MVVMContext(this.components);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
@@ -49,10 +51,11 @@
             this.bbtnSubject,
             this.bbtnModifyClass,
             this.barButtonItem1,
-            this.bbtnSchoolFee});
+            this.bbtnSchoolFee,
+            this.bbtnCreateAccount});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 7;
+            this.ribbonControl1.MaxItemId = 8;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -62,8 +65,8 @@
             // 
             this.bbtnSubject.Caption = "SINH VIÊN";
             this.bbtnSubject.Id = 1;
-            this.bbtnSubject.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonSV.ImageOptions.Image")));
-            this.bbtnSubject.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonSV.ImageOptions.LargeImage")));
+            this.bbtnSubject.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnSubject.ImageOptions.Image")));
+            this.bbtnSubject.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSubject.ImageOptions.LargeImage")));
             this.bbtnSubject.Name = "bbtnSubject";
             this.bbtnSubject.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonSV_ItemClick);
             // 
@@ -84,18 +87,28 @@
             // 
             // bbtnSchoolFee
             // 
-            this.bbtnSchoolFee.Caption = "Đóng Học Phí";
+            this.bbtnSchoolFee.Caption = "ĐÓNG HỌC PHÍ";
             this.bbtnSchoolFee.Id = 6;
             this.bbtnSchoolFee.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbtnSchoolFee.ImageOptions.Image")));
             this.bbtnSchoolFee.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbtnSchoolFee.ImageOptions.LargeImage")));
             this.bbtnSchoolFee.Name = "bbtnSchoolFee";
             this.bbtnSchoolFee.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnSchoolFee_ItemClick);
             // 
+            // bbtnCreateAccount
+            // 
+            this.bbtnCreateAccount.Caption = "TẠO TÀI KHOẢN";
+            this.bbtnCreateAccount.Id = 7;
+            this.bbtnCreateAccount.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnCreateAccount.ImageOptions.SvgImage")));
+            this.bbtnCreateAccount.LargeWidth = 100;
+            this.bbtnCreateAccount.Name = "bbtnCreateAccount";
+            this.bbtnCreateAccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnCreateAccount_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup3});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "ribbonPage1";
             // 
@@ -111,6 +124,12 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.bbtnSchoolFee);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbtnCreateAccount);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
             // mvvmContext1
             // 
@@ -154,6 +173,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem bbtnSchoolFee;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.BarButtonItem bbtnCreateAccount;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }
 
