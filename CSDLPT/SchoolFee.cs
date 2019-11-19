@@ -83,6 +83,8 @@ namespace CSDLPT {
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnBack.Enabled = false;
+            btnRecovery.Enabled = true;
+            btnWrite.Enabled = true;
 
         }
 
@@ -106,6 +108,7 @@ namespace CSDLPT {
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
             btnBack.Enabled = false;
+            btnWrite.Enabled = true;
         }
 
 
@@ -261,7 +264,24 @@ namespace CSDLPT {
             btnRecovery.Enabled = true;
             btnWrite.Enabled = true;
             MessageBox.Show("Thông tin lỗi do khóa trùng hoặc sai format", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
+        private void gcHocPhi_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyData == Keys.Escape) {
+                bdsHocPhi.CancelEdit();
+                isEdit = false;
+                //Không cần refresh vì đổi vị trí nó tự vẽ lại
+                //gridView1.RefreshData();
+                bdsHocPhi.Position = vitri;
+
+                //Button control
+                btnAdd.Enabled = true;
+                btnEdit.Enabled = true;
+                btnDelete.Enabled = true;
+                btnBack.Enabled = true;
+                btnRecovery.Enabled = false;
+                btnWrite.Enabled = false;
+            }
         }
     }
 }

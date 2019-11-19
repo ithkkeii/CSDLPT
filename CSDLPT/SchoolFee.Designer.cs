@@ -63,6 +63,8 @@
             this.taSV = new CSDLPT.DS_DONGHOCPHITableAdapters.SINHVIENTableAdapter();
             this.sINHVIENGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.flyoutPanel1 = new DevExpress.Utils.FlyoutPanel();
+            this.flyoutPanelControl1 = new DevExpress.Utils.FlyoutPanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelMain)).BeginInit();
             this.flyoutPanelMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
@@ -80,6 +82,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sINHVIENGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).BeginInit();
+            this.flyoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbNhapMaSinhVien
@@ -177,6 +182,7 @@
             this.gcHocPhi.TabIndex = 4;
             this.gcHocPhi.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gcHocPhi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gcHocPhi_KeyDown);
             // 
             // bdsHocPhi
             // 
@@ -273,7 +279,7 @@
             this.btnWrite.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnWrite.Appearance.Options.UseFont = true;
             this.btnWrite.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnWrite.ImageOptions.SvgImage")));
-            this.btnWrite.Location = new System.Drawing.Point(638, 18);
+            this.btnWrite.Location = new System.Drawing.Point(472, 18);
             this.btnWrite.Name = "btnWrite";
             this.btnWrite.Size = new System.Drawing.Size(90, 31);
             this.btnWrite.TabIndex = 3;
@@ -286,11 +292,12 @@
             this.btnRecovery.Appearance.Options.UseFont = true;
             this.btnRecovery.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
             this.btnRecovery.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnRecovery.ImageOptions.SvgImage")));
-            this.btnRecovery.Location = new System.Drawing.Point(473, 18);
+            this.btnRecovery.Location = new System.Drawing.Point(605, 18);
             this.btnRecovery.Name = "btnRecovery";
             this.btnRecovery.Size = new System.Drawing.Size(127, 31);
             this.btnRecovery.TabIndex = 2;
             this.btnRecovery.Text = "PHỤC HỒI";
+            this.btnRecovery.Visible = false;
             this.btnRecovery.Click += new System.EventHandler(this.btnRecovery_Click);
             // 
             // btnDelete
@@ -513,11 +520,29 @@
             this.gridView2.GridControl = this.sINHVIENGridControl;
             this.gridView2.Name = "gridView2";
             // 
+            // flyoutPanel1
+            // 
+            this.flyoutPanel1.Controls.Add(this.flyoutPanelControl1);
+            this.flyoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flyoutPanel1.Name = "flyoutPanel1";
+            this.flyoutPanel1.Size = new System.Drawing.Size(150, 150);
+            this.flyoutPanel1.TabIndex = 7;
+            // 
+            // flyoutPanelControl1
+            // 
+            this.flyoutPanelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flyoutPanelControl1.FlyoutPanel = this.flyoutPanel1;
+            this.flyoutPanelControl1.Location = new System.Drawing.Point(0, 0);
+            this.flyoutPanelControl1.Name = "flyoutPanelControl1";
+            this.flyoutPanelControl1.Size = new System.Drawing.Size(150, 150);
+            this.flyoutPanelControl1.TabIndex = 0;
+            // 
             // SchoolFee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1930, 937);
+            this.Controls.Add(this.flyoutPanel1);
             this.Controls.Add(this.sINHVIENGridControl);
             this.Controls.Add(this.flyoutPanelSub);
             this.Controls.Add(this.groupControl1);
@@ -544,6 +569,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sINHVIENGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).EndInit();
+            this.flyoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -588,5 +616,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMASV;
         private DevExpress.XtraEditors.SimpleButton btnEdit;
         private DevExpress.XtraEditors.SimpleButton btnBack;
+        private DevExpress.Utils.FlyoutPanel flyoutPanel1;
+        private DevExpress.Utils.FlyoutPanelControl flyoutPanelControl1;
     }
 }
