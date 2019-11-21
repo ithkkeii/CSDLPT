@@ -65,8 +65,6 @@ namespace CSDLPT {
             if (bds_dspm_currentForm.Count.Equals(3))
                 bds_dspm_currentForm.RemoveAt(bds_dspm_currentForm.Count - 1);
 
-
-
             this.cmbKhoaInUse.DataSource = bds_dspm_currentForm.DataSource;
             this.cmbKhoaInUse.SelectedIndex = Program.mChinhanh;
             this.cmbKhoaInUse.DisplayMember = "TENPM";

@@ -65,6 +65,7 @@ namespace CSDLPT {
         }
 
         private void SchoolFee_Load(object sender, EventArgs e) {
+            this.taSV.Connection.ConnectionString = Program.connstr;
             // TODO: This line of code loads data into the 'dS_DONGHOCPHI.SINHVIEN' table. You can move, or remove it, as needed.
             this.taSV.Fill(this.dS_DONGHOCPHI.SINHVIEN);
             // TODO: This line of code loads data into the 'dS_DONGHOCPHI.HOCPHI' table. You can move, or remove it, as needed.

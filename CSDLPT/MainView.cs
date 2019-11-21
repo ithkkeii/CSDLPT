@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSDLPT.ReportForm;
+using System;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -70,6 +71,16 @@ namespace CSDLPT {
                 CreateAccount createAccountForm = new CreateAccount();
                 createAccountForm.MdiParent = this;
                 createAccountForm.Show();
+            } else
+                frm.Activate();
+        }
+
+        private void bbtnInDSSV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            Form frm = this.checkExist(typeof(InDSSV));
+            if (frm == null) {
+                InDSSV inDSSV = new InDSSV();
+                inDSSV.MdiParent = this;
+                inDSSV.Show();
             } else
                 frm.Activate();
         }
