@@ -6,10 +6,12 @@ using DevExpress.XtraReports.UI;
 
 namespace CSDLPT.Report {
     public partial class InDanhSachSinhVienLop : DevExpress.XtraReports.UI.XtraReport {
-        public InDanhSachSinhVienLop(string lop, string khoa) {
+        public InDanhSachSinhVienLop(string khoa, string lop) {
             InitializeComponent();
-            dS_SERVER11.EnforceConstraints = false;
+            this.dS_SERVER11.EnforceConstraints = false;
+            this.sP_INDANHSACHSINHVIENLOPTableAdapter1.Connection.ConnectionString = Program.connstr;
             this.sP_INDANHSACHSINHVIENLOPTableAdapter1.Fill(dS_SERVER11.SP_INDANHSACHSINHVIENLOP, khoa, lop);
         }
+
     }
 }
