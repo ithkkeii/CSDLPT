@@ -369,9 +369,9 @@ namespace CSDLPT {
         private void tsRecovery_Click(object sender, EventArgs e) {
 
             bdsSV.CancelEdit();
-            if (dataGridViewMode != 2) //Không phải edit
+            if (dataGridViewMode != 2 && currentCell.RowIndex != -1) { //Không phải edit
                 dgvSV.Rows.Remove(dgvSV.Rows[currentCell.RowIndex]);
-            else
+            } else
                 this.taSV.Fill(this.dS_SERVER1.SINHVIEN);
 
             //dgvSV.Rows[4].Cells[0].Value
