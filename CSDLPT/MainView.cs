@@ -84,5 +84,15 @@ namespace CSDLPT {
             } else
                 frm.Activate();
         }
+
+        private void bbtnInBangDiem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            Form frm = this.checkExist(typeof(InBD));
+            if (frm == null) {
+                InBD inBangDiem = new InBD();
+                inBangDiem.MdiParent = this;
+                inBangDiem.Show();
+            } else
+                frm.Activate();
+        }
     }
 }
