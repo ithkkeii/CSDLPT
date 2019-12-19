@@ -94,5 +94,15 @@ namespace CSDLPT {
             } else
                 frm.Activate();
         }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            Form frm = this.checkExist(typeof(InDSDongTien));
+            if (frm == null) {
+                InDSDongTien inDanhSachDongTien = new InDSDongTien();
+                inDanhSachDongTien.MdiParent = this;
+                inDanhSachDongTien.Show();
+            } else
+                frm.Activate();
+        }
     }
 }

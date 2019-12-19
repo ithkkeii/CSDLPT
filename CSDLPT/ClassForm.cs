@@ -62,8 +62,10 @@ namespace CSDLPT {
             //Xóa mảnh 3
             BindingSource bds_dspm_currentForm = new BindingSource();
             bds_dspm_currentForm.DataSource = Program.bds_dspm.DataSource;
-            if (bds_dspm_currentForm.Count.Equals(3))
-                bds_dspm_currentForm.RemoveAt(bds_dspm_currentForm.Count - 1);
+            //if (bds_dspm_currentForm.Count.Equals(3))
+            //    bds_dspm_currentForm.RemoveAt(bds_dspm_currentForm.Count - 1);
+
+            bds_dspm_currentForm.Filter = "TENSERVER <> 'DESKTOP-0VD6HF8\\SERVER3'";
 
             this.cmbKhoaInUse.DataSource = bds_dspm_currentForm.DataSource;
             this.cmbKhoaInUse.SelectedIndex = Program.mChinhanh;

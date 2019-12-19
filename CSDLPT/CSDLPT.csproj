@@ -130,6 +130,12 @@
     <Compile Include="ReportForm\InBD.Designer.cs">
       <DependentUpon>InBD.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportForm\InDSDongTien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForm\InDSDongTien.Designer.cs">
+      <DependentUpon>InDSDongTien.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportForm\InDSSV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,12 @@
     </Compile>
     <Compile Include="Report\InBangDiem.Designer.cs">
       <DependentUpon>InBangDiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\InDanhSachDongHocPhi.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\InDanhSachDongHocPhi.Designer.cs">
+      <DependentUpon>InDanhSachDongHocPhi.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\InDanhSachSinhVienLop.cs">
       <SubType>Component</SubType>
@@ -185,11 +197,17 @@
     <EmbeddedResource Include="ReportForm\InBD.resx">
       <DependentUpon>InBD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportForm\InDSDongTien.resx">
+      <DependentUpon>InDSDongTien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportForm\InDSSV.resx">
       <DependentUpon>InDSSV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\InBangDiem.resx">
       <DependentUpon>InBangDiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\InDanhSachDongHocPhi.resx">
+      <DependentUpon>InDanhSachDongHocPhi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\InDanhSachSinhVienLop.resx">
       <DependentUpon>InDanhSachSinhVienLop.cs</DependentUpon>
