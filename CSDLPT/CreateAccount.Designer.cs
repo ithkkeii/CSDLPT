@@ -24,6 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.btnExit = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.cmbAccountOwner = new System.Windows.Forms.ComboBox();
             this.cmbRole = new System.Windows.Forms.ComboBox();
             this.txtbPassword = new System.Windows.Forms.TextBox();
@@ -32,8 +34,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnOk = new DevExpress.XtraEditors.SimpleButton();
-            this.btnExit = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +58,29 @@
             this.groupControl1.Size = new System.Drawing.Size(616, 415);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "groupControl1";
+            // 
+            // btnExit
+            // 
+            this.btnExit.Appearance.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Appearance.Options.UseFont = true;
+            this.btnExit.Location = new System.Drawing.Point(383, 341);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(128, 36);
+            this.btnExit.TabIndex = 10;
+            this.btnExit.Text = "Thoát";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnOk
+            // 
+            this.btnOk.Appearance.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.Appearance.Options.UseFont = true;
+            this.btnOk.Location = new System.Drawing.Point(168, 341);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(129, 36);
+            this.btnOk.TabIndex = 9;
+            this.btnOk.Text = "Đồng Ý";
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            this.btnOk.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cmbAccountOwner_KeyUp);
             // 
             // cmbAccountOwner
             // 
@@ -92,6 +115,7 @@
             this.txtbPassword.Name = "txtbPassword";
             this.txtbPassword.Size = new System.Drawing.Size(306, 29);
             this.txtbPassword.TabIndex = 5;
+            this.txtbPassword.UseSystemPasswordChar = true;
             this.txtbPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtbPassword_KeyUp);
             // 
             // txtbLoginName
@@ -147,29 +171,6 @@
             this.label1.Size = new System.Drawing.Size(133, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên Đăng Nhập:";
-            // 
-            // btnOk
-            // 
-            this.btnOk.Appearance.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOk.Appearance.Options.UseFont = true;
-            this.btnOk.Location = new System.Drawing.Point(168, 341);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(129, 36);
-            this.btnOk.TabIndex = 9;
-            this.btnOk.Text = "Đồng Ý";
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            this.btnOk.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cmbAccountOwner_KeyUp);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Appearance.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Appearance.Options.UseFont = true;
-            this.btnExit.Location = new System.Drawing.Point(383, 341);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(128, 36);
-            this.btnExit.TabIndex = 10;
-            this.btnExit.Text = "Thoát";
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // CreateAccount
             // 

@@ -40,7 +40,7 @@ namespace CSDLPT {
                 this.taLop.Connection.ConnectionString = Program.connstr;
                 this.taKhoa.Connection.ConnectionString = Program.connstr;
                 this.taDiem.Connection.ConnectionString = Program.connstr;
-                this.taHocPhi.Connection.ConnectionString = Program.connstr;
+                //this.taHocPhi.Connection.ConnectionString = Program.connstr;
                 this.taAllClass.Connection.ConnectionString = Program.connstr;
 
                 // TODO: This line of code loads data into the 'dS_SERVER1.KHOA' table. You can move, or remove it, as needed.
@@ -52,7 +52,7 @@ namespace CSDLPT {
                 // TODO: This line of code loads data into the 'dS_SERVER1.DIEM' table. You can move, or remove it, as needed.
                 this.taDiem.Fill(this.dS_SERVER1.DIEM);
                 // TODO: This line of code loads data into the 'dS_SERVER1.HOCPHI' table. You can move, or remove it, as needed.
-                this.taHocPhi.Fill(this.dS_SERVER1.HOCPHI);
+                //this.taHocPhi.Fill(this.dS_SERVER1.HOCPHI);
                 // TODO: This line of code loads data into the 'dS_SERVER1.AllClass' table. You can move, or remove it, as needed.
                 this.taAllClass.AllClass(this.dS_SERVER1.AllClass);
             } catch (Exception ex) {
@@ -363,6 +363,38 @@ namespace CSDLPT {
 
             //Validate
             Console.WriteLine(dgvtxbMaSV.ToString());
+            //Update database
+            //Check xem khóa có hợp lệ ở site chủ hay k
+            Boolean isExistMaSVManh = true;
+            Boolean isExistMaSVGlobal = true;
+            string queryMaSVGlobal = $"SELECT MASV FROM LINK0.QLDSV.dbo.SINHVIEN WHERE MASV='{dgvtxbMaSV}'";
+            string queryMaSVManh = $"SELECT MASV FROM dbo.SINHVIEN WHERE MASV='{dgvtxbMaSV}'";
+
+            SqlDataReader myReader = Program.ExecSqlDataReader(queryMaSVManh);
+            myReader.Close();
+            if (myReader == null) {
+                isExistMaSVManh = false;
+            } else {
+                bdsLop.EndEdit();
+                bdsLop.ResetCurrentItem();
+                MessageBox.Show("Mã sinh viên bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txbMaLop.Focus();
+                return;
+            }
+
+            if (!isExistMaSVManh) {
+                myReader = Program.ExecSqlDataReader(queryMaSVGlobal);
+                myReader.Close();
+                if (myReader == null) {
+                    isExistMaSVGlobal = false;
+                } else {
+                    bdsLop.EndEdit();
+                    bdsLop.ResetCurrentItem();
+                    MessageBox.Show("Mã sinh viên bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txbMaLop.Focus();
+                    return;
+                }
+            }
 
             try {
                 bdsSV.EndEdit();
@@ -412,10 +444,11 @@ namespace CSDLPT {
                 MessageBox.Show("Sinh viên có điểm thi không được xóa!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (bdsHocPhi.Count > 0) {
-                MessageBox.Show("Sinh viên đã đóng học phí không được xóa!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            //Check lại trên site chủ
+            //if (bdsHocPhi.Count > 0) {
+            //MessageBox.Show("Sinh viên đã đóng học phí không được xóa!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //return;
+            //}
             DialogResult dialogResult = MessageBox.Show("Bạn muốn xóa sinh viên này?", string.Empty, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes) {
                 try {
@@ -766,7 +799,7 @@ namespace CSDLPT {
                     this.taLop.Connection.ConnectionString = Program.connstr;
                     this.taKhoa.Connection.ConnectionString = Program.connstr;
                     this.taDiem.Connection.ConnectionString = Program.connstr;
-                    this.taHocPhi.Connection.ConnectionString = Program.connstr;
+                    //this.taHocPhi.Connection.ConnectionString = Program.connstr;
 
                     // TODO: This line of code loads data into the 'dS_SERVER1.KHOA' table. You can move, or remove it, as needed.
                     this.taKhoa.Fill(this.dS_SERVER1.KHOA);
@@ -777,7 +810,7 @@ namespace CSDLPT {
                     // TODO: This line of code loads data into the 'dS_SERVER1.DIEM' table. You can move, or remove it, as needed.
                     this.taDiem.Fill(this.dS_SERVER1.DIEM);
                     // TODO: This line of code loads data into the 'dS_SERVER1.HOCPHI' table. You can move, or remove it, as needed.
-                    this.taHocPhi.Fill(this.dS_SERVER1.HOCPHI);
+                    //this.taHocPhi.Fill(this.dS_SERVER1.HOCPHI);
                 } catch (Exception ex) {
                     Console.WriteLine(ex.Message);
                 }

@@ -76,10 +76,22 @@ namespace CSDLPT {
                 $"'{cmbAccountOwner.SelectedValue.ToString().Trim()}', " +
                 $"'{cmbRole.SelectedValue.ToString()}'";
             SqlDataReader myReader = Program.ExecSqlDataReader(query);
+            myReader.Close();
             if (myReader != null) {
                 MessageBox.Show("Tạo tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtbLoginName.Text = "";
                 txtbPassword.Text = "";
+                //this.Close();
+                DataTable dt = new DataTable();
+                dt = Program.ExecSqlDataTable("EXEC SP_GIANGVIENCHUACOTAIKHOAN");
+                cmbAccountOwner.DataSource = dt;
+                cmbAccountOwner.DisplayMember = "TEN";
+                cmbAccountOwner.ValueMember = "MAGV";
+                if (cmbAccountOwner.Items.Count == 0) {
+                    cmbAccountOwner.SelectedText = "Không còn người để tạo tài khoản";
+                    cmbAccountOwner.Enabled = false;
+                }
+                btnOk.Enabled = false;
             }
             return;
         }
