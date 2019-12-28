@@ -120,9 +120,9 @@ namespace CSDLPT {
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
-            Form frm = this.checkExist(typeof(InDSDongTien));
+            Form frm = this.checkExist(typeof(InDSDongHocPhi));
             if (frm == null) {
-                InDSDongTien inDanhSachDongTien = new InDSDongTien();
+                InDSDongHocPhi inDanhSachDongTien = new InDSDongHocPhi();
                 inDanhSachDongTien.MdiParent = this;
                 inDanhSachDongTien.Show();
             } else

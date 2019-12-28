@@ -14,12 +14,14 @@ using DevExpress.XtraReports.UI;
 namespace CSDLPT.ReportForm {
     public partial class InDSSV : DevExpress.XtraEditors.XtraForm {
         private string khoa = "";
+        private string tenServer = string.Empty;
 
         public InDSSV() {
             InitializeComponent();
         }
 
         private void InDSSV_Load(object sender, EventArgs e) {
+            tenServer = ((DataRowView)Program.bds_dspm.Current)["TENSERVER"].ToString();
             dS_SERVER1.EnforceConstraints = false;
             this.taLop.Connection.ConnectionString = Program.connstr;
             // TODO: This line of code loads data into the 'dS_SERVER1.LOP' table. You can move, or remove it, as needed.
@@ -60,6 +62,7 @@ namespace CSDLPT.ReportForm {
             }
             InDanhSachSinhVienLop rpt = new InDanhSachSinhVienLop(khoa, cmbLop.SelectedValue.ToString());
             rpt.lbLop.Text = cmbLop.SelectedValue.ToString();
+            rpt.lbTenLop.Text = cmbLop.Text;
             rpt.lbKhoa.Text = khoa;
             ReportPrintTool print = new ReportPrintTool(rpt);
             print.ShowPreviewDialog();
@@ -103,6 +106,10 @@ namespace CSDLPT.ReportForm {
                 if (cmbChiNhanh.SelectedIndex == 1)
                     khoa = "VT";
             }
+        }
+
+        private void InDSSV_FormClosing(object sender, FormClosingEventArgs e) {
+            Program.servername = tenServer;
         }
     }
 }

@@ -14,12 +14,14 @@ using CSDLPT.Report;
 namespace CSDLPT.ReportForm {
     public partial class InBD : DevExpress.XtraEditors.XtraForm {
         private string khoa = "";
+        private string tenServer = string.Empty;
 
         public InBD() {
             InitializeComponent();
         }
 
         private void InBangDiem_Load(object sender, EventArgs e) {
+            tenServer = ((DataRowView)Program.bds_dspm.Current)["TENSERVER"].ToString();
             dS_SERVER1.EnforceConstraints = false;
             this.taLop.Connection.ConnectionString = Program.connstr;
             this.taMonHoc.Connection.ConnectionString = Program.connstr;
@@ -126,10 +128,15 @@ namespace CSDLPT.ReportForm {
             }
             InBangDiem rpt = new InBangDiem(cmbLop.SelectedValue.ToString(), cmbMonHoc.SelectedValue.ToString(), short.Parse(cmbLanThi.Text));
             rpt.lbLop.Text = cmbLop.Text.Trim();
+            rpt.lbMaLop.Text = cmbLop.SelectedValue.ToString();
             rpt.lbMonHoc.Text = cmbMonHoc.Text.Trim();
             rpt.lbLanThi.Text = cmbLanThi.Text;
             ReportPrintTool print = new ReportPrintTool(rpt);
             print.ShowPreviewDialog();
+        }
+
+        private void InBD_FormClosing(object sender, FormClosingEventArgs e) {
+            Program.servername = tenServer;
         }
     }
 }

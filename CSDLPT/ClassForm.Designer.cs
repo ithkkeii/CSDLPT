@@ -65,13 +65,13 @@
             this.txbTenLop = new System.Windows.Forms.TextBox();
             this.txbMaLop = new System.Windows.Forms.TextBox();
             this.flyoutPanel1 = new DevExpress.Utils.FlyoutPanel();
-            this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.cmbChangeClass = new System.Windows.Forms.ComboBox();
             this.bdsAllClass = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txteMaLop = new DevExpress.XtraEditors.TextEdit();
+            this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
             this.tENTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.hOTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.txteMaSV = new DevExpress.XtraEditors.TextEdit();
@@ -114,9 +114,9 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).BeginInit();
             this.flyoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsAllClass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txteMaLop.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tENTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hOTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txteMaSV.Properties)).BeginInit();
@@ -294,34 +294,34 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.barDockControlTop.Size = new System.Drawing.Size(1930, 22);
+            this.barDockControlTop.Size = new System.Drawing.Size(1930, 20);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 754);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 757);
             this.barDockControlBottom.Manager = this.barManager;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1930, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1930, 20);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 22);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
             this.barDockControlLeft.Manager = this.barManager;
             this.barDockControlLeft.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 732);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 737);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1930, 22);
+            this.barDockControlRight.Location = new System.Drawing.Point(1930, 20);
             this.barDockControlRight.Manager = this.barManager;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 732);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 737);
             // 
             // barButtonItem1
             // 
@@ -364,7 +364,7 @@
             this.panel1.Controls.Add(this.cmbKhoaInUse);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 22);
+            this.panel1.Location = new System.Drawing.Point(0, 20);
             this.panel1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1930, 67);
@@ -398,7 +398,7 @@
             this.gcLop.Dock = System.Windows.Forms.DockStyle.Top;
             this.gcLop.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(0);
             this.gcLop.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gcLop.Location = new System.Drawing.Point(0, 89);
+            this.gcLop.Location = new System.Drawing.Point(0, 87);
             this.gcLop.MainView = this.gridView1;
             this.gcLop.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.gcLop.MenuManager = this.barManager;
@@ -477,9 +477,9 @@
             this.groupBox1.Controls.Add(this.txbMaLop);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(0, 396);
+            this.groupBox1.Location = new System.Drawing.Point(0, 394);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(917, 358);
+            this.groupBox1.Size = new System.Drawing.Size(917, 363);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             // 
@@ -540,11 +540,6 @@
             this.flyoutPanel1.Size = new System.Drawing.Size(493, 260);
             this.flyoutPanel1.TabIndex = 37;
             this.flyoutPanel1.Load += new System.EventHandler(this.flyoutPanel1_Load);
-            // 
-            // bdsSV
-            // 
-            this.bdsSV.DataMember = "FK_SINHVIEN_LOP";
-            this.bdsSV.DataSource = this.bdsLop;
             // 
             // btnCancel
             // 
@@ -619,6 +614,11 @@
             this.txteMaLop.Size = new System.Drawing.Size(124, 26);
             this.txteMaLop.TabIndex = 8;
             // 
+            // bdsSV
+            // 
+            this.bdsSV.DataMember = "FK_SINHVIEN_LOP";
+            this.bdsSV.DataSource = this.bdsLop;
+            // 
             // tENTextEdit
             // 
             this.tENTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSV, "TEN", true));
@@ -682,11 +682,11 @@
             this.dgvSV.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.dgvSV.DataSource = this.bdsSV;
             this.dgvSV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSV.Location = new System.Drawing.Point(917, 396);
+            this.dgvSV.Location = new System.Drawing.Point(917, 394);
             this.dgvSV.Name = "dgvSV";
             this.dgvSV.ReadOnly = true;
             this.dgvSV.RowTemplate.Height = 30;
-            this.dgvSV.Size = new System.Drawing.Size(1013, 358);
+            this.dgvSV.Size = new System.Drawing.Size(1013, 363);
             this.dgvSV.TabIndex = 32;
             this.dgvSV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSV_CellEndEdit);
             this.dgvSV.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSV_CellValidating);
@@ -882,9 +882,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).EndInit();
             this.flyoutPanel1.ResumeLayout(false);
             this.flyoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsAllClass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txteMaLop.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tENTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hOTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txteMaSV.Properties)).EndInit();

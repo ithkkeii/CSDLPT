@@ -586,8 +586,10 @@ namespace CSDLPT {
             string strLenh = "SELECT MALOP,TENLOP FROM LINK0.QLDSV.dbo.LOP";
             DataTable dt = new DataTable();
             dt = Program.ExecSqlDataTable(strLenh);
-            Program.bds_dspm.DataSource = dt;
-            cmbChangeClass.DataSource = dt;
+            BindingSource bds = new BindingSource();
+            bds.DataSource = dt;
+            bds.Filter = $"MALOP <> '{txteMaLop.Text}'";
+            cmbChangeClass.DataSource = bds.DataSource;
             cmbChangeClass.DisplayMember = "TENLOP";
             cmbChangeClass.ValueMember = "MALOP";
 

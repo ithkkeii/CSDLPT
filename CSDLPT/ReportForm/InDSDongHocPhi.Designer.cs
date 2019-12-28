@@ -1,5 +1,5 @@
 ﻿namespace CSDLPT.ReportForm {
-    partial class InDSDongTien {
+    partial class InDSDongHocPhi {
         /// <summary>
         /// Required designer variable.
         /// </summary>

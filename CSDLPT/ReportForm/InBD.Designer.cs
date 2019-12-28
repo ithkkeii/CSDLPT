@@ -197,7 +197,7 @@
             this.cmbLanThi.Size = new System.Drawing.Size(39, 29);
             this.cmbLanThi.TabIndex = 11;
             // 
-            // InBangDiem
+            // InBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -212,8 +212,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "InBangDiem";
+            this.Name = "InBD";
             this.Text = "InBangDiem";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InBD_FormClosing);
             this.Load += new System.EventHandler(this.InBangDiem_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_SERVER1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();

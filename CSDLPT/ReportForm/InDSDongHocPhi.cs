@@ -12,8 +12,8 @@ using CSDLPT.Report;
 using DevExpress.XtraReports.UI;
 
 namespace CSDLPT.ReportForm {
-    public partial class InDSDongTien : DevExpress.XtraEditors.XtraForm {
-        public InDSDongTien() {
+    public partial class InDSDongHocPhi : DevExpress.XtraEditors.XtraForm {
+        public InDSDongHocPhi() {
             InitializeComponent();
         }
 
@@ -59,9 +59,10 @@ namespace CSDLPT.ReportForm {
             InDanhSachDongHocPhi rpt = new InDanhSachDongHocPhi(cmbMaLop.SelectedValue.ToString(),
                 int.Parse(cmbHocKy.SelectedItem.ToString()),
                 cmbNienKhoa.SelectedItem.ToString());
-            //double soTien = Double.Parse(rpt.lbSoTienDaDong.Text);
-            //string soTienStr = ChuyenSoSangChuoi(soTien);
-            //rpt.lbTienChu.Text = soTienStr;
+            rpt.lbTenLop.Text = cmbMaLop.Text;
+            rpt.lbMaLop.Text = cmbMaLop.SelectedValue.ToString();
+            rpt.lbNienKhoa.Text = cmbNienKhoa.SelectedItem.ToString();
+            rpt.lbHocKy.Text = cmbHocKy.SelectedItem.ToString();
             ReportPrintTool print = new ReportPrintTool(rpt);
             print.ShowPreviewDialog();
         }

@@ -144,6 +144,7 @@
             this.Controls.Add(this.label1);
             this.Name = "InDSSV";
             this.Text = "InDSSV";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InDSSV_FormClosing);
             this.Load += new System.EventHandler(this.InDSSV_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_SERVER1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).EndInit();
