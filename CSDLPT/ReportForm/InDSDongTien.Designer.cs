@@ -123,7 +123,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbMaLop);
             this.Name = "InDSDongTien";
-            this.Text = "InDSDongTien";
+            this.Text = "-";
             this.Load += new System.EventHandler(this.InDSDongTien_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

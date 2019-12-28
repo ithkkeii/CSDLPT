@@ -24,6 +24,9 @@ namespace CSDLPT {
         private int vitriSV;
         private DataGridViewCell currentCell;
         private int dataGridViewMode = 0;
+        private bool isEdit = false;
+        private bool isAdd = false;
+        private bool isEditSV = false;
 
         public ClassForm() {
             InitializeComponent();
@@ -65,7 +68,8 @@ namespace CSDLPT {
             //if (bds_dspm_currentForm.Count.Equals(3))
             //    bds_dspm_currentForm.RemoveAt(bds_dspm_currentForm.Count - 1);
 
-            bds_dspm_currentForm.Filter = "TENSERVER <> 'DESKTOP-0VD6HF8\\SERVER3'";
+            //bds_dspm_currentForm.Filter = "TENSERVER <> 'DESKTOP-0VD6HF8\\SERVER3'";
+            bds_dspm_currentForm.Filter = $"TENPM LIKE '{Program.prefix}*'";
 
             this.cmbKhoaInUse.DataSource = bds_dspm_currentForm.DataSource;
             this.cmbKhoaInUse.SelectedIndex = Program.mChinhanh;
@@ -103,6 +107,9 @@ namespace CSDLPT {
             bbtnRecovery.Enabled = true;
             bbtnWrite.Enabled = true;
 
+            isAdd = true;
+            isEdit = false;
+
             cmbKhoaInUse.Enabled = false;
         }
 
@@ -134,86 +141,122 @@ namespace CSDLPT {
 
             //Update database
             //Check xem khóa có hợp lệ ở site chủ hay k
-            Boolean isExistMaLopManh = true;
-            Boolean isExistMaLopGlobal = true;
-            Boolean isExistTenLopManh = true;
-            Boolean isExistTenLopGlobal = true;
-            string queryMaLopGlobal = $"SELECT MALOP FROM LINK0.QLDSV.dbo.LOP WHERE MALOP='{txbMaLop}'";
-            string queryTenLopGlobal = $"SELECT MALOP FROM LINK0.QLDSV.dbo.LOP WHERE TENLOP='{txbTenLop}'";
-            string queryMaLopManh = $"SELECT MALOP FROM dbo.LOP WHERE MALOP='{txbMaLop}'";
-            string queryTenLopManh = $"SELECT MALOP FROM dbo.LOP WHERE TENLOP='{txbTenLop}'";
+            //Boolean isExistMaLopManh = true;
+            //Boolean isExistMaLopGlobal = true;
+            //Boolean isExistTenLopManh = true;
+            //Boolean isExistTenLopGlobal = true;
+            //string queryMaLopGlobal = $"SELECT MALOP FROM LINK0.QLDSV.dbo.LOP WHERE MALOP='{txbMaLop}'";
+            //string queryTenLopGlobal = $"SELECT MALOP FROM LINK0.QLDSV.dbo.LOP WHERE TENLOP='{txbTenLop}'";
+            //string queryMaLopManh = $"SELECT MALOP FROM dbo.LOP WHERE MALOP='{txbMaLop}'";
+            //string queryTenLopManh = $"SELECT MALOP FROM dbo.LOP WHERE TENLOP='{txbTenLop}'";
 
-            SqlDataReader myReader = Program.ExecSqlDataReader(queryMaLopManh);
-            myReader.Close();
-            if (myReader == null) {
-                isExistMaLopManh = false;
-            } else {
-                bdsLop.EndEdit();
-                bdsLop.ResetCurrentItem();
-                MessageBox.Show("Mã lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txbMaLop.Focus();
-                return;
-            }
+            //SqlDataReader myReader = Program.ExecSqlDataReader(queryMaLopManh);
+            //myReader.Close();
+            //if (myReader == null) {
+            //    isExistMaLopManh = false;
+            //} else {
+            //    bdsLop.EndEdit();
+            //    bdsLop.ResetCurrentItem();
+            //    MessageBox.Show("Mã lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    txbMaLop.Focus();
+            //    return;
+            //}
 
-            if (!isExistMaLopManh) {
-                myReader = Program.ExecSqlDataReader(queryMaLopGlobal);
-                myReader.Close();
-                if (myReader == null) {
-                    isExistMaLopGlobal = false;
-                } else {
-                    bdsLop.EndEdit();
-                    bdsLop.ResetCurrentItem();
-                    MessageBox.Show("Mã lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txbMaLop.Focus();
-                    return;
-                }
-            }
+            //if (!isExistMaLopManh) {
+            //    myReader = Program.ExecSqlDataReader(queryMaLopGlobal);
+            //    myReader.Close();
+            //    if (myReader == null) {
+            //        isExistMaLopGlobal = false;
+            //    } else {
+            //        bdsLop.EndEdit();
+            //        bdsLop.ResetCurrentItem();
+            //        MessageBox.Show("Mã lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        txbMaLop.Focus();
+            //        return;
+            //    }
+            //}
 
-            myReader = Program.ExecSqlDataReader(queryTenLopManh);
-            myReader.Close();
-            if (myReader == null) {
-                isExistTenLopManh = false;
-            } else {
-                bdsLop.EndEdit();
-                bdsLop.ResetCurrentItem();
-                MessageBox.Show("Tên lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txbMaLop.Focus();
-                return;
-            }
+            //myReader = Program.ExecSqlDataReader(queryTenLopManh);
+            //myReader.Close();
+            //if (myReader == null) {
+            //    isExistTenLopManh = false;
+            //} else {
+            //    bdsLop.EndEdit();
+            //    bdsLop.ResetCurrentItem();
+            //    MessageBox.Show("Tên lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    txbMaLop.Focus();
+            //    return;
+            //}
 
-            if (!isExistTenLopManh) {
-                myReader = Program.ExecSqlDataReader(queryTenLopGlobal);
-                myReader.Close();
-                if (myReader == null) {
-                    isExistTenLopGlobal = false;
-                } else {
-                    bdsLop.EndEdit();
-                    bdsLop.ResetCurrentItem();
-                    MessageBox.Show("Tên lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txbMaLop.Focus();
-                    return;
-                }
-            }
+            //if (!isExistTenLopManh) {
+            //    myReader = Program.ExecSqlDataReader(queryTenLopGlobal);
+            //    myReader.Close();
+            //    if (myReader == null) {
+            //        isExistTenLopGlobal = false;
+            //    } else {
+            //        bdsLop.EndEdit();
+            //        bdsLop.ResetCurrentItem();
+            //        MessageBox.Show("Tên lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        txbMaLop.Focus();
+            //        return;
+            //    }
+            //}
+            int mode = 0;
+            if (isEdit == true && isAdd == false)
+                mode = 1;
+            //string strLenh = $"EXEC SP_ISLOPEXIST {mode}, '{txbMaLop.Text}', '{txbTenLop.Text}'";
+            string strLenh = $"SP_ISLOPEXIST";
+            //SqlDataReader myReader = Program.ExecSqlDataReader(strLenh);
 
+            SqlCommand sqlcmd = new SqlCommand(strLenh, Program.conn);
+            sqlcmd.CommandType = CommandType.StoredProcedure;
+            sqlcmd.Parameters.AddWithValue("MODE", mode);
+            sqlcmd.Parameters.AddWithValue("MALOP", txbMaLop.Text);
+            sqlcmd.Parameters.AddWithValue("TENLOP", txbTenLop.Text);
+            var returnParameter = sqlcmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+
+            if (Program.conn.State == ConnectionState.Closed)
+                Program.conn.Open();
             try {
-                bdsLop.EndEdit();
-                bdsLop.ResetCurrentItem();
-                if (dS_SERVER1.HasChanges())
-                    taLop.Update(dS_SERVER1.LOP);
+                sqlcmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+                Program.conn.Close();
+                MessageBox.Show(ex.Message, string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            //Console.WriteLine(returnParameter.Value);
 
-            } catch (SqlException err) {
-                Console.WriteLine(err.Message);
-                if (err.Message.Contains("PRIMARY")) {
+            if (returnParameter.Value.Equals(1) || returnParameter.Value.Equals(2)) {
+                if (returnParameter.Value.Equals(1)) {
                     MessageBox.Show("Mã lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txbMaLop.Focus();
                     return;
-                } else if (err.Message.Contains("UNIQUE")) {
+                } else {
                     MessageBox.Show("Tên lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txbTenLop.Focus();
                     return;
-                } else {
-                    MessageBox.Show("Lỗi tạo lớp, vui lòng xem lại!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                }
+            } else {
+                try {
+                    bdsLop.EndEdit();
+                    bdsLop.ResetCurrentItem();
+                    if (dS_SERVER1.HasChanges())
+                        taLop.Update(dS_SERVER1.LOP);
+
+                } catch (SqlException err) {
+                    if (err.Message.Contains("PRIMARY")) {
+                        MessageBox.Show("Mã lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txbMaLop.Focus();
+                        return;
+                    } else if (err.Message.Contains("UNIQUE")) {
+                        MessageBox.Show("Tên lớp bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txbTenLop.Focus();
+                        return;
+                    } else {
+                        MessageBox.Show("Lỗi tạo lớp, vui lòng xem lại!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
 
@@ -226,6 +269,9 @@ namespace CSDLPT {
             gcLop.Enabled = true;
             groupBox1.Enabled = false;
 
+            isEdit = false;
+            isAdd = false;
+
             cmbKhoaInUse.Enabled = true;
         }
 
@@ -237,8 +283,12 @@ namespace CSDLPT {
             bbtnRecovery.Enabled = true;
             //bbtnRefresh.Enable = true;
             groupBox1.Enabled = true;
+            txbMaLop.ReadOnly = true;
             gcLop.Enabled = false;
             vitri = bdsLop.Position;
+
+            isAdd = false;
+            isEdit = true;
 
             cmbKhoaInUse.Enabled = false;
             return;
@@ -277,6 +327,9 @@ namespace CSDLPT {
             bbtnRemove.Enabled = true;
             bbtnWrite.Enabled = false;
             bbtnRecovery.Enabled = false;
+
+            isEdit = false;
+            isAdd = false;
 
             cmbKhoaInUse.Enabled = true;
         }
@@ -338,6 +391,7 @@ namespace CSDLPT {
             tsWrite.Enabled = true;
             tsRecovery.Enabled = true;
             tsChangeClass.Enabled = false;
+            isEditSV = true;
 
             //View control
             gcLop.Enabled = false;
@@ -362,36 +416,33 @@ namespace CSDLPT {
             dataGridViewMode = 0;
 
             //Validate
-            Console.WriteLine(dgvtxbMaSV.ToString());
+            Console.WriteLine(dgvSV.Rows[dgvSV.Rows.Count - 1].Cells["dgvtxbMaSV"].Value);
             //Update database
             //Check xem khóa có hợp lệ ở site chủ hay k
-            Boolean isExistMaSVManh = true;
-            Boolean isExistMaSVGlobal = true;
-            string queryMaSVGlobal = $"SELECT MASV FROM LINK0.QLDSV.dbo.SINHVIEN WHERE MASV='{dgvtxbMaSV}'";
-            string queryMaSVManh = $"SELECT MASV FROM dbo.SINHVIEN WHERE MASV='{dgvtxbMaSV}'";
+            if (isEditSV == false) {
+                string masv = dgvSV.Rows[dgvSV.Rows.Count - 1].Cells["dgvtxbMaSV"].Value.ToString(); //mã sinh viên của dòng add new
+                string strLenh = "SP_ISSINHVIENEXIST";
+                SqlCommand sqlcmd = new SqlCommand(strLenh, Program.conn);
+                sqlcmd.CommandType = CommandType.StoredProcedure;
+                sqlcmd.Parameters.AddWithValue("MASV", masv);
+                var returnParameter = sqlcmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                returnParameter.Direction = ParameterDirection.ReturnValue;
 
-            SqlDataReader myReader = Program.ExecSqlDataReader(queryMaSVManh);
-            myReader.Close();
-            if (myReader == null) {
-                isExistMaSVManh = false;
-            } else {
-                bdsLop.EndEdit();
-                bdsLop.ResetCurrentItem();
-                MessageBox.Show("Mã sinh viên bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txbMaLop.Focus();
-                return;
-            }
+                if (Program.conn.State == ConnectionState.Closed)
+                    Program.conn.Open();
+                try {
+                    sqlcmd.ExecuteNonQuery();
+                } catch (Exception ex) {
+                    Program.conn.Close();
+                    MessageBox.Show(ex.Message);
+                }
 
-            if (!isExistMaSVManh) {
-                myReader = Program.ExecSqlDataReader(queryMaSVGlobal);
-                myReader.Close();
-                if (myReader == null) {
-                    isExistMaSVGlobal = false;
-                } else {
-                    bdsLop.EndEdit();
-                    bdsLop.ResetCurrentItem();
+                Console.WriteLine(returnParameter.Value);
+
+                if (returnParameter.Value.Equals(1)) {
+                    //bdsLop.EndEdit();
+                    //bdsLop.ResetCurrentItem();
                     MessageBox.Show("Mã sinh viên bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txbMaLop.Focus();
                     return;
                 }
             }
@@ -427,6 +478,7 @@ namespace CSDLPT {
             tsWrite.Enabled = false;
             tsRecovery.Enabled = false;
             tsChangeClass.Enabled = true;
+            isEditSV = false;
 
             //View control
             gcLop.Enabled = true;
@@ -500,6 +552,7 @@ namespace CSDLPT {
             tsWrite.Enabled = false;
             tsRecovery.Enabled = false;
             tsChangeClass.Enabled = true;
+            isEditSV = false;
 
             //View control
             gcLop.Enabled = true;
@@ -511,12 +564,12 @@ namespace CSDLPT {
             cmbKhoaInUse.Enabled = true;
             bdsSV.Position = vitriSV;
         }
-
+        Dictionary<string, string> list = null;
         private void tsChangeClass_Click(object sender, EventArgs e) {
             flyoutPanel1.ShowPopup();
 
-            //Không bind dữ liệu, không chuyển sv ra khỏi khoa
-            Dictionary<string, string> list = new Dictionary<string, string>();
+            //Không bind dữ liệu, các lớp của khoa
+            list = new Dictionary<string, string>();
             for (int i = 0; i < gridView1.DataRowCount; i++) {
                 if (!gridView1
                     .GetRowCellValue(i, "MALOP")
@@ -525,9 +578,19 @@ namespace CSDLPT {
                     list.Add(gridView1.GetRowCellValue(i, "TENLOP").ToString(),
                         gridView1.GetRowCellValue(i, "MALOP").ToString());
             }
-            cmbChangeClass.DataSource = list.ToList();
-            cmbChangeClass.DisplayMember = "Key";
-            cmbChangeClass.ValueMember = "Value";
+            //cmbChangeClass.DataSource = list.ToList();
+            //cmbChangeClass.DisplayMember = "Key";
+            //cmbChangeClass.ValueMember = "Value";
+
+            //
+            string strLenh = "SELECT MALOP,TENLOP FROM LINK0.QLDSV.dbo.LOP";
+            DataTable dt = new DataTable();
+            dt = Program.ExecSqlDataTable(strLenh);
+            Program.bds_dspm.DataSource = dt;
+            cmbChangeClass.DataSource = dt;
+            cmbChangeClass.DisplayMember = "TENLOP";
+            cmbChangeClass.ValueMember = "MALOP";
+
 
             //Auto choose first item
             //Không cần trick chọn 1 xong 0 vẫn ok ? 
@@ -564,21 +627,27 @@ namespace CSDLPT {
 
             string maSinhVienChuyenLop = txteMaSV.Text.ToString();
             string maLopMoi = cmbChangeClass.SelectedValue.ToString();
+            string tenLopMoi = cmbChangeClass.Text.ToString();
 
-            for (int i = 0; i < dgvSV.Rows.Count; i++) {
-                DataGridViewCell cell = dgvSV.Rows[i].Cells["dgvtxbMASV"];
-                if (cell.Value.ToString().Equals(maSinhVienChuyenLop)) {
-                    dgvSV.Rows[i].Cells["dgvtxbMALOP"].Value = maLopMoi;
-                    try {
-                        bdsSV.EndEdit();
-                        if (dS_SERVER1.HasChanges())
-                            taSV.Update(dS_SERVER1.SINHVIEN);
-                        this.taSV.Fill(this.dS_SERVER1.SINHVIEN);
-                    } catch (Exception ex) {
-                        Console.WriteLine(ex.Message);
+            string result = "";
+            if (list.TryGetValue(tenLopMoi, out result)) {
+                for (int i = 0; i < dgvSV.Rows.Count; i++) {
+                    DataGridViewCell cell = dgvSV.Rows[i].Cells["dgvtxbMASV"];
+                    if (cell.Value.ToString().Equals(maSinhVienChuyenLop)) {
+                        dgvSV.Rows[i].Cells["dgvtxbMALOP"].Value = maLopMoi;
+                        try {
+                            bdsSV.EndEdit();
+                            if (dS_SERVER1.HasChanges())
+                                taSV.Update(dS_SERVER1.SINHVIEN);
+                            this.taSV.Fill(this.dS_SERVER1.SINHVIEN);
+                        } catch (Exception ex) {
+                            Console.WriteLine(ex.Message);
+                        }
+                        break;
                     }
-                    break;
                 }
+            } else {
+                return;
             }
 
 

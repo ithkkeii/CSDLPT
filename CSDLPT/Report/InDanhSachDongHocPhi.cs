@@ -1,8 +1,5 @@
-﻿using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraReports.UI;
+using System;
 
 namespace CSDLPT.Report {
     public partial class InDanhSachDongHocPhi : DevExpress.XtraReports.UI.XtraReport {
@@ -33,11 +30,11 @@ namespace CSDLPT.Report {
 
         public String NumberToTextVN(decimal total) {
             try {
-                string rs = "";
+                string rs = string.Empty;
                 total = Math.Round(total, 0);
                 string[] ch = { "không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín" };
-                string[] rch = { "lẻ", "mốt", "", "", "", "lăm" };
-                string[] u = { "", "mươi", "trăm", "ngàn", "", "", "triệu", "", "", "tỷ", "", "", "ngàn", "", "", "triệu" };
+                string[] rch = { "lẻ", "mốt", string.Empty, string.Empty, string.Empty, "lăm" };
+                string[] u = { string.Empty, "mươi", "trăm", "ngàn", string.Empty, string.Empty, "triệu", string.Empty, string.Empty, "tỷ", string.Empty, string.Empty, "ngàn", string.Empty, string.Empty, "triệu" };
                 string nstr = total.ToString();
 
                 int[] n = new int[nstr.Length];
@@ -87,7 +84,7 @@ namespace CSDLPT.Report {
                         }
                     }
 
-                    rs += (rs == "" ? " " : ", ") + ch[n[i]];// đọc số
+                    rs += (rs == string.Empty ? " " : ", ") + ch[n[i]];// đọc số
                     rs += " " + (i % 3 == 0 ? u[i] : u[i % 3]);// đọc đơn vị
                 }
                 if (rs[rs.Length - 1] != ' ')
@@ -103,7 +100,7 @@ namespace CSDLPT.Report {
                 }
                 return rs.Trim().Replace("lẻ,", "lẻ").Replace("mươi,", "mươi").Replace("trăm,", "trăm").Replace("mười,", "mười");
             } catch {
-                return "";
+                return string.Empty;
             }
 
         }

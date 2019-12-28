@@ -11,11 +11,35 @@ namespace CSDLPT {
                 InitializeBindings();
 
             //Authorize
-            if (Program.mChinhanh == 2) {
-                bbtnModifyClass.Enabled = false;
+            if (Program.mGroup.Equals("PKETOAN")) {
                 bbtnSubject.Enabled = false;
-            } else {
+                bbtnModifyClass.Enabled = false;
+                bbtnModifyMark.Enabled = false;
+                bbtnCreateAccount.Enabled = true;
+                bbtnSchoolFee.Enabled = true;
+                bbtnInDSSV.Enabled = false;
+                bbtnInBangDiem.Enabled = false;
+                bbtnInDSDongTien.Enabled = true;
+            }
+            if (Program.mGroup.Equals("PGV")) {
+                bbtnSubject.Enabled = true;
+                bbtnModifyClass.Enabled = true;
+                bbtnModifyMark.Enabled = true;
+                bbtnCreateAccount.Enabled = true;
                 bbtnSchoolFee.Enabled = false;
+                bbtnInDSSV.Enabled = true;
+                bbtnInBangDiem.Enabled = true;
+                bbtnInDSDongTien.Enabled = false;
+            }
+            if (Program.mGroup.Equals("KHOA")) {
+                bbtnSubject.Enabled = false;
+                bbtnModifyClass.Enabled = false;
+                bbtnModifyMark.Enabled = true;
+                bbtnCreateAccount.Enabled = true;
+                bbtnSchoolFee.Enabled = false;
+                bbtnInDSSV.Enabled = true;
+                bbtnInBangDiem.Enabled = true;
+                bbtnInDSDongTien.Enabled = false;
             }
         }
 
@@ -36,11 +60,11 @@ namespace CSDLPT {
         }
 
         private void barButtonSV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
-            Form frm = this.checkExist(typeof(StudentForm));
+            Form frm = this.checkExist(typeof(SubjectForm));
             if (frm == null) {
-                StudentForm stuForm = new StudentForm();
-                stuForm.MdiParent = this;
-                stuForm.Show();
+                SubjectForm subForm = new SubjectForm();
+                subForm.MdiParent = this;
+                subForm.Show();
             } else
                 frm.Activate();
         }
@@ -101,6 +125,16 @@ namespace CSDLPT {
                 InDSDongTien inDanhSachDongTien = new InDSDongTien();
                 inDanhSachDongTien.MdiParent = this;
                 inDanhSachDongTien.Show();
+            } else
+                frm.Activate();
+        }
+
+        private void bbtnModifyMark_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            Form frm = this.checkExist(typeof(MarkForm));
+            if (frm == null) {
+                MarkForm markForm = new MarkForm();
+                markForm.MdiParent = this;
+                markForm.Show();
             } else
                 frm.Activate();
         }

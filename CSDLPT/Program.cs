@@ -25,6 +25,7 @@ namespace CSDLPT {
         public static String mGroup = string.Empty;
         public static String mHoten = string.Empty;
         public static int mChinhanh = 0;
+        public static string prefix = "_";
 
         public static BindingSource bds_dspm = new BindingSource(); // giữ bdsPM khi đăng nhập
 
@@ -60,6 +61,24 @@ namespace CSDLPT {
             try {
                 myReader = sqlcmd.ExecuteReader();
                 return myReader;
+            } catch (Exception e) {
+                Program.conn.Close();
+                MessageBox.Show(e.Message);
+            }
+            return null;
+        }
+
+        public static int? ExecSqlDataCmd(String command) {
+
+            SqlCommand sqlcmd = new SqlCommand(command, Program.conn);
+            sqlcmd.CommandType = CommandType.Text;
+
+            if (Program.conn.State == ConnectionState.Closed)
+                Program.conn.Open();
+            try {
+                sqlcmd.ExecuteNonQuery();
+                var returnParameter = sqlcmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+                returnParameter.Direction = ParameterDirection.ReturnValue;
             } catch (Exception e) {
                 Program.conn.Close();
                 MessageBox.Show(e.Message);

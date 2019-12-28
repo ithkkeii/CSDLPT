@@ -30,8 +30,7 @@ namespace CSDLPT.ReportForm {
 
             BindingSource bds_dspm_currentForm = new BindingSource();
             bds_dspm_currentForm.DataSource = Program.bds_dspm.DataSource;
-            if (bds_dspm_currentForm.Count.Equals(3))
-                bds_dspm_currentForm.RemoveAt(bds_dspm_currentForm.Count - 1);
+            bds_dspm_currentForm.Filter = $"TENPM LIKE '{Program.prefix}*'";
 
             this.cmbChiNhanh.DataSource = bds_dspm_currentForm.DataSource;
             this.cmbChiNhanh.SelectedIndex = Program.mChinhanh;

@@ -76,7 +76,10 @@ namespace CSDLPT {
                 $"'{cmbAccountOwner.SelectedValue.ToString().Trim()}', " +
                 $"'{cmbRole.SelectedValue.ToString()}'";
             SqlDataReader myReader = Program.ExecSqlDataReader(query);
-            myReader.Close();
+            try {
+                myReader.Close();
+            } catch (Exception) {
+            }
             if (myReader != null) {
                 MessageBox.Show("Tạo tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtbLoginName.Text = "";

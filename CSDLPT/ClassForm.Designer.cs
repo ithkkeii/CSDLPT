@@ -65,31 +65,18 @@
             this.txbTenLop = new System.Windows.Forms.TextBox();
             this.txbMaLop = new System.Windows.Forms.TextBox();
             this.flyoutPanel1 = new DevExpress.Utils.FlyoutPanel();
+            this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.cmbChangeClass = new System.Windows.Forms.ComboBox();
             this.bdsAllClass = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txteMaLop = new DevExpress.XtraEditors.TextEdit();
-            this.bdsSV = new System.Windows.Forms.BindingSource(this.components);
             this.tENTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.hOTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.txteMaSV = new DevExpress.XtraEditors.TextEdit();
             this.taSV = new CSDLPT.DS_SERVER1TableAdapters.SINHVIENTableAdapter();
             this.dgvSV = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.controlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsRemove = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsWrite = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsRecovery = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsChangeClass = new System.Windows.Forms.ToolStripMenuItem();
-            this.bdsHocPhi = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsDiem = new System.Windows.Forms.BindingSource(this.components);
-            this.taHocPhi = new CSDLPT.DS_SERVER1TableAdapters.HOCPHITableAdapter();
-            this.taDiem = new CSDLPT.DS_SERVER1TableAdapters.DIEMTableAdapter();
-            this.taAllClass = new CSDLPT.DS_SERVER1TableAdapters.AllClassTableAdapter();
             this.dgvtxbMaSV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxbHo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxbTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,6 +86,17 @@
             this.dgvtxbNoiSinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxbDiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvchbNghiHoc = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.controlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsWrite = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsRecovery = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsChangeClass = new System.Windows.Forms.ToolStripMenuItem();
+            this.bdsDiem = new System.Windows.Forms.BindingSource(this.components);
+            this.taDiem = new CSDLPT.DS_SERVER1TableAdapters.DIEMTableAdapter();
+            this.taAllClass = new CSDLPT.DS_SERVER1TableAdapters.AllClassTableAdapter();
             mALOPLabel = new System.Windows.Forms.Label();
             mAKHLabel = new System.Windows.Forms.Label();
             tENLOPLabel = new System.Windows.Forms.Label();
@@ -116,15 +114,14 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).BeginInit();
             this.flyoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsAllClass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txteMaLop.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tENTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hOTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txteMaSV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsHocPhi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDiem)).BeginInit();
             this.SuspendLayout();
             // 
@@ -347,7 +344,6 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.DIEMTableAdapter = null;
             this.tableAdapterManager.GIANGVIENTableAdapter = null;
-            this.tableAdapterManager.HOCPHITableAdapter = null;
             this.tableAdapterManager.KHOATableAdapter = null;
             this.tableAdapterManager.LOPTableAdapter = this.taLop;
             this.tableAdapterManager.MONHOCTableAdapter = null;
@@ -545,6 +541,11 @@
             this.flyoutPanel1.TabIndex = 37;
             this.flyoutPanel1.Load += new System.EventHandler(this.flyoutPanel1_Load);
             // 
+            // bdsSV
+            // 
+            this.bdsSV.DataMember = "FK_SINHVIEN_LOP";
+            this.bdsSV.DataSource = this.bdsLop;
+            // 
             // btnCancel
             // 
             this.btnCancel.Appearance.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -618,11 +619,6 @@
             this.txteMaLop.Size = new System.Drawing.Size(124, 26);
             this.txteMaLop.TabIndex = 8;
             // 
-            // bdsSV
-            // 
-            this.bdsSV.DataMember = "FK_SINHVIEN_LOP";
-            this.bdsSV.DataSource = this.bdsLop;
-            // 
             // tENTextEdit
             // 
             this.tENTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSV, "TEN", true));
@@ -695,90 +691,6 @@
             this.dgvSV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSV_CellEndEdit);
             this.dgvSV.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvSV_CellValidating);
             this.dgvSV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvSV_DataError);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.controlToolStripMenuItem,
-            this.tsChangeClass});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(147, 48);
-            // 
-            // controlToolStripMenuItem
-            // 
-            this.controlToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsAdd,
-            this.tsRemove,
-            this.tsEdit,
-            this.tsWrite,
-            this.tsRecovery});
-            this.controlToolStripMenuItem.Name = "controlToolStripMenuItem";
-            this.controlToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.controlToolStripMenuItem.Text = "Control";
-            // 
-            // tsAdd
-            // 
-            this.tsAdd.Name = "tsAdd";
-            this.tsAdd.Size = new System.Drawing.Size(141, 22);
-            this.tsAdd.Text = "THÊM";
-            this.tsAdd.Click += new System.EventHandler(this.tsAdd_Click);
-            // 
-            // tsRemove
-            // 
-            this.tsRemove.Name = "tsRemove";
-            this.tsRemove.Size = new System.Drawing.Size(141, 22);
-            this.tsRemove.Text = "XÓA";
-            this.tsRemove.Click += new System.EventHandler(this.tsRemove_Click);
-            // 
-            // tsEdit
-            // 
-            this.tsEdit.Name = "tsEdit";
-            this.tsEdit.Size = new System.Drawing.Size(141, 22);
-            this.tsEdit.Text = "HIỆU CHỈNH";
-            this.tsEdit.Click += new System.EventHandler(this.tsEdit_Click);
-            // 
-            // tsWrite
-            // 
-            this.tsWrite.Name = "tsWrite";
-            this.tsWrite.Size = new System.Drawing.Size(141, 22);
-            this.tsWrite.Text = "GHI";
-            this.tsWrite.Click += new System.EventHandler(this.tsWrite_Click);
-            // 
-            // tsRecovery
-            // 
-            this.tsRecovery.Name = "tsRecovery";
-            this.tsRecovery.Size = new System.Drawing.Size(141, 22);
-            this.tsRecovery.Text = "PHỤC HỒI";
-            this.tsRecovery.Click += new System.EventHandler(this.tsRecovery_Click);
-            // 
-            // tsChangeClass
-            // 
-            this.tsChangeClass.Name = "tsChangeClass";
-            this.tsChangeClass.Size = new System.Drawing.Size(146, 22);
-            this.tsChangeClass.Text = "CHUYỂN LỚP";
-            this.tsChangeClass.Click += new System.EventHandler(this.tsChangeClass_Click);
-            // 
-            // bdsHocPhi
-            // 
-            this.bdsHocPhi.DataMember = "FK_HOCPHI_SINHVIEN";
-            this.bdsHocPhi.DataSource = this.bdsSV;
-            // 
-            // bdsDiem
-            // 
-            this.bdsDiem.DataMember = "FK_DIEM_SINHVIEN";
-            this.bdsDiem.DataSource = this.bdsSV;
-            // 
-            // taHocPhi
-            // 
-            this.taHocPhi.ClearBeforeFill = true;
-            // 
-            // taDiem
-            // 
-            this.taDiem.ClearBeforeFill = true;
-            // 
-            // taAllClass
-            // 
-            this.taAllClass.ClearBeforeFill = true;
             // 
             // dgvtxbMaSV
             // 
@@ -859,6 +771,81 @@
             this.dgvchbNghiHoc.TrueValue = "true";
             this.dgvchbNghiHoc.Width = 111;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.controlToolStripMenuItem,
+            this.tsChangeClass});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(147, 48);
+            // 
+            // controlToolStripMenuItem
+            // 
+            this.controlToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsAdd,
+            this.tsRemove,
+            this.tsEdit,
+            this.tsWrite,
+            this.tsRecovery});
+            this.controlToolStripMenuItem.Name = "controlToolStripMenuItem";
+            this.controlToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.controlToolStripMenuItem.Text = "Control";
+            // 
+            // tsAdd
+            // 
+            this.tsAdd.Name = "tsAdd";
+            this.tsAdd.Size = new System.Drawing.Size(141, 22);
+            this.tsAdd.Text = "THÊM";
+            this.tsAdd.Click += new System.EventHandler(this.tsAdd_Click);
+            // 
+            // tsRemove
+            // 
+            this.tsRemove.Name = "tsRemove";
+            this.tsRemove.Size = new System.Drawing.Size(141, 22);
+            this.tsRemove.Text = "XÓA";
+            this.tsRemove.Click += new System.EventHandler(this.tsRemove_Click);
+            // 
+            // tsEdit
+            // 
+            this.tsEdit.Name = "tsEdit";
+            this.tsEdit.Size = new System.Drawing.Size(141, 22);
+            this.tsEdit.Text = "HIỆU CHỈNH";
+            this.tsEdit.Click += new System.EventHandler(this.tsEdit_Click);
+            // 
+            // tsWrite
+            // 
+            this.tsWrite.Name = "tsWrite";
+            this.tsWrite.Size = new System.Drawing.Size(141, 22);
+            this.tsWrite.Text = "GHI";
+            this.tsWrite.Click += new System.EventHandler(this.tsWrite_Click);
+            // 
+            // tsRecovery
+            // 
+            this.tsRecovery.Name = "tsRecovery";
+            this.tsRecovery.Size = new System.Drawing.Size(141, 22);
+            this.tsRecovery.Text = "PHỤC HỒI";
+            this.tsRecovery.Click += new System.EventHandler(this.tsRecovery_Click);
+            // 
+            // tsChangeClass
+            // 
+            this.tsChangeClass.Name = "tsChangeClass";
+            this.tsChangeClass.Size = new System.Drawing.Size(146, 22);
+            this.tsChangeClass.Text = "CHUYỂN LỚP";
+            this.tsChangeClass.Click += new System.EventHandler(this.tsChangeClass_Click);
+            // 
+            // bdsDiem
+            // 
+            this.bdsDiem.DataMember = "FK_DIEM_SINHVIEN";
+            this.bdsDiem.DataSource = this.bdsSV;
+            // 
+            // taDiem
+            // 
+            this.taDiem.ClearBeforeFill = true;
+            // 
+            // taAllClass
+            // 
+            this.taAllClass.ClearBeforeFill = true;
+            // 
             // ClassForm
             // 
             this.Appearance.Options.UseFont = true;
@@ -895,15 +882,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).EndInit();
             this.flyoutPanel1.ResumeLayout(false);
             this.flyoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsAllClass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txteMaLop.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tENTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hOTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txteMaSV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSV)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bdsHocPhi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsDiem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -955,9 +941,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsWrite;
         private System.Windows.Forms.ToolStripMenuItem tsRecovery;
         private System.Windows.Forms.ToolStripMenuItem tsChangeClass;
-        private System.Windows.Forms.BindingSource bdsHocPhi;
         private System.Windows.Forms.BindingSource bdsDiem;
-        private DS_SERVER1TableAdapters.HOCPHITableAdapter taHocPhi;
         private DS_SERVER1TableAdapters.DIEMTableAdapter taDiem;
         private DevExpress.Utils.FlyoutPanel flyoutPanel1;
         private DevExpress.XtraEditors.TextEdit txteMaLop;
