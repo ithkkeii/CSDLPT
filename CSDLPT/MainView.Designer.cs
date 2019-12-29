@@ -38,6 +38,7 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnInDSDongTien = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnModifyMark = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnThiHetMon = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -46,6 +47,7 @@
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.mvvmContext1 = new DevExpress.Utils.MVVM.MVVMContext(this.components);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.bbtnPhieuDiemCaNhan = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -68,15 +70,17 @@
             this.barButtonItem3,
             this.barButtonItem4,
             this.bbtnInDSDongTien,
-            this.bbtnModifyMark});
+            this.bbtnModifyMark,
+            this.bbtnThiHetMon,
+            this.bbtnPhieuDiemCaNhan});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 16;
+            this.ribbonControl1.MaxItemId = 18;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
             this.ribbonPage2});
-            this.ribbonControl1.Size = new System.Drawing.Size(1174, 143);
+            this.ribbonControl1.Size = new System.Drawing.Size(1174, 158);
             // 
             // bbtnSubject
             // 
@@ -170,6 +174,14 @@
             this.bbtnModifyMark.Name = "bbtnModifyMark";
             this.bbtnModifyMark.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnModifyMark_ItemClick);
             // 
+            // bbtnThiHetMon
+            // 
+            this.bbtnThiHetMon.Caption = "IN DS THI HẾT MÔN";
+            this.bbtnThiHetMon.Id = 16;
+            this.bbtnThiHetMon.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnThiHetMon.ImageOptions.SvgImage")));
+            this.bbtnThiHetMon.Name = "bbtnThiHetMon";
+            this.bbtnThiHetMon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnThiHetMon_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -177,7 +189,7 @@
             this.ribbonPageGroup2,
             this.ribbonPageGroup3});
             this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "ribbonPage1";
+            this.ribbonPage1.Text = "Sthg";
             // 
             // ribbonPageGroup1
             // 
@@ -204,12 +216,14 @@
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup4});
             this.ribbonPage2.Name = "ribbonPage2";
-            this.ribbonPage2.Text = "ribbonPage2";
+            this.ribbonPage2.Text = "Report";
             // 
             // ribbonPageGroup4
             // 
             this.ribbonPageGroup4.ItemLinks.Add(this.bbtnInDSSV);
             this.ribbonPageGroup4.ItemLinks.Add(this.bbtnInBangDiem);
+            this.ribbonPageGroup4.ItemLinks.Add(this.bbtnThiHetMon);
+            this.ribbonPageGroup4.ItemLinks.Add(this.bbtnPhieuDiemCaNhan);
             this.ribbonPageGroup4.ItemLinks.Add(this.bbtnInDSDongTien);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "ribbonPageGroup4";
@@ -222,6 +236,14 @@
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
+            // 
+            // bbtnPhieuDiemCaNhan
+            // 
+            this.bbtnPhieuDiemCaNhan.Caption = "IN PHIẾU ĐIỂM CÁ NHÂN";
+            this.bbtnPhieuDiemCaNhan.Id = 17;
+            this.bbtnPhieuDiemCaNhan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnPhieuDiemCaNhan.ImageOptions.SvgImage")));
+            this.bbtnPhieuDiemCaNhan.Name = "bbtnPhieuDiemCaNhan";
+            this.bbtnPhieuDiemCaNhan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnPhieuDiemCaNhan_ItemClick);
             // 
             // MainView
             // 
@@ -267,6 +289,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem bbtnInDSDongTien;
         private DevExpress.XtraBars.BarButtonItem bbtnModifyMark;
+        private DevExpress.XtraBars.BarButtonItem bbtnThiHetMon;
+        private DevExpress.XtraBars.BarButtonItem bbtnPhieuDiemCaNhan;
     }
 }
 

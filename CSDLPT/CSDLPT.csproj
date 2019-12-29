@@ -139,6 +139,12 @@
     <Compile Include="ReportForm\InBD.Designer.cs">
       <DependentUpon>InBD.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportForm\InDanh_sach_thi_het_mon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForm\InDanh_sach_thi_het_mon.Designer.cs">
+      <DependentUpon>InDanh_sach_thi_het_mon.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportForm\InDSDongHocPhi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,18 @@
     </Compile>
     <Compile Include="ReportForm\InDSSV.Designer.cs">
       <DependentUpon>InDSSV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportForm\InPhieu_diem_ca_nhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForm\InPhieu_diem_ca_nhan.Designer.cs">
+      <DependentUpon>InPhieu_diem_ca_nhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Danh_sach_thi_het_mon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Danh_sach_thi_het_mon.Designer.cs">
+      <DependentUpon>Danh_sach_thi_het_mon.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\InBangDiem.cs">
       <SubType>Component</SubType>
@@ -168,6 +186,12 @@
     </Compile>
     <Compile Include="Report\InDanhSachSinhVienLop.Designer.cs">
       <DependentUpon>InDanhSachSinhVienLop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Phieu_diem_ca_nhan.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Phieu_diem_ca_nhan.Designer.cs">
+      <DependentUpon>Phieu_diem_ca_nhan.cs</DependentUpon>
     </Compile>
     <Compile Include="SchoolFee.cs">
       <SubType>Form</SubType>
@@ -216,6 +240,9 @@
     <EmbeddedResource Include="ReportForm\InDSSV.resx">
       <DependentUpon>InDSSV.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\Danh_sach_thi_het_mon.resx">
+      <DependentUpon>Danh_sach_thi_het_mon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\InBangDiem.resx">
       <DependentUpon>InBangDiem.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\InDanhSachSinhVienLop.resx">
       <DependentUpon>InDanhSachSinhVienLop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Phieu_diem_ca_nhan.resx">
+      <DependentUpon>Phieu_diem_ca_nhan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SchoolFee.resx">
       <DependentUpon>SchoolFee.cs</DependentUpon>

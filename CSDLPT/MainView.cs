@@ -138,5 +138,25 @@ namespace CSDLPT {
             } else
                 frm.Activate();
         }
+
+        private void bbtnThiHetMon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            Form frm = this.checkExist(typeof(InDanh_sach_thi_het_mon));
+            if (frm == null) {
+                InDanh_sach_thi_het_mon form = new InDanh_sach_thi_het_mon();
+                form.MdiParent = this;
+                form.Show();
+            } else
+                frm.Activate();
+        }
+
+        private void bbtnPhieuDiemCaNhan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            Form frm = this.checkExist(typeof(InPhieu_diem_ca_nhan));
+            if (frm == null) {
+                InPhieu_diem_ca_nhan form = new InPhieu_diem_ca_nhan();
+                form.MdiParent = this;
+                form.Show();
+            } else
+                frm.Activate();
+        }
     }
 }
