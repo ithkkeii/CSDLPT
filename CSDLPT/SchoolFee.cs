@@ -34,6 +34,9 @@ namespace CSDLPT {
             //bds_feeInfomation.DataSource = dt;
             //bdsThongTinDongHocPhi.DataSource = dt;
             try {
+                //load lai sv moi
+                this.taSV.Connection.ConnectionString = Program.connstr;
+                this.taSV.Fill(this.dS_DONGHOCPHI.SINHVIEN);
                 this.taHocPhi.Connection.ConnectionString = Program.connstr;
                 this.taHocPhi.FillBy(dS_DONGHOCPHI.HOCPHI, masv);
             } catch (System.Exception ex) {
