@@ -84,6 +84,13 @@ namespace CSDLPT {
             bbtnWrite.Enabled = false;
             bbtnRecovery.Enabled = false;
 
+            //ts
+            tsAdd.Enabled = true;
+            tsEdit.Enabled = true;
+            tsRemove.Enabled = true;
+            tsWrite.Enabled = false;
+            tsRecovery.Enabled = false;
+
             //View control
             gcLop.Enabled = true;
             groupBox1.Enabled = false;
@@ -497,20 +504,31 @@ namespace CSDLPT {
                 return;
             }
             //Check lại trên site chủ
-            //if (bdsHocPhi.Count > 0) {
-            //MessageBox.Show("Sinh viên đã đóng học phí không được xóa!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //return;
-            //}
-            DialogResult dialogResult = MessageBox.Show("Bạn muốn xóa sinh viên này?", string.Empty, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes) {
-                try {
-                    bdsSV.RemoveCurrent();
-                    taSV.Update(dS_SERVER1.SINHVIEN);
-                    return;
-                } catch (Exception err) {
-                    Console.WriteLine(err.Message);
-                    MessageBox.Show("Lỗi xóa sinh viên!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+            //cách này tránh đc close myReader + catch đc RaiseError
+            int selectedrowindex = dgvSV.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = dgvSV.Rows[selectedrowindex];
+            string a = Convert.ToString(selectedRow.Cells["dgvtxbMaSV"].Value);
+            string strLenh = "SP_ISSVDADONGHOCPHI";
+            SqlCommand sqlcmd = new SqlCommand(strLenh, Program.conn);
+            sqlcmd.CommandType = CommandType.StoredProcedure;
+            sqlcmd.Parameters.AddWithValue("MASV", a);
+
+            try {
+                sqlcmd.ExecuteNonQuery();
+                MessageBox.Show("Sinh viên đã đóng học phí không được xóa!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            } catch (Exception ex) {
+                DialogResult dialogResult = MessageBox.Show("Bạn muốn xóa sinh viên này?", string.Empty, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes) {
+                    try {
+                        bdsSV.RemoveCurrent();
+                        taSV.Update(dS_SERVER1.SINHVIEN);
+                        return;
+                    } catch (Exception err) {
+                        Console.WriteLine(err.Message);
+                        MessageBox.Show("Lỗi xóa sinh viên!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
             return;
