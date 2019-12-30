@@ -18,6 +18,7 @@ namespace CSDLPT {
         }
 
         private void SubjectForm_Load(object sender, EventArgs e) {
+            this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
             // TODO: This line of code loads data into the 'dS_SERVER1.MONHOC' table. You can move, or remove it, as needed.
             this.mONHOCTableAdapter.Fill(this.dS_SERVER1.MONHOC);
 

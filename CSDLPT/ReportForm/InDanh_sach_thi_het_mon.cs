@@ -24,6 +24,7 @@ namespace CSDLPT.ReportForm {
             tenPhanManh = ((DataRowView)Program.bds_dspm.Current)["TENPM"].ToString();
             tenServer = ((DataRowView)Program.bds_dspm.Current)["TENSERVER"].ToString();
             // TODO: This line of code loads data into the 'dS_SERVER1.MONHOC' table. You can move, or remove it, as needed.
+            this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
             this.mONHOCTableAdapter.Fill(this.dS_SERVER1.MONHOC);
             // TODO: This line of code loads data into the 'dS_SERVER1.LOP' table. You can move, or remove it, as needed.
             // chọn khoa

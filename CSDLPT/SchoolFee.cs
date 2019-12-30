@@ -34,6 +34,7 @@ namespace CSDLPT {
             //bds_feeInfomation.DataSource = dt;
             //bdsThongTinDongHocPhi.DataSource = dt;
             try {
+                this.taHocPhi.Connection.ConnectionString = Program.connstr;
                 this.taHocPhi.FillBy(dS_DONGHOCPHI.HOCPHI, masv);
             } catch (System.Exception ex) {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
