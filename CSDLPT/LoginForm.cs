@@ -61,6 +61,7 @@ namespace CSDLPT {
             //MessageBox.Show($"Giang Vien - Nhom : {Program.mHoten} - {Program.mGroup}", "", MessageBoxButtons.OK);
             this.Hide();
             MainView mv = new MainView();
+            mv.RefToLoginForm = this;
             mv.bsiMaGV.Caption = Program.username;
             mv.bsiTenGV.Caption = Program.mHoten;
             mv.bsiNhom.Caption = Program.mGroup;

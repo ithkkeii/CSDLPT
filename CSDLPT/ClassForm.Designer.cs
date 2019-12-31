@@ -41,6 +41,7 @@
             this.bbtnEdit = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnWrite = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnRecovery = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -65,6 +66,8 @@
             this.txbTenLop = new System.Windows.Forms.TextBox();
             this.txbMaLop = new System.Windows.Forms.TextBox();
             this.flyoutPanel1 = new DevExpress.Utils.FlyoutPanel();
+            this.txteMaSVMoi = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.cmbChangeClass = new System.Windows.Forms.ComboBox();
@@ -158,9 +161,9 @@
             mASVLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             mASVLabel.Location = new System.Drawing.Point(25, 18);
             mASVLabel.Name = "mASVLabel";
-            mASVLabel.Size = new System.Drawing.Size(56, 19);
+            mASVLabel.Size = new System.Drawing.Size(61, 19);
             mASVLabel.TabIndex = 1;
-            mASVLabel.Text = "MASV:";
+            mASVLabel.Text = "Mã SV :";
             // 
             // hOLabel
             // 
@@ -170,27 +173,27 @@
             hOLabel.Name = "hOLabel";
             hOLabel.Size = new System.Drawing.Size(35, 19);
             hOLabel.TabIndex = 3;
-            hOLabel.Text = "HO:";
+            hOLabel.Text = "Họ :";
             // 
             // tENLabel
             // 
             tENLabel.AutoSize = true;
             tENLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tENLabel.Location = new System.Drawing.Point(239, 76);
+            tENLabel.Location = new System.Drawing.Point(239, 66);
             tENLabel.Name = "tENLabel";
-            tENLabel.Size = new System.Drawing.Size(42, 19);
+            tENLabel.Size = new System.Drawing.Size(39, 19);
             tENLabel.TabIndex = 5;
-            tENLabel.Text = "TEN:";
+            tENLabel.Text = "Tên :";
             // 
             // mALOPLabel1
             // 
             mALOPLabel1.AutoSize = true;
             mALOPLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            mALOPLabel1.Location = new System.Drawing.Point(14, 76);
+            mALOPLabel1.Location = new System.Drawing.Point(14, 66);
             mALOPLabel1.Name = "mALOPLabel1";
-            mALOPLabel1.Size = new System.Drawing.Size(67, 19);
+            mALOPLabel1.Size = new System.Drawing.Size(66, 19);
             mALOPLabel1.TabIndex = 7;
-            mALOPLabel1.Text = "MALOP:";
+            mALOPLabel1.Text = "Mã Lớp :";
             // 
             // bdsLop
             // 
@@ -219,9 +222,10 @@
             this.bbtnRemove,
             this.bbtnEdit,
             this.bbtnWrite,
-            this.bbtnRecovery});
+            this.bbtnRecovery,
+            this.bbtnRefresh});
             this.barManager.MainMenu = this.bar2;
-            this.barManager.MaxItemId = 9;
+            this.barManager.MaxItemId = 10;
             this.barManager.StatusBar = this.bar3;
             // 
             // bar2
@@ -235,7 +239,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbtnRemove, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnEdit),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbtnWrite),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnRecovery)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnRecovery),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbtnRefresh)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -274,6 +279,13 @@
             this.bbtnRecovery.Id = 8;
             this.bbtnRecovery.Name = "bbtnRecovery";
             this.bbtnRecovery.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnRecovery_ItemClick);
+            // 
+            // bbtnRefresh
+            // 
+            this.bbtnRefresh.Caption = "REFRESH";
+            this.bbtnRefresh.Id = 9;
+            this.bbtnRefresh.Name = "bbtnRefresh";
+            this.bbtnRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnRefresh_ItemClick);
             // 
             // bar3
             // 
@@ -519,6 +531,8 @@
             this.flyoutPanel1.Appearance.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flyoutPanel1.Appearance.Options.UseFont = true;
             this.flyoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flyoutPanel1.Controls.Add(this.txteMaSVMoi);
+            this.flyoutPanel1.Controls.Add(this.label2);
             this.flyoutPanel1.Controls.Add(this.btnCancel);
             this.flyoutPanel1.Controls.Add(this.btnOk);
             this.flyoutPanel1.Controls.Add(this.cmbChangeClass);
@@ -540,6 +554,24 @@
             this.flyoutPanel1.Size = new System.Drawing.Size(493, 260);
             this.flyoutPanel1.TabIndex = 37;
             this.flyoutPanel1.Load += new System.EventHandler(this.flyoutPanel1_Load);
+            // 
+            // txteMaSVMoi
+            // 
+            this.txteMaSVMoi.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.txteMaSVMoi.Location = new System.Drawing.Point(287, 109);
+            this.txteMaSVMoi.Name = "txteMaSVMoi";
+            this.txteMaSVMoi.Size = new System.Drawing.Size(178, 26);
+            this.txteMaSVMoi.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(191, 112);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 19);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Mã SV Mới :";
             // 
             // btnCancel
             // 
@@ -605,7 +637,7 @@
             // txteMaLop
             // 
             this.txteMaLop.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSV, "MALOP", true));
-            this.txteMaLop.Location = new System.Drawing.Point(93, 73);
+            this.txteMaLop.Location = new System.Drawing.Point(93, 63);
             this.txteMaLop.MenuManager = this.barManager;
             this.txteMaLop.Name = "txteMaLop";
             this.txteMaLop.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -622,7 +654,7 @@
             // tENTextEdit
             // 
             this.tENTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsSV, "TEN", true));
-            this.tENTextEdit.Location = new System.Drawing.Point(287, 73);
+            this.tENTextEdit.Location = new System.Drawing.Point(287, 63);
             this.tENTextEdit.MenuManager = this.barManager;
             this.tENTextEdit.Name = "tENTextEdit";
             this.tENTextEdit.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -778,6 +810,7 @@
             this.tsChangeClass});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(147, 48);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // controlToolStripMenuItem
             // 
@@ -963,5 +996,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbNoiSinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxbDiaChi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgvchbNghiHoc;
+        private System.Windows.Forms.TextBox txteMaSVMoi;
+        private System.Windows.Forms.Label label2;
+        private DevExpress.XtraBars.BarButtonItem bbtnRefresh;
     }
 }

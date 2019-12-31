@@ -35,6 +35,7 @@ namespace CSDLPT {
             //bdsThongTinDongHocPhi.DataSource = dt;
             try {
                 //load lai sv moi
+                dS_DONGHOCPHI.EnforceConstraints = false;
                 this.taSV.Connection.ConnectionString = Program.connstr;
                 this.taSV.Fill(this.dS_DONGHOCPHI.SINHVIEN);
                 this.taHocPhi.Connection.ConnectionString = Program.connstr;

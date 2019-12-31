@@ -83,6 +83,7 @@ namespace CSDLPT {
             bbtnRemove.Enabled = true;
             bbtnWrite.Enabled = false;
             bbtnRecovery.Enabled = false;
+            bbtnRefresh.Enabled = true;
 
             //ts
             tsAdd.Enabled = true;
@@ -113,6 +114,8 @@ namespace CSDLPT {
             bbtnRemove.Enabled = false;
             bbtnRecovery.Enabled = true;
             bbtnWrite.Enabled = true;
+            bbtnRefresh.Enabled = false;
+
 
             isAdd = true;
             isEdit = false;
@@ -273,6 +276,8 @@ namespace CSDLPT {
             bbtnRecovery.Enabled = true;
             bbtnRemove.Enabled = true;
             bbtnWrite.Enabled = false;
+            bbtnRefresh.Enabled = true;
+
             gcLop.Enabled = true;
             groupBox1.Enabled = false;
 
@@ -288,7 +293,8 @@ namespace CSDLPT {
             bbtnRemove.Enabled = false;
             bbtnWrite.Enabled = true;
             bbtnRecovery.Enabled = true;
-            //bbtnRefresh.Enable = true;
+            bbtnRefresh.Enabled = false;
+
             groupBox1.Enabled = true;
             txbMaLop.ReadOnly = true;
             gcLop.Enabled = false;
@@ -334,6 +340,8 @@ namespace CSDLPT {
             bbtnRemove.Enabled = true;
             bbtnWrite.Enabled = false;
             bbtnRecovery.Enabled = false;
+            bbtnRefresh.Enabled = true;
+
 
             isEdit = false;
             isAdd = false;
@@ -352,6 +360,7 @@ namespace CSDLPT {
             bbtnRemove.Enabled = false;
             bbtnWrite.Enabled = false;
             bbtnRecovery.Enabled = false;
+            bbtnRefresh.Enabled = false;
 
             tsAdd.Enabled = false;
             tsEdit.Enabled = false;
@@ -391,6 +400,8 @@ namespace CSDLPT {
             bbtnRemove.Enabled = false;
             bbtnWrite.Enabled = false;
             bbtnRecovery.Enabled = false;
+            bbtnRefresh.Enabled = false;
+
 
             tsAdd.Enabled = false;
             tsEdit.Enabled = false;
@@ -478,6 +489,8 @@ namespace CSDLPT {
             bbtnRemove.Enabled = true;
             bbtnWrite.Enabled = false;
             bbtnRecovery.Enabled = false;
+            bbtnRefresh.Enabled = true;
+
 
             tsAdd.Enabled = true;
             tsEdit.Enabled = true;
@@ -563,6 +576,7 @@ namespace CSDLPT {
             bbtnRemove.Enabled = true;
             bbtnWrite.Enabled = false;
             bbtnRecovery.Enabled = false;
+            bbtnRefresh.Enabled = true;
 
             tsAdd.Enabled = true;
             tsEdit.Enabled = true;
@@ -622,6 +636,8 @@ namespace CSDLPT {
             bbtnRemove.Enabled = false;
             bbtnWrite.Enabled = false;
             bbtnRecovery.Enabled = false;
+            bbtnRefresh.Enabled = false;
+
 
             tsAdd.Enabled = false;
             tsEdit.Enabled = false;
@@ -647,28 +663,71 @@ namespace CSDLPT {
 
             string maSinhVienChuyenLop = txteMaSV.Text.ToString();
             string maLopMoi = cmbChangeClass.SelectedValue.ToString();
+            string maLopCu = txteMaLop.Text;
             string tenLopMoi = cmbChangeClass.Text.ToString();
+            string maSinhVenMoi = txteMaSVMoi.Text;
 
-            string result = "";
-            if (list.TryGetValue(tenLopMoi, out result)) {
-                for (int i = 0; i < dgvSV.Rows.Count; i++) {
-                    DataGridViewCell cell = dgvSV.Rows[i].Cells["dgvtxbMASV"];
-                    if (cell.Value.ToString().Equals(maSinhVienChuyenLop)) {
-                        dgvSV.Rows[i].Cells["dgvtxbMALOP"].Value = maLopMoi;
-                        try {
-                            bdsSV.EndEdit();
-                            if (dS_SERVER1.HasChanges())
-                                taSV.Update(dS_SERVER1.SINHVIEN);
-                            this.taSV.Fill(this.dS_SERVER1.SINHVIEN);
-                        } catch (Exception ex) {
-                            Console.WriteLine(ex.Message);
-                        }
-                        break;
-                    }
-                }
-            } else {
+
+            string strLenh = "SP_ISSINHVIENEXIST";
+            SqlCommand sqlcmd = new SqlCommand(strLenh, Program.conn);
+            sqlcmd.CommandType = CommandType.StoredProcedure;
+            sqlcmd.Parameters.AddWithValue("MASV", maSinhVenMoi);
+            var returnParameter = sqlcmd.Parameters.Add("@ReturnVal", SqlDbType.Int);
+            returnParameter.Direction = ParameterDirection.ReturnValue;
+
+            if (Program.conn.State == ConnectionState.Closed)
+                Program.conn.Open();
+            try {
+                sqlcmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+                Program.conn.Close();
+                MessageBox.Show(ex.Message);
                 return;
             }
+
+            if (returnParameter.Value.Equals(1)) {
+                MessageBox.Show("Mã sinh viên mới bị trùng!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            strLenh = "SP_CHUYENLOP";
+            sqlcmd = new SqlCommand(strLenh, Program.conn);
+            sqlcmd.CommandType = CommandType.StoredProcedure;
+            sqlcmd.Parameters.AddWithValue("MASV_NEW", maSinhVenMoi);
+            sqlcmd.Parameters.AddWithValue("MASV_OLD", maSinhVienChuyenLop);
+            sqlcmd.Parameters.AddWithValue("MALOP_NEW", maLopMoi);
+            sqlcmd.Parameters.AddWithValue("MALOP_OLD", maLopCu);
+
+            if (Program.conn.State == ConnectionState.Closed)
+                Program.conn.Open();
+            try {
+                sqlcmd.ExecuteNonQuery();
+            } catch (Exception ex) {
+                Program.conn.Close();
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+            //string result = "";
+            //if (list.TryGetValue(tenLopMoi, out result)) {
+            //    for (int i = 0; i < dgvSV.Rows.Count; i++) {
+            //        DataGridViewCell cell = dgvSV.Rows[i].Cells["dgvtxbMASV"];
+            //        if (cell.Value.ToString().Equals(maSinhVienChuyenLop)) {
+            //            dgvSV.Rows[i].Cells["dgvtxbMALOP"].Value = maLopMoi;
+            //            try {
+            //                bdsSV.EndEdit();
+            //                if (dS_SERVER1.HasChanges())
+            //                    taSV.Update(dS_SERVER1.SINHVIEN);
+            //                this.taSV.Fill(this.dS_SERVER1.SINHVIEN);
+            //            } catch (Exception ex) {
+            //                Console.WriteLine(ex.Message);
+            //            }
+            //            break;
+            //        }
+            //    }
+            //} else {
+            //    return;
+            //}
 
 
             //List<string> listLop = new List<string>();
@@ -707,6 +766,8 @@ namespace CSDLPT {
             bbtnRemove.Enabled = true;
             bbtnWrite.Enabled = false;
             bbtnRecovery.Enabled = false;
+            bbtnRefresh.Enabled = true;
+
 
             tsAdd.Enabled = true;
             tsEdit.Enabled = true;
@@ -734,6 +795,8 @@ namespace CSDLPT {
             bbtnRemove.Enabled = true;
             bbtnWrite.Enabled = false;
             bbtnRecovery.Enabled = false;
+            bbtnRefresh.Enabled = true;
+
 
             tsAdd.Enabled = true;
             tsEdit.Enabled = true;
@@ -750,7 +813,8 @@ namespace CSDLPT {
             dgvtxbMaLop.ReadOnly = true;
 
             cmbKhoaInUse.Enabled = true;
-            bdsSV.Position = vitriSV;
+            //thoát chuyển lớp k cần gán lại vị trí
+            //bdsSV.Position = vitriSV;
             flyoutPanel1.HidePopup();
         }
 
@@ -940,6 +1004,45 @@ namespace CSDLPT {
                 btnOk.Enabled = true;
             else
                 btnOk.Enabled = false;
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e) {
+            if (bdsSV.Count > 0) {
+                //ts
+                //tsAdd.Enabled = true;
+                //tsEdit.Enabled = true;
+                //tsRemove.Enabled = true;
+                //tsWrite.Enabled = false;
+                //tsRecovery.Enabled = false;
+            } else {
+                e.Cancel = true;
+            }
+        }
+
+        private void bbtnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            try {
+                this.taSV.Connection.ConnectionString = Program.connstr;
+                this.taLop.Connection.ConnectionString = Program.connstr;
+                this.taKhoa.Connection.ConnectionString = Program.connstr;
+                this.taDiem.Connection.ConnectionString = Program.connstr;
+                //this.taHocPhi.Connection.ConnectionString = Program.connstr;
+                this.taAllClass.Connection.ConnectionString = Program.connstr;
+
+                // TODO: This line of code loads data into the 'dS_SERVER1.KHOA' table. You can move, or remove it, as needed.
+                this.taKhoa.Fill(this.dS_SERVER1.KHOA);
+                // TODO: This line of code loads data into the 'dS_SERVER1.LOP' table. You can move, or remove it, as needed.
+                this.taLop.Fill(this.dS_SERVER1.LOP);
+                // TODO: This line of code loads data into the 'dS_SERVER1.SINHVIEN' table. You can move, or remove it, as needed.
+                this.taSV.Fill(this.dS_SERVER1.SINHVIEN);
+                // TODO: This line of code loads data into the 'dS_SERVER1.DIEM' table. You can move, or remove it, as needed.
+                this.taDiem.Fill(this.dS_SERVER1.DIEM);
+                // TODO: This line of code loads data into the 'dS_SERVER1.HOCPHI' table. You can move, or remove it, as needed.
+                //this.taHocPhi.Fill(this.dS_SERVER1.HOCPHI);
+                // TODO: This line of code loads data into the 'dS_SERVER1.AllClass' table. You can move, or remove it, as needed.
+                this.taAllClass.AllClass(this.dS_SERVER1.AllClass);
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

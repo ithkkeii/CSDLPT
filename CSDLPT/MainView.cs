@@ -1,10 +1,14 @@
 ﻿using CSDLPT.ReportForm;
 using System;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
 namespace CSDLPT {
     public partial class MainView : DevExpress.XtraBars.Ribbon.RibbonForm {
+
+        public Form RefToLoginForm { get; set; }
+
         public MainView() {
             InitializeComponent();
             if (!mvvmContext1.IsDesignMode)
@@ -157,6 +161,28 @@ namespace CSDLPT {
                 form.Show();
             } else
                 frm.Activate();
+        }
+
+        private void bbtnLogout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            DialogResult dialogResult = MessageBox.Show("Bạn muốn đăng xuất?", string.Empty, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes) {
+                Program.conn = new SqlConnection();
+                Program.servername = string.Empty;
+                Program.username = string.Empty;
+                Program.mlogin = string.Empty;
+                Program.password = string.Empty;
+
+                Program.mloginDN = string.Empty;
+                Program.passwordDN = string.Empty;
+                Program.mGroup = string.Empty;
+                Program.mHoten = string.Empty;
+                Program.mChinhanh = 0;
+
+                this.Close();
+                RefToLoginForm.Show();
+            } else {
+                return;
+            }
         }
     }
 }

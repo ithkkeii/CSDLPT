@@ -40,18 +40,19 @@
             this.bbtnModifyMark = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnThiHetMon = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnPhieuDiemCaNhan = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiMaGV = new DevExpress.XtraBars.BarStaticItem();
+            this.bsiTenGV = new DevExpress.XtraBars.BarStaticItem();
+            this.bsiNhom = new DevExpress.XtraBars.BarStaticItem();
+            this.bbtnLogout = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.mvvmContext1 = new DevExpress.Utils.MVVM.MVVMContext(this.components);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.bsiMaGV = new DevExpress.XtraBars.BarStaticItem();
-            this.bsiTenGV = new DevExpress.XtraBars.BarStaticItem();
-            this.bsiNhom = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -79,10 +80,11 @@
             this.bbtnPhieuDiemCaNhan,
             this.bsiMaGV,
             this.bsiTenGV,
-            this.bsiNhom});
+            this.bsiNhom,
+            this.bbtnLogout});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 21;
+            this.ribbonControl1.MaxItemId = 22;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -198,6 +200,31 @@
             this.bbtnPhieuDiemCaNhan.Name = "bbtnPhieuDiemCaNhan";
             this.bbtnPhieuDiemCaNhan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnPhieuDiemCaNhan_ItemClick);
             // 
+            // bsiMaGV
+            // 
+            this.bsiMaGV.Caption = "MAGV";
+            this.bsiMaGV.Id = 18;
+            this.bsiMaGV.Name = "bsiMaGV";
+            // 
+            // bsiTenGV
+            // 
+            this.bsiTenGV.Caption = "TENGV";
+            this.bsiTenGV.Id = 19;
+            this.bsiTenGV.Name = "bsiTenGV";
+            // 
+            // bsiNhom
+            // 
+            this.bsiNhom.Caption = "NHOM";
+            this.bsiNhom.Id = 20;
+            this.bsiNhom.Name = "bsiNhom";
+            // 
+            // bbtnLogout
+            // 
+            this.bbtnLogout.Caption = " Logout";
+            this.bbtnLogout.Id = 21;
+            this.bbtnLogout.Name = "bbtnLogout";
+            this.bbtnLogout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnLogout_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -213,19 +240,16 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbtnModifyClass);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbtnModifyMark);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.bbtnSchoolFee);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
             // 
             // ribbonPageGroup3
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.bbtnCreateAccount);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
             // ribbonPage2
             // 
@@ -244,6 +268,17 @@
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "ribbonPageGroup4";
             // 
+            // ribbonStatusBar1
+            // 
+            this.ribbonStatusBar1.ItemLinks.Add(this.bsiMaGV);
+            this.ribbonStatusBar1.ItemLinks.Add(this.bsiTenGV);
+            this.ribbonStatusBar1.ItemLinks.Add(this.bsiNhom);
+            this.ribbonStatusBar1.ItemLinks.Add(this.bbtnLogout);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 652);
+            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
+            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1174, 24);
+            // 
             // mvvmContext1
             // 
             this.mvvmContext1.ContainerControl = this;
@@ -252,34 +287,6 @@
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
-            // 
-            // ribbonStatusBar1
-            // 
-            this.ribbonStatusBar1.ItemLinks.Add(this.bsiMaGV);
-            this.ribbonStatusBar1.ItemLinks.Add(this.bsiTenGV);
-            this.ribbonStatusBar1.ItemLinks.Add(this.bsiNhom);
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 652);
-            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
-            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1174, 24);
-            // 
-            // bsiMaGV
-            // 
-            this.bsiMaGV.Caption = "MAGV";
-            this.bsiMaGV.Id = 18;
-            this.bsiMaGV.Name = "bsiMaGV";
-            // 
-            // bsiTenGV
-            // 
-            this.bsiTenGV.Caption = "TENGV";
-            this.bsiTenGV.Id = 19;
-            this.bsiTenGV.Name = "bsiTenGV";
-            // 
-            // bsiNhom
-            // 
-            this.bsiNhom.Caption = "NHOM";
-            this.bsiNhom.Id = 20;
-            this.bsiNhom.Name = "bsiNhom";
             // 
             // MainView
             // 
@@ -333,6 +340,7 @@
         public DevExpress.XtraBars.BarStaticItem bsiTenGV;
         public DevExpress.XtraBars.BarStaticItem bsiNhom;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
+        private DevExpress.XtraBars.BarButtonItem bbtnLogout;
     }
 }
 
