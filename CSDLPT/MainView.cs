@@ -22,7 +22,10 @@ namespace CSDLPT {
                 bbtnCreateAccount.Enabled = true;
                 bbtnSchoolFee.Enabled = true;
                 bbtnInDSSV.Enabled = false;
+                bbtnThiHetMon.Enabled = false;
+                bbtnPhieuDiemCaNhan.Enabled = false;
                 bbtnInBangDiem.Enabled = false;
+                bbtnInBangDiemTongKet.Enabled = false;
                 bbtnInDSDongTien.Enabled = true;
             }
             if (Program.mGroup.Equals("PGV")) {
@@ -32,7 +35,10 @@ namespace CSDLPT {
                 bbtnCreateAccount.Enabled = true;
                 bbtnSchoolFee.Enabled = false;
                 bbtnInDSSV.Enabled = true;
+                bbtnThiHetMon.Enabled = true;
+                bbtnPhieuDiemCaNhan.Enabled = true;
                 bbtnInBangDiem.Enabled = true;
+                bbtnInBangDiemTongKet.Enabled = true;
                 bbtnInDSDongTien.Enabled = false;
             }
             if (Program.mGroup.Equals("KHOA")) {
@@ -42,7 +48,10 @@ namespace CSDLPT {
                 bbtnCreateAccount.Enabled = true;
                 bbtnSchoolFee.Enabled = false;
                 bbtnInDSSV.Enabled = true;
+                bbtnThiHetMon.Enabled = true;
+                bbtnPhieuDiemCaNhan.Enabled = true;
                 bbtnInBangDiem.Enabled = true;
+                bbtnInBangDiemTongKet.Enabled = true;
                 bbtnInDSDongTien.Enabled = false;
             }
         }
@@ -163,6 +172,16 @@ namespace CSDLPT {
                 frm.Activate();
         }
 
+        private void bbtnInBangDiemTongKet_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+            Form frm = this.checkExist(typeof(InPhieu_diem_ca_nhan));
+            if (frm == null) {
+                InPhieu_diem_ca_nhan form = new InPhieu_diem_ca_nhan();
+                form.MdiParent = this;
+                form.Show();
+            } else
+                frm.Activate();
+        }
+
         private void bbtnLogout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
             DialogResult dialogResult = MessageBox.Show("Bạn muốn đăng xuất?", string.Empty, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes) {
@@ -184,5 +203,6 @@ namespace CSDLPT {
                 return;
             }
         }
+
     }
 }

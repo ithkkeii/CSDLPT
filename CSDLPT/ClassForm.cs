@@ -72,10 +72,14 @@ namespace CSDLPT {
             bds_dspm_currentForm.Filter = $"TENPM LIKE '{Program.prefix}*'";
 
             this.cmbKhoaInUse.DataSource = bds_dspm_currentForm.DataSource;
-            this.cmbKhoaInUse.SelectedIndex = Program.mChinhanh;
             this.cmbKhoaInUse.DisplayMember = "TENPM";
             this.cmbKhoaInUse.ValueMember = "TENSERVER";
             this.cmbKhoaInUse.Enabled = true;
+
+            //auto click combobox
+            this.cmbKhoaInUse.SelectedIndex = Program.mChinhanh;
+            this.cmbKhoaInUse.SelectedIndex = -1;
+            this.cmbKhoaInUse.SelectedIndex = Program.mChinhanh;
 
             //Button control
             bbtnAdd.Enabled = true;
@@ -931,10 +935,13 @@ namespace CSDLPT {
         }
 
         private void cmbKhoaInUse_SelectedIndexChanged(object sender, EventArgs e) {
+            if (this.cmbKhoaInUse.SelectedIndex == -1)
+                return;
 
-            if (cmbKhoaInUse.SelectedValue.ToString() != "System.Data.DataRowView") {
-                Program.servername = cmbKhoaInUse.SelectedValue.ToString();
+            if (cmbKhoaInUse.SelectedValue.ToString() == "System.Data.DataRowView") {
+                return;
             }
+            Program.servername = cmbKhoaInUse.SelectedValue.ToString();
 
             if (cmbKhoaInUse.SelectedIndex != Program.mChinhanh) {
                 Program.mlogin = Program.remotelogin;
@@ -981,7 +988,7 @@ namespace CSDLPT {
         }
 
         private void ClassForm_FormClosing(object sender, FormClosingEventArgs e) {
-            Program.servername = tenServer;
+            //Program.servername = tenServer;
         }
 
         private void ClassForm_FormClosed(object sender, FormClosedEventArgs e) {

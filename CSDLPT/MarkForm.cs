@@ -39,6 +39,9 @@ namespace CSDLPT {
             cmbKhoa.DisplayMember = "TENPM";
             cmbKhoa.ValueMember = "TENSERVER";
             if (!Program.mGroup.Equals("PGV")) {
+                //auto click
+                cmbKhoa.SelectedIndex = Program.mChinhanh;
+                cmbKhoa.SelectedIndex = -1;
                 cmbKhoa.SelectedIndex = Program.mChinhanh;
                 cmbKhoa.Enabled = false;
             }
@@ -207,10 +210,13 @@ namespace CSDLPT {
         }
 
         private void CmbKhoa_SelectedIndexChanged(object sender, EventArgs e) {
+            if (cmbKhoa.SelectedIndex == -1)
+                return;
 
-            if (cmbKhoa.SelectedValue.ToString() != "System.Data.DataRowView") {
-                Program.servername = cmbKhoa.SelectedValue.ToString();
+            if (cmbKhoa.SelectedValue.ToString() == "System.Data.DataRowView") {
+                return;
             }
+            Program.servername = cmbKhoa.SelectedValue.ToString();
 
             if (cmbKhoa.SelectedIndex != Program.mChinhanh) {
                 Program.mlogin = Program.remotelogin;
@@ -234,7 +240,6 @@ namespace CSDLPT {
 
         // nút thoát
         private void BarButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
-
             this.Close();
         }
 

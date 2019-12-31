@@ -32,11 +32,16 @@ namespace CSDLPT.ReportForm {
                 bds_dspm_currentForm.RemoveAt(bds_dspm_currentForm.Count - 1);
 
             this.cmbChiNhanh.DataSource = bds_dspm_currentForm.DataSource;
-            this.cmbChiNhanh.SelectedIndex = Program.mChinhanh;
             this.cmbChiNhanh.DisplayMember = "TENPM";
             this.cmbChiNhanh.ValueMember = "TENSERVER";
             this.cmbChiNhanh.Enabled = true;
-            this.cmbChiNhanh.SelectedIndex = 0;
+
+            //auto click combobox
+            this.cmbChiNhanh.SelectedIndex = Program.mChinhanh;
+            this.cmbChiNhanh.SelectedIndex = -1;
+            this.cmbChiNhanh.SelectedIndex = Program.mChinhanh;
+
+            cmbChiNhanh.Enabled = Program.mGroup.Equals("PGV");
         }
 
         private void cmbLop_SelectedIndexChanged(object sender, EventArgs e) {
@@ -69,9 +74,13 @@ namespace CSDLPT.ReportForm {
         }
 
         private void cmbChiNhanh_SelectedIndexChanged(object sender, EventArgs e) {
-            if (cmbChiNhanh.SelectedValue.ToString() != "System.Data.DataRowView") {
-                Program.servername = cmbChiNhanh.SelectedValue.ToString();
+            if (this.cmbChiNhanh.SelectedIndex == -1)
+                return;
+
+            if (cmbChiNhanh.SelectedValue.ToString() == "System.Data.DataRowView") {
+                return;
             }
+            Program.servername = cmbChiNhanh.SelectedValue.ToString();
 
             if (cmbChiNhanh.SelectedIndex != Program.mChinhanh) {
                 Program.mlogin = Program.remotelogin;
@@ -109,7 +118,7 @@ namespace CSDLPT.ReportForm {
         }
 
         private void InDSSV_FormClosing(object sender, FormClosingEventArgs e) {
-            Program.servername = tenServer;
+            //Program.servername = tenServer;
         }
     }
 }

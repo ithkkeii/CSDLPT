@@ -44,6 +44,7 @@
             this.bsiTenGV = new DevExpress.XtraBars.BarStaticItem();
             this.bsiNhom = new DevExpress.XtraBars.BarStaticItem();
             this.bbtnLogout = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnInBangDiemTongKet = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -53,7 +54,6 @@
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.mvvmContext1 = new DevExpress.Utils.MVVM.MVVMContext(this.components);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.bbtnInBangDiemTongKet = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -227,6 +227,14 @@
             this.bbtnLogout.Name = "bbtnLogout";
             this.bbtnLogout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnLogout_ItemClick);
             // 
+            // bbtnInBangDiemTongKet
+            // 
+            this.bbtnInBangDiemTongKet.Caption = "In Bảng Điểm Tổng Kết";
+            this.bbtnInBangDiemTongKet.Id = 22;
+            this.bbtnInBangDiemTongKet.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnInBangDiemTongKet.ImageOptions.SvgImage")));
+            this.bbtnInBangDiemTongKet.Name = "bbtnInBangDiemTongKet";
+            this.bbtnInBangDiemTongKet.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnInBangDiemTongKet_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -289,13 +297,6 @@
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
-            // 
-            // bbtnInBangDiemTongKet
-            // 
-            this.bbtnInBangDiemTongKet.Caption = "In Bảng Điểm Tổng Kết";
-            this.bbtnInBangDiemTongKet.Id = 22;
-            this.bbtnInBangDiemTongKet.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
-            this.bbtnInBangDiemTongKet.Name = "bbtnInBangDiemTongKet";
             // 
             // MainView
             // 

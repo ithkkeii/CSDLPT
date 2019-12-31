@@ -34,7 +34,11 @@ namespace CSDLPT.ReportForm {
             cmbKhoa.DataSource = bds_dsKhoa.DataSource;
             cmbKhoa.DisplayMember = "TENPM";
             cmbKhoa.ValueMember = "TENSERVER";
+            //auto click
             cmbKhoa.SelectedIndex = Program.mChinhanh;
+            cmbKhoa.SelectedIndex = -1;
+            cmbKhoa.SelectedIndex = Program.mChinhanh;
+
             cmbKhoa.Enabled = Program.mGroup.Equals("PGV");
         }
 
@@ -49,9 +53,13 @@ namespace CSDLPT.ReportForm {
         }
 
         private void CmbKhoa_SelectedIndexChanged(object sender, EventArgs e) {
-            if (this.cmbKhoa.SelectedValue.ToString() != "System.Data.DataRowView") {
-                Program.servername = cmbKhoa.SelectedValue.ToString();
+            if (cmbKhoa.SelectedIndex == -1)
+                return;
+
+            if (this.cmbKhoa.SelectedValue.ToString() == "System.Data.DataRowView") {
+                return;
             }
+            Program.servername = cmbKhoa.SelectedValue.ToString();
 
             if (cmbKhoa.SelectedIndex != Program.mChinhanh) {
                 Program.mlogin = Program.remotelogin;
@@ -72,12 +80,12 @@ namespace CSDLPT.ReportForm {
         }
 
         private void BtnThoat_Click(object sender, EventArgs e) {
-            Program.servername = tenServer;
+            //Program.servername = tenServer;
             this.Close();
         }
 
         private void InDanh_sach_thi_het_mon_FormClosing(object sender, FormClosingEventArgs e) {
-            Program.servername = tenServer;
+            //Program.servername = tenServer;
         }
     }
 }
