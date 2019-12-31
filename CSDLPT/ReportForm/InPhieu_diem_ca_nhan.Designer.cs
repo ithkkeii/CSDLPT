@@ -24,10 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label tENLOPLabel;
-            System.Windows.Forms.Label hOTENLabel;
-            System.Windows.Forms.Label hOLabel;
-            System.Windows.Forms.Label tENLabel;
+            this.tENLOPLabel = new System.Windows.Forms.Label();
+            this.hOTENLabel = new System.Windows.Forms.Label();
+            this.hOLabel = new System.Windows.Forms.Label();
+            this.tENLabel = new System.Windows.Forms.Label();
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,10 +43,6 @@
             this.mASVComboBox = new System.Windows.Forms.ComboBox();
             this.hOTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.tENTextEdit = new DevExpress.XtraEditors.TextEdit();
-            tENLOPLabel = new System.Windows.Forms.Label();
-            hOTENLabel = new System.Windows.Forms.Label();
-            hOLabel = new System.Windows.Forms.Label();
-            tENLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dS_SERVER1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).BeginInit();
@@ -56,39 +52,39 @@
             // 
             // tENLOPLabel
             // 
-            tENLOPLabel.AutoSize = true;
-            tENLOPLabel.Location = new System.Drawing.Point(234, 163);
-            tENLOPLabel.Name = "tENLOPLabel";
-            tENLOPLabel.Size = new System.Drawing.Size(34, 13);
-            tENLOPLabel.TabIndex = 4;
-            tENLOPLabel.Text = "LỚP :";
+            this.tENLOPLabel.AutoSize = true;
+            this.tENLOPLabel.Location = new System.Drawing.Point(234, 163);
+            this.tENLOPLabel.Name = "tENLOPLabel";
+            this.tENLOPLabel.Size = new System.Drawing.Size(34, 13);
+            this.tENLOPLabel.TabIndex = 4;
+            this.tENLOPLabel.Text = "LỚP :";
             // 
             // hOTENLabel
             // 
-            hOTENLabel.AutoSize = true;
-            hOTENLabel.Location = new System.Drawing.Point(182, 205);
-            hOTENLabel.Name = "hOTENLabel";
-            hOTENLabel.Size = new System.Drawing.Size(86, 13);
-            hOTENLabel.TabIndex = 9;
-            hOTENLabel.Text = "MÃ SINH VIÊN :";
+            this.hOTENLabel.AutoSize = true;
+            this.hOTENLabel.Location = new System.Drawing.Point(182, 205);
+            this.hOTENLabel.Name = "hOTENLabel";
+            this.hOTENLabel.Size = new System.Drawing.Size(86, 13);
+            this.hOTENLabel.TabIndex = 9;
+            this.hOTENLabel.Text = "MÃ SINH VIÊN :";
             // 
             // hOLabel
             // 
-            hOLabel.AutoSize = true;
-            hOLabel.Location = new System.Drawing.Point(239, 248);
-            hOLabel.Name = "hOLabel";
-            hOLabel.Size = new System.Drawing.Size(29, 13);
-            hOLabel.TabIndex = 10;
-            hOLabel.Text = "HỌ :";
+            this.hOLabel.AutoSize = true;
+            this.hOLabel.Location = new System.Drawing.Point(239, 248);
+            this.hOLabel.Name = "hOLabel";
+            this.hOLabel.Size = new System.Drawing.Size(29, 13);
+            this.hOLabel.TabIndex = 10;
+            this.hOLabel.Text = "HỌ :";
             // 
             // tENLabel
             // 
-            tENLabel.AutoSize = true;
-            tENLabel.Location = new System.Drawing.Point(421, 248);
-            tENLabel.Name = "tENLabel";
-            tENLabel.Size = new System.Drawing.Size(35, 13);
-            tENLabel.TabIndex = 11;
-            tENLabel.Text = "TÊN :";
+            this.tENLabel.AutoSize = true;
+            this.tENLabel.Location = new System.Drawing.Point(421, 248);
+            this.tENLabel.Name = "tENLabel";
+            this.tENLabel.Size = new System.Drawing.Size(35, 13);
+            this.tENLabel.TabIndex = 11;
+            this.tENLabel.Text = "TÊN :";
             // 
             // cmbKhoa
             // 
@@ -138,11 +134,9 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.DIEMTableAdapter = null;
             this.tableAdapterManager.GIANGVIENTableAdapter = null;
-            //this.tableAdapterManager.HOCPHITableAdapter = null;
             this.tableAdapterManager.KHOATableAdapter = null;
             this.tableAdapterManager.LOPTableAdapter = this.lOPTableAdapter;
             this.tableAdapterManager.MONHOCTableAdapter = null;
-            //this.tableAdapterManager.NHAPDIEMTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = CSDLPT.DS_SERVER1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
@@ -224,21 +218,22 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 460);
-            this.Controls.Add(tENLabel);
+            this.Controls.Add(this.tENLabel);
             this.Controls.Add(this.tENTextEdit);
-            this.Controls.Add(hOLabel);
+            this.Controls.Add(this.hOLabel);
             this.Controls.Add(this.hOTextEdit);
             this.Controls.Add(this.mASVComboBox);
-            this.Controls.Add(hOTENLabel);
+            this.Controls.Add(this.hOTENLabel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(tENLOPLabel);
+            this.Controls.Add(this.tENLOPLabel);
             this.Controls.Add(this.tENLOPComboBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbKhoa);
             this.Name = "InPhieu_diem_ca_nhan";
             this.Text = "InPhieu_diem_ca_nhan";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InPhieu_diem_ca_nhan_FormClosing);
             this.Load += new System.EventHandler(this.InPhieu_diem_ca_nhan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_SERVER1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).EndInit();
@@ -267,5 +262,9 @@
         private System.Windows.Forms.ComboBox mASVComboBox;
         private DevExpress.XtraEditors.TextEdit hOTextEdit;
         private DevExpress.XtraEditors.TextEdit tENTextEdit;
+        private System.Windows.Forms.Label tENLOPLabel;
+        private System.Windows.Forms.Label hOTENLabel;
+        private System.Windows.Forms.Label hOLabel;
+        private System.Windows.Forms.Label tENLabel;
     }
 }

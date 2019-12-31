@@ -24,8 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label tENLOPLabel;
-            System.Windows.Forms.Label tENMHLabel;
+            this.tENLOPLabel = new System.Windows.Forms.Label();
+            this.tENMHLabel = new System.Windows.Forms.Label();
             this.dS_SERVER1 = new CSDLPT.DS_SERVER1();
             this.lOPBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lOPTableAdapter = new CSDLPT.DS_SERVER1TableAdapters.LOPTableAdapter();
@@ -41,8 +41,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmbKhoa = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            tENLOPLabel = new System.Windows.Forms.Label();
-            tENMHLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dS_SERVER1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mONHOCBindingSource)).BeginInit();
@@ -50,21 +48,21 @@
             // 
             // tENLOPLabel
             // 
-            tENLOPLabel.AutoSize = true;
-            tENLOPLabel.Location = new System.Drawing.Point(158, 105);
-            tENLOPLabel.Name = "tENLOPLabel";
-            tENLOPLabel.Size = new System.Drawing.Size(34, 13);
-            tENLOPLabel.TabIndex = 1;
-            tENLOPLabel.Text = "LỚP :";
+            this.tENLOPLabel.AutoSize = true;
+            this.tENLOPLabel.Location = new System.Drawing.Point(158, 105);
+            this.tENLOPLabel.Name = "tENLOPLabel";
+            this.tENLOPLabel.Size = new System.Drawing.Size(34, 13);
+            this.tENLOPLabel.TabIndex = 1;
+            this.tENLOPLabel.Text = "LỚP :";
             // 
             // tENMHLabel
             // 
-            tENMHLabel.AutoSize = true;
-            tENMHLabel.Location = new System.Drawing.Point(158, 139);
-            tENMHLabel.Name = "tENMHLabel";
-            tENMHLabel.Size = new System.Drawing.Size(61, 13);
-            tENMHLabel.TabIndex = 2;
-            tENMHLabel.Text = "MÔN HỌC:";
+            this.tENMHLabel.AutoSize = true;
+            this.tENMHLabel.Location = new System.Drawing.Point(158, 139);
+            this.tENMHLabel.Name = "tENMHLabel";
+            this.tENMHLabel.Size = new System.Drawing.Size(61, 13);
+            this.tENMHLabel.TabIndex = 2;
+            this.tENMHLabel.Text = "MÔN HỌC:";
             // 
             // dS_SERVER1
             // 
@@ -85,11 +83,9 @@
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.DIEMTableAdapter = null;
             this.tableAdapterManager.GIANGVIENTableAdapter = null;
-            //this.tableAdapterManager.HOCPHITableAdapter = null;
             this.tableAdapterManager.KHOATableAdapter = null;
             this.tableAdapterManager.LOPTableAdapter = this.lOPTableAdapter;
             this.tableAdapterManager.MONHOCTableAdapter = null;
-            //this.tableAdapterManager.NHAPDIEMTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = CSDLPT.DS_SERVER1TableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
@@ -187,7 +183,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(295, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(218, 16);
+            this.label3.Size = new System.Drawing.Size(217, 16);
             this.label3.TabIndex = 10;
             this.label3.Text = "IN DANH SÁCH THI HẾT MÔN";
             // 
@@ -203,12 +199,13 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnInbaocao);
-            this.Controls.Add(tENMHLabel);
+            this.Controls.Add(this.tENMHLabel);
             this.Controls.Add(this.tENMHComboBox);
-            this.Controls.Add(tENLOPLabel);
+            this.Controls.Add(this.tENLOPLabel);
             this.Controls.Add(this.tENLOPComboBox);
             this.Name = "InDanh_sach_thi_het_mon";
             this.Text = "InDanh_sach_thi_het_mon";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InDanh_sach_thi_het_mon_FormClosing);
             this.Load += new System.EventHandler(this.InDanh_sach_thi_het_mon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS_SERVER1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lOPBindingSource)).EndInit();
@@ -235,5 +232,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbKhoa;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label tENLOPLabel;
+        private System.Windows.Forms.Label tENMHLabel;
     }
 }

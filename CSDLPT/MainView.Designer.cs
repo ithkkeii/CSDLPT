@@ -53,6 +53,7 @@
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.mvvmContext1 = new DevExpress.Utils.MVVM.MVVMContext(this.components);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.bbtnInBangDiemTongKet = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
@@ -81,10 +82,11 @@
             this.bsiMaGV,
             this.bsiTenGV,
             this.bsiNhom,
-            this.bbtnLogout});
+            this.bbtnLogout,
+            this.bbtnInBangDiemTongKet});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl1.MaxItemId = 22;
+            this.ribbonControl1.MaxItemId = 23;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -136,7 +138,7 @@
             // 
             // bbtnInDSSV
             // 
-            this.bbtnInDSSV.Caption = "IN DANH SÁCH SINH VIÊN";
+            this.bbtnInDSSV.Caption = "In Danh Sách Sinh Viên";
             this.bbtnInDSSV.Id = 8;
             this.bbtnInDSSV.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnInDSSV.ImageOptions.SvgImage")));
             this.bbtnInDSSV.Name = "bbtnInDSSV";
@@ -144,7 +146,7 @@
             // 
             // bbtnInBangDiem
             // 
-            this.bbtnInBangDiem.Caption = "IN BẢNG ĐIỂM";
+            this.bbtnInBangDiem.Caption = "In Bảng Điểm Lớp";
             this.bbtnInBangDiem.Id = 9;
             this.bbtnInBangDiem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnInBangDiem.ImageOptions.SvgImage")));
             this.bbtnInBangDiem.Name = "bbtnInBangDiem";
@@ -186,7 +188,7 @@
             // 
             // bbtnThiHetMon
             // 
-            this.bbtnThiHetMon.Caption = "IN DS THI HẾT MÔN";
+            this.bbtnThiHetMon.Caption = "In Danh Sách Thi Hết Môn";
             this.bbtnThiHetMon.Id = 16;
             this.bbtnThiHetMon.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnThiHetMon.ImageOptions.SvgImage")));
             this.bbtnThiHetMon.Name = "bbtnThiHetMon";
@@ -194,7 +196,7 @@
             // 
             // bbtnPhieuDiemCaNhan
             // 
-            this.bbtnPhieuDiemCaNhan.Caption = "IN PHIẾU ĐIỂM CÁ NHÂN";
+            this.bbtnPhieuDiemCaNhan.Caption = "In Phiếu Điểm Cá Nhân";
             this.bbtnPhieuDiemCaNhan.Id = 17;
             this.bbtnPhieuDiemCaNhan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbtnPhieuDiemCaNhan.ImageOptions.SvgImage")));
             this.bbtnPhieuDiemCaNhan.Name = "bbtnPhieuDiemCaNhan";
@@ -265,8 +267,8 @@
             this.ribbonPageGroup4.ItemLinks.Add(this.bbtnThiHetMon);
             this.ribbonPageGroup4.ItemLinks.Add(this.bbtnPhieuDiemCaNhan);
             this.ribbonPageGroup4.ItemLinks.Add(this.bbtnInDSDongTien);
+            this.ribbonPageGroup4.ItemLinks.Add(this.bbtnInBangDiemTongKet);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "ribbonPageGroup4";
             // 
             // ribbonStatusBar1
             // 
@@ -287,6 +289,13 @@
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
+            // 
+            // bbtnInBangDiemTongKet
+            // 
+            this.bbtnInBangDiemTongKet.Caption = "In Bảng Điểm Tổng Kết";
+            this.bbtnInBangDiemTongKet.Id = 22;
+            this.bbtnInBangDiemTongKet.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
+            this.bbtnInBangDiemTongKet.Name = "bbtnInBangDiemTongKet";
             // 
             // MainView
             // 
@@ -341,6 +350,7 @@
         public DevExpress.XtraBars.BarStaticItem bsiNhom;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
         private DevExpress.XtraBars.BarButtonItem bbtnLogout;
+        private DevExpress.XtraBars.BarButtonItem bbtnInBangDiemTongKet;
     }
 }
 

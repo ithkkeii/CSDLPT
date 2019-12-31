@@ -234,11 +234,17 @@
     <EmbeddedResource Include="ReportForm\InBD.resx">
       <DependentUpon>InBD.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportForm\InDanh_sach_thi_het_mon.resx">
+      <DependentUpon>InDanh_sach_thi_het_mon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportForm\InDSDongHocPhi.resx">
       <DependentUpon>InDSDongHocPhi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForm\InDSSV.resx">
       <DependentUpon>InDSSV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportForm\InPhieu_diem_ca_nhan.resx">
+      <DependentUpon>InPhieu_diem_ca_nhan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Danh_sach_thi_het_mon.resx">
       <DependentUpon>Danh_sach_thi_het_mon.cs</DependentUpon>

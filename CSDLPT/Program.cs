@@ -25,7 +25,7 @@ namespace CSDLPT {
         public static String mGroup = string.Empty;
         public static String mHoten = string.Empty;
         public static int mChinhanh = 0;
-        public static string prefix = "_";
+        public static string prefix = ".";
 
         public static BindingSource bds_dspm = new BindingSource(); // giữ bdsPM khi đăng nhập
 

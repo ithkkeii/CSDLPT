@@ -30,7 +30,7 @@ namespace CSDLPT.ReportForm {
             // chọn khoa
             BindingSource bds_dsKhoa = new BindingSource();
             bds_dsKhoa.DataSource = Program.bds_dspm.DataSource;
-            bds_dsKhoa.Filter = "TENPM <> 'PHÒNG KẾ TOÁN'";
+            bds_dsKhoa.Filter = "TENPM <> 'KẾ TOÁN'";
             cmbKhoa.DataSource = bds_dsKhoa.DataSource;
             cmbKhoa.DisplayMember = "TENPM";
             cmbKhoa.ValueMember = "TENSERVER";
@@ -74,6 +74,10 @@ namespace CSDLPT.ReportForm {
         private void BtnThoat_Click(object sender, EventArgs e) {
             Program.servername = tenServer;
             this.Close();
+        }
+
+        private void InDanh_sach_thi_het_mon_FormClosing(object sender, FormClosingEventArgs e) {
+            Program.servername = tenServer;
         }
     }
 }
