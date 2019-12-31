@@ -81,6 +81,10 @@ namespace CSDLPT {
             this.cmbKhoaInUse.SelectedIndex = -1;
             this.cmbKhoaInUse.SelectedIndex = Program.mChinhanh;
 
+            if (!Program.mGroup.Equals("PGV")) {
+                this.cmbKhoaInUse.Enabled = false;
+            }
+
             //Button control
             bbtnAdd.Enabled = true;
             bbtnEdit.Enabled = true;

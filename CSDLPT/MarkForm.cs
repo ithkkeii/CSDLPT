@@ -38,11 +38,12 @@ namespace CSDLPT {
             cmbKhoa.DataSource = bds_dsKhoa.DataSource;
             cmbKhoa.DisplayMember = "TENPM";
             cmbKhoa.ValueMember = "TENSERVER";
+
+            //auto click
+            cmbKhoa.SelectedIndex = Program.mChinhanh;
+            cmbKhoa.SelectedIndex = -1;
+            cmbKhoa.SelectedIndex = Program.mChinhanh;
             if (!Program.mGroup.Equals("PGV")) {
-                //auto click
-                cmbKhoa.SelectedIndex = Program.mChinhanh;
-                cmbKhoa.SelectedIndex = -1;
-                cmbKhoa.SelectedIndex = Program.mChinhanh;
                 cmbKhoa.Enabled = false;
             }
         }
