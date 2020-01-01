@@ -74,5 +74,29 @@ namespace CSDLPT {
             } catch (Exception) {
             }
         }
+
+        private void LoginForm_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == (char)Keys.Enter) {
+                btnLogin_Click(sender, e);
+            }
+        }
+
+        private void tbUsername_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == (char)Keys.Enter) {
+                btnLogin_Click(sender, e);
+            }
+        }
+
+        private void tbPassword_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == (char)Keys.Enter) {
+                btnLogin_Click(sender, e);
+            }
+        }
+
+        private void cmbPM_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == (char)Keys.Enter) {
+                btnLogin_Click(sender, e);
+            }
+        }
     }
 }

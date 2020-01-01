@@ -133,6 +133,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportForm\InBang_diem_tong_ket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportForm\InBang_diem_tong_ket.Designer.cs">
+      <DependentUpon>InBang_diem_tong_ket.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportForm\InBD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,12 @@
     </Compile>
     <Compile Include="ReportForm\InPhieu_diem_ca_nhan.Designer.cs">
       <DependentUpon>InPhieu_diem_ca_nhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Bang_diem_tong_ket.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Bang_diem_tong_ket.Designer.cs">
+      <DependentUpon>Bang_diem_tong_ket.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\Danh_sach_thi_het_mon.cs">
       <SubType>Component</SubType>
@@ -245,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForm\InPhieu_diem_ca_nhan.resx">
       <DependentUpon>InPhieu_diem_ca_nhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Bang_diem_tong_ket.resx">
+      <DependentUpon>Bang_diem_tong_ket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Danh_sach_thi_het_mon.resx">
       <DependentUpon>Danh_sach_thi_het_mon.cs</DependentUpon>

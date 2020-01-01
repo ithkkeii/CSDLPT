@@ -173,9 +173,9 @@ namespace CSDLPT {
         }
 
         private void bbtnInBangDiemTongKet_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
-            Form frm = this.checkExist(typeof(InPhieu_diem_ca_nhan));
+            Form frm = this.checkExist(typeof(InBang_diem_tong_ket));
             if (frm == null) {
-                InPhieu_diem_ca_nhan form = new InPhieu_diem_ca_nhan();
+                InBang_diem_tong_ket form = new InBang_diem_tong_ket();
                 form.MdiParent = this;
                 form.Show();
             } else

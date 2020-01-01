@@ -37,7 +37,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(186, 89);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 29);
+            this.label1.Size = new System.Drawing.Size(111, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Chọn Khoa:";
             // 
@@ -46,7 +46,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(144, 161);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(178, 29);
+            this.label2.Size = new System.Drawing.Size(145, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Tên Đăng Nhập:";
             // 
@@ -55,7 +55,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(202, 227);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 29);
+            this.label3.Size = new System.Drawing.Size(99, 23);
             this.label3.TabIndex = 2;
             this.label3.Text = "Mật Khẩu:";
             // 
@@ -64,24 +64,27 @@
             this.cmbPM.FormattingEnabled = true;
             this.cmbPM.Location = new System.Drawing.Point(341, 86);
             this.cmbPM.Name = "cmbPM";
-            this.cmbPM.Size = new System.Drawing.Size(301, 35);
+            this.cmbPM.Size = new System.Drawing.Size(301, 31);
             this.cmbPM.TabIndex = 3;
             this.cmbPM.SelectedIndexChanged += new System.EventHandler(this.cmbPM_SelectedIndexChanged);
+            this.cmbPM.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbPM_KeyPress);
             // 
             // tbUsername
             // 
             this.tbUsername.Location = new System.Drawing.Point(341, 155);
             this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(301, 35);
+            this.tbUsername.Size = new System.Drawing.Size(301, 32);
             this.tbUsername.TabIndex = 4;
+            this.tbUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbUsername_KeyPress);
             // 
             // tbPassword
             // 
             this.tbPassword.Location = new System.Drawing.Point(341, 224);
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(301, 35);
+            this.tbPassword.Size = new System.Drawing.Size(301, 32);
             this.tbPassword.TabIndex = 5;
             this.tbPassword.UseSystemPasswordChar = true;
+            this.tbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbPassword_KeyPress);
             // 
             // btnLogin
             // 
@@ -95,7 +98,7 @@
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 476);
             this.Controls.Add(this.btnLogin);
@@ -110,6 +113,7 @@
             this.Name = "LoginForm";
             this.Text = "LoginForm";
             this.Load += new System.EventHandler(this.LoginForm_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LoginForm_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 
