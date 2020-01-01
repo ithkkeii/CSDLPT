@@ -24,9 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label mAMHLabel;
-            System.Windows.Forms.Label tENMHLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubjectForm));
+            this.mAMHLabel = new System.Windows.Forms.Label();
+            this.tENMHLabel = new System.Windows.Forms.Label();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -52,8 +51,8 @@
             this.groupControlSubject = new DevExpress.XtraEditors.GroupControl();
             this.tENMHTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.mAMHTextEdit = new DevExpress.XtraEditors.TextEdit();
-            mAMHLabel = new System.Windows.Forms.Label();
-            tENMHLabel = new System.Windows.Forms.Label();
+            this.dIEMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dIEMTableAdapter = new CSDLPT.DS_SERVER1TableAdapters.DIEMTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dS_SERVER1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsMONHOC)).BeginInit();
@@ -63,25 +62,26 @@
             this.groupControlSubject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tENMHTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mAMHTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dIEMBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mAMHLabel
             // 
-            mAMHLabel.AutoSize = true;
-            mAMHLabel.Location = new System.Drawing.Point(57, 99);
-            mAMHLabel.Name = "mAMHLabel";
-            mAMHLabel.Size = new System.Drawing.Size(68, 13);
-            mAMHLabel.TabIndex = 0;
-            mAMHLabel.Text = "Mã Môn học:";
+            this.mAMHLabel.AutoSize = true;
+            this.mAMHLabel.Location = new System.Drawing.Point(57, 99);
+            this.mAMHLabel.Name = "mAMHLabel";
+            this.mAMHLabel.Size = new System.Drawing.Size(68, 13);
+            this.mAMHLabel.TabIndex = 0;
+            this.mAMHLabel.Text = "Mã Môn học:";
             // 
             // tENMHLabel
             // 
-            tENMHLabel.AutoSize = true;
-            tENMHLabel.Location = new System.Drawing.Point(393, 99);
-            tENMHLabel.Name = "tENMHLabel";
-            tENMHLabel.Size = new System.Drawing.Size(73, 13);
-            tENMHLabel.TabIndex = 2;
-            tENMHLabel.Text = "Tên Môn Học:";
+            this.tENMHLabel.AutoSize = true;
+            this.tENMHLabel.Location = new System.Drawing.Point(393, 99);
+            this.tENMHLabel.Name = "tENMHLabel";
+            this.tENMHLabel.Size = new System.Drawing.Size(73, 13);
+            this.tENMHLabel.TabIndex = 2;
+            this.tENMHLabel.Text = "Tên Môn Học:";
             // 
             // barManager1
             // 
@@ -134,8 +134,6 @@
             // 
             this.barButtonAddSubject.Caption = "THÊM";
             this.barButtonAddSubject.Id = 0;
-            this.barButtonAddSubject.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonAddSubject.ImageOptions.Image")));
-            this.barButtonAddSubject.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonAddSubject.ImageOptions.LargeImage")));
             this.barButtonAddSubject.Name = "barButtonAddSubject";
             this.barButtonAddSubject.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonAddSubject_ItemClick);
             // 
@@ -143,8 +141,6 @@
             // 
             this.barButtonDelSubject.Caption = "XÓA";
             this.barButtonDelSubject.Id = 1;
-            this.barButtonDelSubject.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonDelSubject.ImageOptions.Image")));
-            this.barButtonDelSubject.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonDelSubject.ImageOptions.LargeImage")));
             this.barButtonDelSubject.Name = "barButtonDelSubject";
             this.barButtonDelSubject.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonDelSubject_ItemClick);
             // 
@@ -152,8 +148,6 @@
             // 
             this.barButtonEditSubject.Caption = "HIỆU CHỈNH";
             this.barButtonEditSubject.Id = 2;
-            this.barButtonEditSubject.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonEditSubject.ImageOptions.Image")));
-            this.barButtonEditSubject.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonEditSubject.ImageOptions.LargeImage")));
             this.barButtonEditSubject.Name = "barButtonEditSubject";
             this.barButtonEditSubject.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonEditSubject_ItemClick);
             // 
@@ -161,8 +155,6 @@
             // 
             this.barButtonUndoSubject.Caption = "PHỤC HỒI";
             this.barButtonUndoSubject.Id = 3;
-            this.barButtonUndoSubject.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonUndoSubject.ImageOptions.Image")));
-            this.barButtonUndoSubject.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonUndoSubject.ImageOptions.LargeImage")));
             this.barButtonUndoSubject.Name = "barButtonUndoSubject";
             this.barButtonUndoSubject.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonUndoSubject_ItemClick);
             // 
@@ -170,8 +162,6 @@
             // 
             this.barButtonSaveSubject.Caption = "GHI";
             this.barButtonSaveSubject.Id = 4;
-            this.barButtonSaveSubject.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonSaveSubject.ImageOptions.Image")));
-            this.barButtonSaveSubject.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonSaveSubject.ImageOptions.LargeImage")));
             this.barButtonSaveSubject.Name = "barButtonSaveSubject";
             this.barButtonSaveSubject.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonSaveSubject_ItemClick);
             // 
@@ -179,8 +169,6 @@
             // 
             this.barButtonExitSubjectForm.Caption = "THOÁT";
             this.barButtonExitSubjectForm.Id = 5;
-            this.barButtonExitSubjectForm.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonExitSubjectForm.ImageOptions.Image")));
-            this.barButtonExitSubjectForm.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonExitSubjectForm.ImageOptions.LargeImage")));
             this.barButtonExitSubjectForm.Name = "barButtonExitSubjectForm";
             this.barButtonExitSubjectForm.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonExitSubjectForm_ItemClick);
             // 
@@ -202,31 +190,31 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(820, 53);
+            this.barDockControlTop.Size = new System.Drawing.Size(820, 41);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 461);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 464);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(820, 23);
+            this.barDockControlBottom.Size = new System.Drawing.Size(820, 20);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 53);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 41);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 408);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 423);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(820, 53);
+            this.barDockControlRight.Location = new System.Drawing.Point(820, 41);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 408);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 423);
             // 
             // dS_SERVER1
             // 
@@ -257,7 +245,7 @@
             // 
             this.mONHOCGridControl.DataSource = this.bdsMONHOC;
             this.mONHOCGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.mONHOCGridControl.Location = new System.Drawing.Point(0, 53);
+            this.mONHOCGridControl.Location = new System.Drawing.Point(0, 41);
             this.mONHOCGridControl.MainView = this.gridView1;
             this.mONHOCGridControl.MenuManager = this.barManager1;
             this.mONHOCGridControl.Name = "mONHOCGridControl";
@@ -293,14 +281,14 @@
             // 
             // groupControlSubject
             // 
-            this.groupControlSubject.Controls.Add(tENMHLabel);
+            this.groupControlSubject.Controls.Add(this.tENMHLabel);
             this.groupControlSubject.Controls.Add(this.tENMHTextEdit);
-            this.groupControlSubject.Controls.Add(mAMHLabel);
+            this.groupControlSubject.Controls.Add(this.mAMHLabel);
             this.groupControlSubject.Controls.Add(this.mAMHTextEdit);
             this.groupControlSubject.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControlSubject.Location = new System.Drawing.Point(0, 273);
+            this.groupControlSubject.Location = new System.Drawing.Point(0, 261);
             this.groupControlSubject.Name = "groupControlSubject";
-            this.groupControlSubject.Size = new System.Drawing.Size(820, 188);
+            this.groupControlSubject.Size = new System.Drawing.Size(820, 203);
             this.groupControlSubject.TabIndex = 15;
             // 
             // tENMHTextEdit
@@ -321,6 +309,15 @@
             this.mAMHTextEdit.Properties.ReadOnly = true;
             this.mAMHTextEdit.Size = new System.Drawing.Size(120, 20);
             this.mAMHTextEdit.TabIndex = 1;
+            // 
+            // dIEMBindingSource
+            // 
+            this.dIEMBindingSource.DataMember = "FK_DIEM_MONHOC1";
+            this.dIEMBindingSource.DataSource = this.bdsMONHOC;
+            // 
+            // dIEMTableAdapter
+            // 
+            this.dIEMTableAdapter.ClearBeforeFill = true;
             // 
             // SubjectForm
             // 
@@ -347,6 +344,7 @@
             this.groupControlSubject.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tENMHTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mAMHTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dIEMBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,5 +377,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTENMH;
         private DevExpress.XtraEditors.TextEdit tENMHTextEdit;
         private DevExpress.XtraEditors.TextEdit mAMHTextEdit;
+        private System.Windows.Forms.Label mAMHLabel;
+        private System.Windows.Forms.Label tENMHLabel;
+        private System.Windows.Forms.BindingSource dIEMBindingSource;
+        private DS_SERVER1TableAdapters.DIEMTableAdapter dIEMTableAdapter;
     }
 }

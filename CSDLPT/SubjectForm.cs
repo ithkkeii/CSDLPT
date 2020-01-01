@@ -19,6 +19,10 @@ namespace CSDLPT {
 
         private void SubjectForm_Load(object sender, EventArgs e) {
             dS_SERVER1.EnforceConstraints = false;
+            gridView1.OptionsDetail.EnableMasterViewMode = false;
+            // TODO: This line of code loads data into the 'dS_SERVER1.DIEM' table. You can move, or remove it, as needed.
+            this.dIEMTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.dIEMTableAdapter.Fill(this.dS_SERVER1.DIEM);
             this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
             // TODO: This line of code loads data into the 'dS_SERVER1.MONHOC' table. You can move, or remove it, as needed.
             this.mONHOCTableAdapter.Fill(this.dS_SERVER1.MONHOC);
@@ -70,6 +74,8 @@ namespace CSDLPT {
                 return;
 
             }
+
+
             try {
                 bdsMONHOC.EndEdit();
                 bdsMONHOC.ResetCurrentItem();
@@ -97,6 +103,12 @@ namespace CSDLPT {
         }
 
         private void BarButtonDelSubject_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
+
+            if (dIEMBindingSource.Count > 0) {
+                MessageBox.Show("Không được xóa môn học này!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa môn học này?", string.Empty, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes) {
                 try {
