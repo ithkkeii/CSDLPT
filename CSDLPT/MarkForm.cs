@@ -189,6 +189,11 @@ namespace CSDLPT {
 
             cmd = string.Format("EXEC sp_lay_sinh_vien_theo_lop N'{0}',{1},{2}", maLop, maMonhoc, lanThi);
             DataTable dt = Program.ExecSqlDataTable(cmd);
+            if (dt.Rows.Count == 0) {
+                MessageBox.Show("Lớp chưa có sinh viên!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+
+            }
             dt.Columns[0].ReadOnly = dt.Columns[1].ReadOnly = true;
             for (int i = 0; i < dt.Rows.Count; i++) {
                 if (dt.Rows[i][2].ToString() != "") {
@@ -206,6 +211,7 @@ namespace CSDLPT {
                 groupControl1.Enabled = false;
                 btnEdit.Enabled = false;
             }
+
 
 
 
