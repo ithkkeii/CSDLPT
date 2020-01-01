@@ -120,5 +120,9 @@ namespace CSDLPT.ReportForm {
         private void InDSSV_FormClosing(object sender, FormClosingEventArgs e) {
             //Program.servername = tenServer;
         }
+
+        private void btnExit_Click(object sender, EventArgs e) {
+            this.Close();
+        }
     }
 }

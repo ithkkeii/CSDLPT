@@ -66,5 +66,9 @@ namespace CSDLPT.ReportForm {
             ReportPrintTool print = new ReportPrintTool(rpt);
             print.ShowPreviewDialog();
         }
+
+        private void btnExit_Click(object sender, EventArgs e) {
+            this.Close();
+        }
     }
 }

@@ -40,6 +40,7 @@
             this.cmbMonHoc = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbLanThi = new System.Windows.Forms.ComboBox();
+            this.btnExit = new System.Windows.Forms.Button();
             tENMHLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dS_SERVER1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
@@ -141,11 +142,11 @@
             // btnOk
             // 
             this.btnOk.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOk.Location = new System.Drawing.Point(426, 327);
+            this.btnOk.Location = new System.Drawing.Point(387, 327);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(101, 33);
             this.btnOk.TabIndex = 8;
-            this.btnOk.Text = "OK";
+            this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -197,11 +198,23 @@
             this.cmbLanThi.Size = new System.Drawing.Size(39, 29);
             this.cmbLanThi.TabIndex = 11;
             // 
+            // btnExit
+            // 
+            this.btnExit.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(515, 327);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(101, 33);
+            this.btnExit.TabIndex = 12;
+            this.btnExit.Text = " Thoát";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // InBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 452);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.cmbLanThi);
             this.Controls.Add(this.label4);
             this.Controls.Add(tENMHLabel);
@@ -240,5 +253,6 @@
         private System.Windows.Forms.ComboBox cmbMonHoc;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbLanThi;
+        private System.Windows.Forms.Button btnExit;
     }
 }

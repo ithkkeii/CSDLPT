@@ -30,6 +30,7 @@
             this.cmbHocKy = new System.Windows.Forms.ComboBox();
             this.cmbNienKhoa = new System.Windows.Forms.ComboBox();
             this.btnOk = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbMaLop
@@ -102,7 +103,7 @@
             // btnOk
             // 
             this.btnOk.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOk.Location = new System.Drawing.Point(599, 304);
+            this.btnOk.Location = new System.Drawing.Point(575, 304);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(95, 33);
             this.btnOk.TabIndex = 6;
@@ -110,11 +111,23 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // InDSDongTien
+            // btnExit
+            // 
+            this.btnExit.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(734, 304);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(95, 33);
+            this.btnExit.TabIndex = 7;
+            this.btnExit.Text = "Thoát";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // InDSDongHocPhi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1129, 417);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.cmbNienKhoa);
             this.Controls.Add(this.cmbHocKy);
@@ -122,7 +135,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbMaLop);
-            this.Name = "InDSDongTien";
+            this.Name = "InDSDongHocPhi";
             this.Text = "-";
             this.Load += new System.EventHandler(this.InDSDongTien_Load);
             this.ResumeLayout(false);
@@ -139,5 +152,6 @@
         private System.Windows.Forms.ComboBox cmbHocKy;
         private System.Windows.Forms.ComboBox cmbNienKhoa;
         private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.Button btnExit;
     }
 }

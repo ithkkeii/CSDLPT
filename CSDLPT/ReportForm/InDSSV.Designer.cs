@@ -34,6 +34,7 @@
             this.tableAdapterManager = new CSDLPT.DS_SERVER1TableAdapters.TableAdapterManager();
             this.cmbLop = new System.Windows.Forms.ComboBox();
             this.btnOk = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dS_SERVER1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsLop)).BeginInit();
             this.SuspendLayout();
@@ -123,7 +124,7 @@
             // btnOk
             // 
             this.btnOk.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOk.Location = new System.Drawing.Point(430, 217);
+            this.btnOk.Location = new System.Drawing.Point(373, 216);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(101, 33);
             this.btnOk.TabIndex = 8;
@@ -131,11 +132,23 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // btnExit
+            // 
+            this.btnExit.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.Location = new System.Drawing.Point(503, 216);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(101, 33);
+            this.btnExit.TabIndex = 9;
+            this.btnExit.Text = "Thoát";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // InDSSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1038, 345);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.cmbLop);
             this.Controls.Add(this.cmbChiNhanh);
@@ -165,5 +178,6 @@
         private DS_SERVER1TableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.ComboBox cmbLop;
         private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.Button btnExit;
     }
 }
