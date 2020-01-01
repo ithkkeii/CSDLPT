@@ -52,7 +52,7 @@ namespace CSDLPT {
         private void BarButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
 
             List<DataRow> list = new List<DataRow>();
-
+            gridView1.MoveFirst();
 
             for (int i = 0; i < gridView1.DataRowCount; i++) {
                 list.Add(gridView1.GetDataRow(i));

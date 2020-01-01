@@ -727,7 +727,6 @@ namespace CSDLPT {
                 sqlcmd.ExecuteNonQuery();
             } catch (Exception ex) {
                 Program.conn.Close();
-                MessageBox.Show(ex.Message);
                 isExistInside = true;
             }
 
@@ -747,7 +746,8 @@ namespace CSDLPT {
                     MessageBox.Show("Chuyển sinh viên thành công!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } catch (Exception ex) {
                     Program.conn.Close();
-                    MessageBox.Show(ex.Message);
+                    //MessageBox.Show(ex.Message);
+                    MessageBox.Show("Chuyển sinh viên thất bại!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             } else {
@@ -766,7 +766,8 @@ namespace CSDLPT {
                     MessageBox.Show("Chuyển sinh viên thành công!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 } catch (Exception ex) {
                     Program.conn.Close();
-                    MessageBox.Show(ex.Message);
+                    //MessageBox.Show(ex.Message);
+                    MessageBox.Show("Chuyển sinh viên thất bại!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }

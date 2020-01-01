@@ -42,8 +42,8 @@ namespace CSDLPT {
                 bbtnInDSDongTien.Enabled = false;
             }
             if (Program.mGroup.Equals("KHOA")) {
-                bbtnSubject.Enabled = true;
-                bbtnModifyClass.Enabled = true;
+                bbtnSubject.Enabled = false;
+                bbtnModifyClass.Enabled = false;
                 bbtnModifyMark.Enabled = true;
                 bbtnCreateAccount.Enabled = true;
                 bbtnSchoolFee.Enabled = false;

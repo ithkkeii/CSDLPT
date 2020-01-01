@@ -19,18 +19,36 @@ namespace CSDLPT {
         }
 
         private void CreateAccount_Load(object sender, EventArgs e) {
+            if (Program.mGroup.Equals("PGV")) {
+                cmbPM.DataSource = Program.bds_dspm.DataSource;
+                cmbPM.DisplayMember = "TENPM";
+                cmbPM.ValueMember = "TENSERVER";
+                cmbPM.DropDownStyle = ComboBoxStyle.DropDownList;
+            }
+
+            ///////////////////
             Dictionary<string, string> listRole = new Dictionary<string, string>();
 
             if (Program.mGroup.Equals("PGV")) {
                 listRole.Add("PGV", "Phòng Giáo Vụ");
                 listRole.Add("KHOA", "Khoa");
-                //listRole.Add("PKETOAN", "Phòng Kế Toán");
+
+                //Auto click combobox
+                cmbPM.SelectedIndex = Program.mChinhanh;
+                cmbPM.SelectedIndex = -1;
+                cmbPM.SelectedIndex = Program.mChinhanh;
             }
             if (Program.mGroup.Equals("KHOA")) {
                 listRole.Add("KHOA", "Khoa");
+
+                //disable box chuyển khoa
+                cmbPM.Enabled = false;
             }
             if (Program.mGroup.Equals("PKETOAN")) {
                 listRole.Add("PKETOAN", "Phòng Kế Toán");
+
+                //disable box chuyển khoa
+                cmbPM.Enabled = false;
             }
 
             cmbRole.DataSource = listRole.ToList();
@@ -117,6 +135,71 @@ namespace CSDLPT {
 
         private void btnExit_Click(object sender, EventArgs e) {
             this.Close();
+        }
+
+        private void cmbPM_SelectedIndexChanged(object sender, EventArgs e) {
+            if (Program.mGroup.Equals("PGV")) {
+
+                if (this.cmbPM.SelectedIndex == 2) {
+                    Dictionary<string, string> listRole = new Dictionary<string, string>();
+
+                    if (Program.mGroup.Equals("PGV")) {
+                        listRole.Add("PGV", "Phòng Giáo Vụ");
+                        listRole.Add("KHOA", "Khoa");
+                        listRole.Add("PKETOAN", "Phòng Kế Toán");
+                    }
+                    cmbRole.DataSource = listRole.ToList();
+                    cmbRole.DisplayMember = "Value";
+                    cmbRole.ValueMember = "Key";
+                    cmbRole.SelectedIndex = 2;
+                    cmbRole.Enabled = false;
+                } else {
+                    Dictionary<string, string> listRole = new Dictionary<string, string>();
+
+                    if (Program.mGroup.Equals("PGV")) {
+                        listRole.Add("PGV", "Phòng Giáo Vụ");
+                        listRole.Add("KHOA", "Khoa");
+                    }
+                    cmbRole.DataSource = listRole.ToList();
+                    cmbRole.DisplayMember = "Value";
+                    cmbRole.ValueMember = "Key";
+                    cmbRole.SelectedIndex = 0;
+                    cmbRole.Enabled = true;
+                }
+
+                if (this.cmbPM.SelectedIndex == -1)
+                    return;
+
+                if (cmbPM.SelectedValue.ToString() == "System.Data.DataRowView") {
+                    return;
+                }
+                Program.servername = cmbPM.SelectedValue.ToString();
+
+                if (cmbPM.SelectedIndex != Program.mChinhanh) {
+                    Program.mlogin = Program.remotelogin;
+                    Program.password = Program.remotepassword;
+                } else {
+                    Program.mlogin = Program.mloginDN;
+                    Program.password = Program.passwordDN;
+                }
+                if (Program.Connect() == 0) {
+                    MessageBox.Show("Lỗi kết nối khoa mới", "", MessageBoxButtons.OK);
+                }
+
+                DataTable dt = new DataTable();
+                dt = Program.ExecSqlDataTable("EXEC SP_GIANGVIENCHUACOTAIKHOAN");
+                cmbAccountOwner.Enabled = true;
+                cmbAccountOwner.DataSource = dt;
+                cmbAccountOwner.DisplayMember = "TEN";
+                cmbAccountOwner.ValueMember = "MAGV";
+                if (cmbAccountOwner.Items.Count == 0) {
+                    cmbAccountOwner.ResetText();
+                    cmbAccountOwner.SelectedText = "Không còn người để tạo tài khoản";
+                    cmbAccountOwner.Enabled = false;
+                }
+                btnOk.Enabled = false;
+                Console.WriteLine(Program.connstr);
+            }
         }
     }
 }
