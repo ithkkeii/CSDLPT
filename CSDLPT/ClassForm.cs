@@ -698,13 +698,12 @@ namespace CSDLPT {
                 return;
             }
 
-            strLenh = "SP_CHUYENLOP";
+            //Check lớp có trong mảnh ?
+            bool isExistInside = false;
+            strLenh = "SP_ISLOPEXISTINSIDE";
             sqlcmd = new SqlCommand(strLenh, Program.conn);
             sqlcmd.CommandType = CommandType.StoredProcedure;
-            sqlcmd.Parameters.AddWithValue("MASV_NEW", maSinhVenMoi);
-            sqlcmd.Parameters.AddWithValue("MASV_OLD", maSinhVienChuyenLop);
-            sqlcmd.Parameters.AddWithValue("MALOP_NEW", maLopMoi);
-            sqlcmd.Parameters.AddWithValue("MALOP_OLD", maLopCu);
+            sqlcmd.Parameters.AddWithValue("MALOP", maLopMoi);
 
             if (Program.conn.State == ConnectionState.Closed)
                 Program.conn.Open();
@@ -713,7 +712,47 @@ namespace CSDLPT {
             } catch (Exception ex) {
                 Program.conn.Close();
                 MessageBox.Show(ex.Message);
-                return;
+                isExistInside = true;
+            }
+
+            if (isExistInside) {
+                strLenh = "SP_CHUYENLOPINSIDE";
+                sqlcmd = new SqlCommand(strLenh, Program.conn);
+                sqlcmd.CommandType = CommandType.StoredProcedure;
+                sqlcmd.Parameters.AddWithValue("MASV_NEW", maSinhVenMoi);
+                sqlcmd.Parameters.AddWithValue("MASV_OLD", maSinhVienChuyenLop);
+                sqlcmd.Parameters.AddWithValue("MALOP_NEW", maLopMoi);
+                sqlcmd.Parameters.AddWithValue("MALOP_OLD", maLopCu);
+
+                if (Program.conn.State == ConnectionState.Closed)
+                    Program.conn.Open();
+                try {
+                    sqlcmd.ExecuteNonQuery();
+                    MessageBox.Show("Chuyển sinh viên thành công!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } catch (Exception ex) {
+                    Program.conn.Close();
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+            } else {
+                strLenh = "SP_CHUYENLOPOUTSIDE";
+                sqlcmd = new SqlCommand(strLenh, Program.conn);
+                sqlcmd.CommandType = CommandType.StoredProcedure;
+                sqlcmd.Parameters.AddWithValue("MASV_NEW", maSinhVenMoi);
+                sqlcmd.Parameters.AddWithValue("MASV_OLD", maSinhVienChuyenLop);
+                sqlcmd.Parameters.AddWithValue("MALOP_NEW", maLopMoi);
+                sqlcmd.Parameters.AddWithValue("MALOP_OLD", maLopCu);
+
+                if (Program.conn.State == ConnectionState.Closed)
+                    Program.conn.Open();
+                try {
+                    sqlcmd.ExecuteNonQuery();
+                    MessageBox.Show("Chuyển sinh viên thành công!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } catch (Exception ex) {
+                    Program.conn.Close();
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
             }
 
             //string result = "";
@@ -984,10 +1023,11 @@ namespace CSDLPT {
             if (bdsLop.Count > 0)
                 maKhoa = ((DataRowView)bdsLop[0])["MAKH"].ToString();
             else {
-                if (cmbKhoaInUse.SelectedIndex == 0)
-                    maKhoa = "CNTT";
-                if (cmbKhoaInUse.SelectedIndex == 1)
-                    maKhoa = "VT";
+                //if (cmbKhoaInUse.SelectedIndex == 0)
+                //    maKhoa = "CNTT";
+                //if (cmbKhoaInUse.SelectedIndex == 1)
+                //    maKhoa = "VT";
+                maKhoa = ((DataRowView)bdsKhoa[0])["MAKH"].ToString();
             }
         }
 
