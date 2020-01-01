@@ -74,7 +74,7 @@ namespace CSDLPT {
             this.cmbKhoaInUse.DataSource = bds_dspm_currentForm.DataSource;
             this.cmbKhoaInUse.DisplayMember = "TENPM";
             this.cmbKhoaInUse.ValueMember = "TENSERVER";
-            this.cmbKhoaInUse.Enabled = true;
+            //this.cmbKhoaInUse.Enabled = true;
 
             //auto click combobox
             this.cmbKhoaInUse.SelectedIndex = Program.mChinhanh;
@@ -292,7 +292,11 @@ namespace CSDLPT {
             isEdit = false;
             isAdd = false;
 
-            cmbKhoaInUse.Enabled = true;
+            if (!Program.mGroup.Equals("PGV")) {
+                this.cmbKhoaInUse.Enabled = false;
+            } else {
+                this.cmbKhoaInUse.Enabled = true;
+            }
         }
 
         private void bbtnEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e) {
@@ -354,7 +358,11 @@ namespace CSDLPT {
             isEdit = false;
             isAdd = false;
 
-            cmbKhoaInUse.Enabled = true;
+            if (!Program.mGroup.Equals("PGV")) {
+                this.cmbKhoaInUse.Enabled = false;
+            } else {
+                this.cmbKhoaInUse.Enabled = true;
+            }
         }
 
         private void tsAdd_Click(object sender, EventArgs e) {
@@ -515,7 +523,11 @@ namespace CSDLPT {
             dgvSV.ReadOnly = true;
             dgvtxbMaLop.ReadOnly = true;
 
-            cmbKhoaInUse.Enabled = true;
+            if (!Program.mGroup.Equals("PGV")) {
+                this.cmbKhoaInUse.Enabled = false;
+            } else {
+                this.cmbKhoaInUse.Enabled = true;
+            }
             bdsSV.Position = vitriSV;
         }
 
@@ -601,7 +613,11 @@ namespace CSDLPT {
             dgvSV.ReadOnly = true;
             dgvtxbMaLop.ReadOnly = true;
 
-            cmbKhoaInUse.Enabled = true;
+            if (!Program.mGroup.Equals("PGV")) {
+                this.cmbKhoaInUse.Enabled = false;
+            } else {
+                this.cmbKhoaInUse.Enabled = true;
+            }
             bdsSV.Position = vitriSV;
         }
         Dictionary<string, string> list = null;
@@ -830,7 +846,11 @@ namespace CSDLPT {
             dgvSV.ReadOnly = true;
             dgvtxbMaLop.ReadOnly = true;
 
-            cmbKhoaInUse.Enabled = true;
+            if (!Program.mGroup.Equals("PGV")) {
+                this.cmbKhoaInUse.Enabled = false;
+            } else {
+                this.cmbKhoaInUse.Enabled = true;
+            }
             bdsSV.Position = vitriSV;
             flyoutPanel1.HidePopup();
         }
@@ -859,7 +879,11 @@ namespace CSDLPT {
             dgvSV.ReadOnly = true;
             dgvtxbMaLop.ReadOnly = true;
 
-            cmbKhoaInUse.Enabled = true;
+            if (!Program.mGroup.Equals("PGV")) {
+                this.cmbKhoaInUse.Enabled = false;
+            } else {
+                this.cmbKhoaInUse.Enabled = true;
+            }
             //thoát chuyển lớp k cần gán lại vị trí
             //bdsSV.Position = vitriSV;
             flyoutPanel1.HidePopup();
