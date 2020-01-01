@@ -153,9 +153,33 @@ namespace CSDLPT {
             //Trả lại vị trí con trỏ UI/UX
             bdsHocPhi.Position = vitri;
             isEdit = false;
+
+
+
             bdsHocPhi.EndEdit();
-            if (dS_DONGHOCPHI.HasChanges())
-                taHocPhi.Update(dS_DONGHOCPHI.HOCPHI);
+            if (dS_DONGHOCPHI.HasChanges()) {
+                try {
+                    taHocPhi.Update(dS_DONGHOCPHI.HOCPHI);
+                } catch (Exception ex) {
+                    if (ex.Message.Contains("PRIMARY"))
+                        MessageBox.Show("Trùng khóa chính", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    //trùng khóa -> fill lại form
+                    this.taHocPhi.Connection.ConnectionString = Program.connstr;
+                    this.taHocPhi.FillBy(dS_DONGHOCPHI.HOCPHI, masv);
+                    bdsHocPhi.Position = vitri;
+
+                    //Button control
+                    btnAdd.Enabled = true;
+                    btnEdit.Enabled = true;
+                    btnDelete.Enabled = true;
+                    btnBack.Enabled = true;
+                    btnRecovery.Enabled = false;
+                    btnWrite.Enabled = false;
+
+                    return;
+                }
+            }
 
             //Button control
             btnAdd.Enabled = true;
@@ -230,7 +254,7 @@ namespace CSDLPT {
 
             //Button control
             if (error == 0) {
-                btnWrite_Click(null, null);
+                //btnWrite_Click(null, null);
                 //btnAdd.Enabled = true;
                 //btnEdit.Enabled = true;
                 //btnDelete.Enabled = true;
@@ -269,7 +293,8 @@ namespace CSDLPT {
             btnBack.Enabled = false;
             btnRecovery.Enabled = true;
             btnWrite.Enabled = true;
-            MessageBox.Show("Thông tin lỗi do khóa trùng hoặc sai format", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //MessageBox.Show("Thông tin lỗi do khóa trùng hoặc sai format", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
         }
 
         private void gcHocPhi_KeyDown(object sender, KeyEventArgs e) {
