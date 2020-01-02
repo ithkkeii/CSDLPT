@@ -42,13 +42,31 @@ namespace CSDLPT {
                 listRole.Add("KHOA", "Khoa");
 
                 //disable box chuyển khoa
+                cmbPM.DataSource = Program.bds_dspm.DataSource;
+                cmbPM.DisplayMember = "TENPM";
+                cmbPM.ValueMember = "TENSERVER";
+                cmbPM.DropDownStyle = ComboBoxStyle.DropDownList;
                 cmbPM.Enabled = false;
+
+                //Auto click combobox
+                cmbPM.SelectedIndex = Program.mChinhanh;
+                cmbPM.SelectedIndex = -1;
+                cmbPM.SelectedIndex = Program.mChinhanh;
             }
             if (Program.mGroup.Equals("PKETOAN")) {
                 listRole.Add("PKETOAN", "Phòng Kế Toán");
 
                 //disable box chuyển khoa
+                cmbPM.DataSource = Program.bds_dspm.DataSource;
+                cmbPM.DisplayMember = "TENPM";
+                cmbPM.ValueMember = "TENSERVER";
+                cmbPM.DropDownStyle = ComboBoxStyle.DropDownList;
                 cmbPM.Enabled = false;
+
+                //Auto click combobox
+                cmbPM.SelectedIndex = Program.mChinhanh;
+                cmbPM.SelectedIndex = -1;
+                cmbPM.SelectedIndex = Program.mChinhanh;
             }
 
             cmbRole.DataSource = listRole.ToList();
@@ -56,7 +74,21 @@ namespace CSDLPT {
             cmbRole.ValueMember = "Key";
             cmbRole.SelectedIndex = 0;
 
+            Program.servername = cmbPM.SelectedValue.ToString();
+
+            if (cmbPM.SelectedIndex != Program.mChinhanh) {
+                Program.mlogin = Program.remotelogin;
+                Program.password = Program.remotepassword;
+            } else {
+                Program.mlogin = Program.mloginDN;
+                Program.password = Program.passwordDN;
+            }
+            if (Program.Connect() == 0) {
+                MessageBox.Show("Lỗi kết nối khoa mới", "", MessageBoxButtons.OK);
+            }
+
             DataTable dt = new DataTable();
+            Console.WriteLine(Program.connstr);
             dt = Program.ExecSqlDataTable("EXEC SP_GIANGVIENCHUACOTAIKHOAN");
             cmbAccountOwner.DataSource = dt;
             cmbAccountOwner.DisplayMember = "TEN";
@@ -199,6 +231,41 @@ namespace CSDLPT {
                 }
                 btnOk.Enabled = false;
                 Console.WriteLine(Program.connstr);
+            }
+
+            if (Program.mGroup.Equals("PKETOAN")) {
+                if (this.cmbRole.SelectedIndex == -1)
+                    return;
+
+                if (cmbRole.SelectedValue.ToString() == "System.Data.DataRowView") {
+                    return;
+                }
+                Program.servername = cmbRole.SelectedValue.ToString();
+
+                if (cmbRole.SelectedIndex != Program.mChinhanh) {
+                    Program.mlogin = Program.remotelogin;
+                    Program.password = Program.remotepassword;
+                } else {
+                    Program.mlogin = Program.mloginDN;
+                    Program.password = Program.passwordDN;
+                }
+
+                if (Program.Connect() == 0) {
+                    MessageBox.Show("Lỗi kết nối khoa mới", "", MessageBoxButtons.OK);
+                }
+                DataTable dt = new DataTable();
+                dt = Program.ExecSqlDataTable("EXEC SP_GIANGVIENCHUACOTAIKHOAN");
+                cmbAccountOwner.Enabled = true;
+                cmbAccountOwner.DataSource = dt;
+                cmbAccountOwner.DisplayMember = "TEN";
+                cmbAccountOwner.ValueMember = "MAGV";
+                if (cmbAccountOwner.Items.Count == 0) {
+                    cmbAccountOwner.ResetText();
+                    cmbAccountOwner.SelectedText = "Không còn người để tạo tài khoản";
+                    cmbAccountOwner.Enabled = false;
+                }
+                btnOk.Enabled = false;
+                Console.WriteLine(Program.servername);
             }
         }
     }

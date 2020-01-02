@@ -98,5 +98,9 @@ namespace CSDLPT {
                 btnLogin_Click(sender, e);
             }
         }
+
+        private void LoginForm_VisibleChanged(object sender, EventArgs e) {
+            LoginForm_Load(sender, e);
+        }
     }
 }
