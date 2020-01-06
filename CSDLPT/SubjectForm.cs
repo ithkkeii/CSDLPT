@@ -119,7 +119,7 @@ namespace CSDLPT {
                     mONHOCTableAdapter.Update(dS_SERVER1.MONHOC);
                     return;
                 } catch (Exception err) {
-                    Console.WriteLine(err.Message);
+
                     MessageBox.Show("Lỗi xóa môn học!", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
